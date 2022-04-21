@@ -1,4 +1,5 @@
-﻿using RealEstateDAL.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using RealEstateDAL.Context;
 using RealEstateDAL.Entities;
 using RealEstateDAL.Repositories.Base;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace RealEstateDAL.Repositories
 {
-    public class ClientRepository : BaseRepository<Client>
+    public class ClientRepository : GenericRepository<Client>
     {
         public ClientRepository(RealEstateContext context) : base(context)
         {
