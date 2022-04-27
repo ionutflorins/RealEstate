@@ -1,4 +1,22 @@
 using Microsoft.EntityFrameworkCore;
+using RealEstateBussinesLogic.ClientsLogic;
+using RealEstateBussinesLogic.ConfigurationItemLogic;
+using RealEstateBussinesLogic.ConfigurationOprionLogic;
+using RealEstateBussinesLogic.ContractLogic;
+using RealEstateBussinesLogic.DeveloperLogic;
+using RealEstateBussinesLogic.Interfaces.ClientLogic;
+using RealEstateBussinesLogic.Interfaces.ConfigurationItem;
+using RealEstateBussinesLogic.Interfaces.ConfigurationOptionLogic;
+using RealEstateBussinesLogic.Interfaces.ContractLogic;
+using RealEstateBussinesLogic.Interfaces.DeveloperLogic;
+using RealEstateBussinesLogic.Interfaces.ProjectLogic;
+using RealEstateBussinesLogic.Interfaces.PropertyConfigurationItemsLogic;
+using RealEstateBussinesLogic.Interfaces.PropertyConfigurationLogic;
+using RealEstateBussinesLogic.Interfaces.PropertyLogic;
+using RealEstateBussinesLogic.ProjectLogic;
+using RealEstateBussinesLogic.PropertiesConfigurations;
+using RealEstateBussinesLogic.PropertiesConfigurationsItemsLogic;
+using RealEstateBussinesLogic.PropertyLogic;
 using RealEstateDAL.Context;
 
 
@@ -14,6 +32,15 @@ builder.Services.AddDbContext<RealEstateContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.Services.AddScoped<IClientGetCommand, ClientGetCommand>();
+builder.Services.AddScoped<IDeveloperGetCommand, DeveloperGetCommand>();
+builder.Services.AddScoped<IConfigurationItemGetCommand, ConfigurationItemGetCommand>();
+builder.Services.AddScoped<IConfigurationOptionGetCommand, ConfigurationOptionGetCommand>();
+builder.Services.AddScoped<IContractGetCommand, ContractGetCommand>();
+builder.Services.AddScoped<IProjectGetCommand, ProjectGetCommand>();
+builder.Services.AddScoped<IPropertyGetCommand, PropertyGetCommand>();
+builder.Services.AddScoped<IPropertyConfigurationGetCommand, PropertyConfigurationGetCommand>();
+builder.Services.AddScoped<IPropertyConfigurationItemsGetCommand, PropertyConfigurationItemsGetCommand>();
 //Enable Cors
 builder.Services.AddCors(options =>
 {

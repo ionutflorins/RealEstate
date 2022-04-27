@@ -17,9 +17,17 @@ namespace RealEstate.Controllers
         [HttpGet]
         public IActionResult GetClientsList()
         {
-            var clientList = _clientGetCommand.GetAllClients();
+            try
+            {
+                var clientList = _clientGetCommand.GetAllClients();
 
-            return Ok(clientList);
+                return Ok(clientList);
+
+            }catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
         }
     }
 }

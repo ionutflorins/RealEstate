@@ -32,18 +32,22 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="Backend\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="Backend\**" />
+    <EmbeddedResource Remove="Backend\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="Backend\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Context\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="Backend\RealEstateBussinesLogic\RealEstateBussinesLogic.csproj" />
     <ProjectReference Include="Backend\RealEstateDAL\RealEstateDAL.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Context\" />
   </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

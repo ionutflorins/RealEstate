@@ -16,27 +16,6 @@ namespace RealEstateDAL.Repositories
         {
 
         }
-        public PropertyConfigurationItems GetPropertyConfigurationItems(int propertyConfigurationItemsID)
-        {
-            return context.PropertiesConfigurationsItems.Find(propertyConfigurationItemsID);
-        }
-
-        public void Insert(PropertyConfigurationItems propertyConfigurationItems)
-        {
-            dbSet.Add(propertyConfigurationItems);
-        }
-
-        public void Delete(int propertyConfigurationItemsID)
-        {
-            PropertyConfigurationItems propertyConfigurationItems = context.PropertiesConfigurationsItems.Find(propertyConfigurationItemsID);
-            context.PropertiesConfigurationsItems.Remove(propertyConfigurationItems);
-        }
-        public void Update(PropertyConfigurationItems propertyConfigurationItems)
-        {
-            if (propertyConfigurationItems != null)
-            {
-                context.Entry(propertyConfigurationItems).State = EntityState.Modified;
-            }
-        }
+  
     }
 }

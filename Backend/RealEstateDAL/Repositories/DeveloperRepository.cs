@@ -17,27 +17,5 @@ namespace RealEstateDAL.Repositories
         {
 
         }
-        public Developer GetDeveloper(int developerID)
-        {
-            return context.Developers.Find(developerID);
-        }
-
-        public void Insert(Developer developer)
-        {
-            dbSet.Add(developer);
-        }
-
-        public void Delete(int developerID)
-        {
-            Developer developer = context.Developers.Find(developerID);
-            context.Developers.Remove(developer);
-        }
-        public void Update(Developer developer)
-        {
-            if (developer != null)
-            {
-                context.Entry(developer).State = EntityState.Modified;
-            }
-        }
     }
 }

@@ -15,29 +15,5 @@ namespace RealEstateDAL.Repositories
         public ProjectRepository(RealEstateContext context) : base(context)
         {
         }
-
-        public Project GetProject(int projectID)
-        {
-            return context.Projects.Find(projectID);
-        }
-
-        public void Insert(Project project)
-        {
-            dbSet.Add(project);
-        }
-
-        public void Delete(int projectID)
-        {
-            Project project = context.Projects.Find(projectID);
-            context.Projects.Remove(project);
-        }
-        public void Update(Project project)
-        {
-            if (project != null)
-            {
-                context.Entry(project).State = EntityState.Modified;
-            }
-        }
-
     }
 }
