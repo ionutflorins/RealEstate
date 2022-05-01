@@ -25,6 +25,11 @@ namespace RealEstateDAL.Repositories.Base
             return dbSet.ToList();
         }
 
+        public virtual IEnumerable<TEntity> GetWhere(Expression<Func<TEntity, bool>> whereClause )
+        {
+            return dbSet.Where(whereClause).ToList();
+        }
+
         public virtual TEntity GetByID(object id)
         {
             return dbSet.Find(id);
@@ -51,5 +56,7 @@ namespace RealEstateDAL.Repositories.Base
             dbSet.Attach(entityToUpdate);
             context.Entry(entityToUpdate).State = EntityState.Modified;
         }
+       
+
     }
 }

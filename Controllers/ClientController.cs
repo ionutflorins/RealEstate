@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealEstateBussinesLogic.Interfaces.ClientLogic;
+using RealEstateBussinesLogic.Models.Client;
 
 namespace RealEstate.Controllers
 {
@@ -9,9 +10,12 @@ namespace RealEstate.Controllers
     public class ClientController : ControllerBase
     {
         private IClientGetCommand _clientGetCommand;
-        public ClientController(IClientGetCommand clientGetCommand)
+        private IClientInsertCommand _clientInsertCommand;
+        public ClientController(IClientGetCommand clientGetCommand,
+            IClientInsertCommand clientInsertCommand)
         {
             _clientGetCommand = clientGetCommand;
+            _clientInsertCommand = clientInsertCommand;
         }
 
         [HttpGet]
@@ -27,7 +31,19 @@ namespace RealEstate.Controllers
             {
                 return BadRequest(ex.Message);
             }
-            
+        }
+        [HttpPost]
+        public IActionResult AddClient([FromBody] ClientEdit clientData)
+        {
+            try
+            {
+                var clientID = _clientInsertCommand.Add(clientData);
+                return Ok(clientID);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

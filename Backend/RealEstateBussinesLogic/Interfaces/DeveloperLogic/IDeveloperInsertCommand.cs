@@ -1,4 +1,5 @@
 ﻿using RealEstateBussinesLogic.Models.Developer;
+using RealEstateDAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace RealEstateBussinesLogic.Interfaces.DeveloperLogic
 {
     public interface IDeveloperInsertCommand
     {
-        IList<DeveloperListView> InsertDeveloper();
+        int Add(DeveloperEdit developerEdit);
     }
 }

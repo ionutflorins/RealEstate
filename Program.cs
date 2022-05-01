@@ -41,6 +41,9 @@ builder.Services.AddScoped<IProjectGetCommand, ProjectGetCommand>();
 builder.Services.AddScoped<IPropertyGetCommand, PropertyGetCommand>();
 builder.Services.AddScoped<IPropertyConfigurationGetCommand, PropertyConfigurationGetCommand>();
 builder.Services.AddScoped<IPropertyConfigurationItemsGetCommand, PropertyConfigurationItemsGetCommand>();
+builder.Services.AddScoped<IDeveloperInsertCommand, DeveloperInsertCommand>();
+builder.Services.AddScoped<IClientInsertCommand, ClientInsertCommand>();
+
 //Enable Cors
 builder.Services.AddCors(options =>
 {

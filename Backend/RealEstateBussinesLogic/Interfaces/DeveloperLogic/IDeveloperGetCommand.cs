@@ -9,7 +9,6 @@ namespace RealEstateBussinesLogic.Interfaces.DeveloperLogic
 {
     public interface IDeveloperGetCommand
     {
-        IList<DeveloperListView> GetAllDevelopers();   
-
+        IList<DeveloperListView> GetAllDevelopers();  
     }
 }

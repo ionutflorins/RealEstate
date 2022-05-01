@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RealEstateBussinesLogic.Models.Developer
 {
-    public class DeveloperListView
+    public class DeveloperEdit
     {
         public int ID { get; set; }
         public string Name { get; set; }
