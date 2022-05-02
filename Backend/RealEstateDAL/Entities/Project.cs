@@ -6,7 +6,6 @@ namespace RealEstateDAL.Entities
     {
 
         public int ID { get; set; }
-
         [MaxLength(200)]
         [Required]
         public string ProjectName { get; set; } = string.Empty;

@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using RealEstateBussinesLogic.ClientsLogic;
 using RealEstateBussinesLogic.ConfigurationItemLogic;
 using RealEstateBussinesLogic.ConfigurationOprionLogic;
+using RealEstateBussinesLogic.ConfigurationOptionLogic;
 using RealEstateBussinesLogic.ContractLogic;
 using RealEstateBussinesLogic.DeveloperLogic;
 using RealEstateBussinesLogic.Interfaces.ClientLogic;
@@ -43,7 +44,13 @@ builder.Services.AddScoped<IPropertyConfigurationGetCommand, PropertyConfigurati
 builder.Services.AddScoped<IPropertyConfigurationItemsGetCommand, PropertyConfigurationItemsGetCommand>();
 builder.Services.AddScoped<IDeveloperInsertCommand, DeveloperInsertCommand>();
 builder.Services.AddScoped<IClientInsertCommand, ClientInsertCommand>();
-
+builder.Services.AddScoped<IProjectInsertCommand, ProjectInsertCommand>();
+builder.Services.AddScoped<IPropertyInsertCommand, PropertyInsertCommand>();
+builder.Services.AddScoped<IContractInsertCommand, ContractInsertCommand>();
+builder.Services.AddScoped<IPropertyConfigurationInsertCommand, PropertyConfigurationInsertCommand>();
+builder.Services.AddScoped<IConfigurationItemInsertCommand, ConfigurationItemInsertCommand>();
+builder.Services.AddScoped<IConfigurationOptionInsertCommand, ConfigurationOptionInsertCommand>();
+builder.Services.AddScoped<IPropertyConfigurationItemsInsertCommand, PropertyConfigurationItemsInsertCommand>();
 //Enable Cors
 builder.Services.AddCors(options =>
 {

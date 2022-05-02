@@ -23,7 +23,6 @@ namespace RealEstateDAL.Entities
         [MaxLength(50)]
         [Required]
         public string ZipCode { get; set; } = String.Empty;
-
         public ICollection<Contract> Contracts { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealEstateBussinesLogic.Interfaces.PropertyConfigurationItemsLogic;
+using RealEstateBussinesLogic.Models.PropertyConfigurationItems;
 
 namespace RealEstate.Controllers
 {
@@ -9,10 +10,13 @@ namespace RealEstate.Controllers
     public class PropertyConfigurationItemsController : ControllerBase
     {
         private IPropertyConfigurationItemsGetCommand _propertyConfigurationItemsGetCommand;
+        private IPropertyConfigurationItemsInsertCommand _propertyConfigurationItemsInsertCommand;
 
-        public PropertyConfigurationItemsController(IPropertyConfigurationItemsGetCommand propertyConfigurationItemGetCommand)
+        public PropertyConfigurationItemsController(IPropertyConfigurationItemsGetCommand propertyConfigurationItemGetCommand,
+            IPropertyConfigurationItemsInsertCommand propertyConfigurationItemsInsertCommand)
         {
             _propertyConfigurationItemsGetCommand = propertyConfigurationItemGetCommand;
+            _propertyConfigurationItemsInsertCommand = propertyConfigurationItemsInsertCommand;
         }
 
         [HttpGet]
@@ -23,6 +27,18 @@ namespace RealEstate.Controllers
                 var propertyConfigItemsList = _propertyConfigurationItemsGetCommand.GetAllPropertyConfigurationItems();
                 return Ok(propertyConfigItemsList);
             }catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpPost]
+        public IActionResult InsertPropertyConfigurationItems([FromBody] PropertyConfigurationItemsEdit propertyConfigurationItemsData)
+        {
+            try
+            {
+                var propertyConfigItemsId = _propertyConfigurationItemsInsertCommand.Add(propertyConfigurationItemsData);
+                return Ok(propertyConfigItemsId);
+            }catch(Exception ex)
             {
                 return BadRequest(ex.Message);
             }

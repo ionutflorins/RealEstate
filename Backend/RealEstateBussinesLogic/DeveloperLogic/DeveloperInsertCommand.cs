@@ -28,14 +28,14 @@ namespace RealEstateBussinesLogic.DeveloperLogic
             var developerExisting = developerRep
                 .GetWhere(d => d.Name == developerEdit.Name)
                 .ToList();
-           developer.ID = developerEdit.ID;
-           developer.Name = developerEdit.Name;
-           developer.PhoneNumber = developerEdit.PhoneNumber;
-           developer.Email = developerEdit.Email;
-           developer.City = developerEdit.City;
-           developer.Address = developerEdit.Address;
-           developer.ZipCode = developerEdit.ZipCode;
-       
+            developer.ID = developerEdit.ID;
+            developer.Name = developerEdit.Name;
+            developer.PhoneNumber = developerEdit.PhoneNumber;
+            developer.Email = developerEdit.Email;
+            developer.City = developerEdit.City;
+            developer.Address = developerEdit.Address;
+            developer.ZipCode = developerEdit.ZipCode;
+
             if (developerExisting == null || developerExisting.Count <= 0 )
             {
                 developerRep.Insert(developer);
