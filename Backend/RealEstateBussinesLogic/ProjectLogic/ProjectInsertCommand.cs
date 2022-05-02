@@ -35,6 +35,8 @@ namespace RealEstateBussinesLogic.ProjectLogic
             project.ApartmentNo = projectEdit.ApartmentNo;
             project.HouseNo = projectEdit.HouseNo;
             project.Description = projectEdit.Description;
+            project.DeveloperID = projectEdit.DeveloperID;
+
             if(projectExisting == null || projectExisting.Count <= 0)
             {
                 projectRep.Insert(project);

@@ -31,6 +31,8 @@ namespace RealEstateDAL.Entities
 
         [Column(TypeName = "Date")]
         public DateTime Validity { get; set; }
+        public int DeveloperID { get; set; }
         public Developer Developer { get; set; }
+        public ICollection<Contract> Contract { get; set; }
     }
 }

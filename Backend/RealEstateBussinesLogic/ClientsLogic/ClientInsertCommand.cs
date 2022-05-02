@@ -36,6 +36,7 @@ namespace RealEstateBussinesLogic.ClientsLogic
             client.Address = clientEdit.Address;
             client.IssuedBy = clientEdit.IssuedBy;
             client.Validity = clientEdit.Validity;
+            client.DeveloperID = clientEdit.DeveloperID;
 
             if(clientExisting == null || clientExisting.Count <= 0)
             {

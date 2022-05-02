@@ -12,8 +12,8 @@ using RealEstateDAL.Context;
 namespace RealEstateDAL.Migrations
 {
     [DbContext(typeof(RealEstateContext))]
-    [Migration("20220502112642_003")]
-    partial class _003
+    [Migration("20220502201206_005")]
+    partial class _005
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -362,7 +362,7 @@ namespace RealEstateDAL.Migrations
             modelBuilder.Entity("RealEstateDAL.Entities.Client", b =>
                 {
                     b.HasOne("RealEstateDAL.Entities.Developer", "Developer")
-                        .WithMany()
+                        .WithMany("Client")
                         .HasForeignKey("DeveloperID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -411,7 +411,7 @@ namespace RealEstateDAL.Migrations
             modelBuilder.Entity("RealEstateDAL.Entities.Project", b =>
                 {
                     b.HasOne("RealEstateDAL.Entities.Developer", "Developer")
-                        .WithMany()
+                        .WithMany("Project")
                         .HasForeignKey("DeveloperID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -422,7 +422,7 @@ namespace RealEstateDAL.Migrations
             modelBuilder.Entity("RealEstateDAL.Entities.Property", b =>
                 {
                     b.HasOne("RealEstateDAL.Entities.Project", "Project")
-                        .WithMany()
+                        .WithMany("Property")
                         .HasForeignKey("ProjectID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -491,7 +491,16 @@ namespace RealEstateDAL.Migrations
 
             modelBuilder.Entity("RealEstateDAL.Entities.Developer", b =>
                 {
+                    b.Navigation("Client");
+
                     b.Navigation("Contracts");
+
+                    b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("RealEstateDAL.Entities.Project", b =>
+                {
+                    b.Navigation("Property");
                 });
 
             modelBuilder.Entity("RealEstateDAL.Entities.Property", b =>

@@ -24,6 +24,8 @@ namespace RealEstateDAL.Entities
         [MaxLength(500)]
         [Required]
         public string Description { get; set; } = string.Empty;
+        public int DeveloperID { get; set; }
         public Developer Developer { get; set; }
+        public ICollection<Property> Property { get; set; }
     }
 }

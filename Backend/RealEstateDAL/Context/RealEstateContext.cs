@@ -67,7 +67,7 @@ namespace RealEstateDAL.Context
             public RealEstateContext CreateDbContext(string[] args)
             {
                 var optionsBuilder = new DbContextOptionsBuilder<RealEstateContext>();
-                optionsBuilder.UseSqlServer("Server =.; Database = RealEstateDBDev; Trusted_Connection = True");
+                optionsBuilder.UseSqlServer("Server =.; Database = RealEstateDB; Trusted_Connection = True");
                 return new RealEstateContext(optionsBuilder.Options);
             }
         }

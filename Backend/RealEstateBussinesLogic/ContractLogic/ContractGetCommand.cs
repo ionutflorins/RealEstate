@@ -23,7 +23,7 @@ namespace RealEstateBussinesLogic.ContractLogic
             var contractRep = new ContractRepository(_dbContext);
             var contractList = contractRep.GetAll();
             var contractListModel = contractList
-                .Select(x => new ContractListView { ID = x.ID, ContractNumber = x.ContractNumber, Date = x.Date})
+                .Select(x => new ContractListView { ID = x.ID, ContractNumber = x.ContractNumber, Date = x.Date, ClientID = x.ClientID, DeveloperID = x.DeveloperID, PropertyID= x.PropertyID})
                 .ToList();
             return contractListModel;
         }

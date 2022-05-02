@@ -30,6 +30,8 @@ namespace RealEstateBussinesLogic.ContractLogic
             contract.ID = contractEdit.ID;
             contract.ContractNumber= contractEdit.ContractNumber;
             contract.Date = contractEdit.Date;
+            contract.ClientID = contractEdit.ClientID;
+            contract.DeveloperID = contractEdit.DeveloperID;
             contract.PropertyID = contractEdit.PropertyID;
 
             if(contractExisting == null || contractExisting.Count <= 0)

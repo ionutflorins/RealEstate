@@ -28,6 +28,7 @@ namespace RealEstateDAL.Entities
         public string? LotSqm { get; set; }
         [MaxLength(500)]
         public string Description { get; set; }
+        public int ProjectID { get; set; }
         public Project Project { get; set; }
         public Contract Contract { get; set; }
 

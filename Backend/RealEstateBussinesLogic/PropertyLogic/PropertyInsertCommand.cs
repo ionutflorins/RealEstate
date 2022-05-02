@@ -36,7 +36,8 @@ namespace RealEstateBussinesLogic.PropertyLogic
             property.PropertySqm = propertyEdit.PropertySqm;
             property.LotSqm = propertyEdit.LotSqm;
             property.Description = propertyEdit.Description;
-            
+            property.ProjectID = propertyEdit.ProjectID;
+
             if(propertyExisting == null || propertyExisting.Count <=0)
             {
                 propertyRep.Insert(property);

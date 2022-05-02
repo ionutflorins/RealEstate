@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RealEstateDAL.Context;
 
@@ -11,9 +12,10 @@ using RealEstateDAL.Context;
 namespace RealEstateDAL.Migrations
 {
     [DbContext(typeof(RealEstateContext))]
-    partial class RealEstateContextModelSnapshot : ModelSnapshot
+    [Migration("20220502201324_006")]
+    partial class _006
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -382,7 +384,7 @@ namespace RealEstateDAL.Migrations
             modelBuilder.Entity("RealEstateDAL.Entities.Contract", b =>
                 {
                     b.HasOne("RealEstateDAL.Entities.Client", "Client")
-                        .WithMany("Contract")
+                        .WithMany()
                         .HasForeignKey("ClientID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -464,11 +466,6 @@ namespace RealEstateDAL.Migrations
                     b.Navigation("ConfigurationOption");
 
                     b.Navigation("PropertyConfiguration");
-                });
-
-            modelBuilder.Entity("RealEstateDAL.Entities.Client", b =>
-                {
-                    b.Navigation("Contract");
                 });
 
             modelBuilder.Entity("RealEstateDAL.Entities.ConfigurationItem", b =>

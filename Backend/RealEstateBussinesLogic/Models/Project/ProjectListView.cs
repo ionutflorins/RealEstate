@@ -16,6 +16,7 @@ namespace RealEstateBussinesLogic.Models.Project
         public int? ApartmentNo { get; set; }
         public int? HouseNo { get; set; }
         public string Description { get; set; }
+        public int DeveloperID { get; set; }
 
     }
 }

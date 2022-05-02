@@ -16,5 +16,7 @@ namespace RealEstateBussinesLogic.Models.Property
         public string BuildingNo { get; set; }
         public string PropertySqm { get; set; }
         public string? LotSqm { get; set; }
+        public string Description { get; set; }
+        public int ProjectID { get; set; }
     }
 }

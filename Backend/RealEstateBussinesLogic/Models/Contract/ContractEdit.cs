@@ -11,6 +11,8 @@ namespace RealEstateBussinesLogic.Models.Contract
         public int ID { get; set; }
         public string ContractNumber { get; set; }
         public DateTime Date { get; set; }
+        public int ClientID { get; set; }
+        public int DeveloperID { get; set; }
         public int? PropertyID { get; set; }
     }
 }

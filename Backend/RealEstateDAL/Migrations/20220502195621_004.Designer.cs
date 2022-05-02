@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RealEstateDAL.Context;
 
@@ -11,9 +12,10 @@ using RealEstateDAL.Context;
 namespace RealEstateDAL.Migrations
 {
     [DbContext(typeof(RealEstateContext))]
-    partial class RealEstateContextModelSnapshot : ModelSnapshot
+    [Migration("20220502195621_004")]
+    partial class _004
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -382,7 +384,7 @@ namespace RealEstateDAL.Migrations
             modelBuilder.Entity("RealEstateDAL.Entities.Contract", b =>
                 {
                     b.HasOne("RealEstateDAL.Entities.Client", "Client")
-                        .WithMany("Contract")
+                        .WithMany()
                         .HasForeignKey("ClientID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -420,7 +422,7 @@ namespace RealEstateDAL.Migrations
             modelBuilder.Entity("RealEstateDAL.Entities.Property", b =>
                 {
                     b.HasOne("RealEstateDAL.Entities.Project", "Project")
-                        .WithMany("Property")
+                        .WithMany()
                         .HasForeignKey("ProjectID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -466,11 +468,6 @@ namespace RealEstateDAL.Migrations
                     b.Navigation("PropertyConfiguration");
                 });
 
-            modelBuilder.Entity("RealEstateDAL.Entities.Client", b =>
-                {
-                    b.Navigation("Contract");
-                });
-
             modelBuilder.Entity("RealEstateDAL.Entities.ConfigurationItem", b =>
                 {
                     b.Navigation("ConfigurationOption")
@@ -499,11 +496,6 @@ namespace RealEstateDAL.Migrations
                     b.Navigation("Contracts");
 
                     b.Navigation("Project");
-                });
-
-            modelBuilder.Entity("RealEstateDAL.Entities.Project", b =>
-                {
-                    b.Navigation("Property");
                 });
 
             modelBuilder.Entity("RealEstateDAL.Entities.Property", b =>
