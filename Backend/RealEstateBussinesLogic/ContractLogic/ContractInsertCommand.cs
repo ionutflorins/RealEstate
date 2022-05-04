@@ -27,7 +27,7 @@ namespace RealEstateBussinesLogic.ContractLogic
             var contractExisting = contractRep
                 .GetWhere(d => d.ContractNumber == contractEdit.ContractNumber)
                 .ToList();
-            contract.ID = contractEdit.ID;
+            
             contract.ContractNumber= contractEdit.ContractNumber;
             contract.Date = contractEdit.Date;
             contract.ClientID = contractEdit.ClientID;

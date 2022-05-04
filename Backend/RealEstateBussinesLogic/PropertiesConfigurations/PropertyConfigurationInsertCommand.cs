@@ -27,9 +27,11 @@ namespace RealEstateBussinesLogic.PropertiesConfigurations
             var propertyConfigurationExisting = propertyConfigurationRep
                 .GetWhere(d => d.FormNumber == propertyConfigurationEdit.FormNumber)
                 .ToList();
+
             propertyConfiguration.ID = propertyConfigurationEdit.ID;
             propertyConfiguration.FormNumber = propertyConfigurationEdit.FormNumber;
             propertyConfiguration.ContractID = propertyConfigurationEdit.ContractID;
+
             if(propertyConfigurationExisting == null || propertyConfigurationExisting.Count <= 0)
             {
                 propertyConfigurationRep.Insert(propertyConfiguration);

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RealEstateDAL.Repositories.Base
 {
-    public class GenericRepository<TEntity> where TEntity : class 
+    public class GenericRepository<TEntity> : IDisposable where TEntity : class 
     {
         internal RealEstateContext context;
         internal DbSet<TEntity> dbSet;
@@ -56,7 +56,18 @@ namespace RealEstateDAL.Repositories.Base
             dbSet.Attach(entityToUpdate);
             context.Entry(entityToUpdate).State = EntityState.Modified;
         }
-       
 
+        public void Dispose()
+        {
+            if(context != null)
+            {
+                context.Dispose();
+                context = null;
+            }
+            if(dbSet != null)
+            {
+                dbSet = null;
+            }
+        }
     }
 }

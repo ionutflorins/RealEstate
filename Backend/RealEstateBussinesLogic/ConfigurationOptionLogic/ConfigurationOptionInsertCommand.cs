@@ -28,7 +28,7 @@ namespace RealEstateBussinesLogic.ConfigurationOptionLogic
             var configurationOptionExisting = configurationOptionRep
                 .GetWhere( d => d.Description == configurationOptionEdit.Description)
                 .ToList();
-            configurationOption.ID = configurationOptionEdit.ID;
+            
             configurationOption.Description = configurationOptionEdit.Description;
             configurationOption.ConfigurationItemId = configurationOptionEdit.ConfigurationItemId;
             if(configurationOptionExisting == null || configurationOptionExisting.Count <= 0)

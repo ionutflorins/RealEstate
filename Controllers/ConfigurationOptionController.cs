@@ -11,12 +11,19 @@ namespace RealEstate.Controllers
     {
         private IConfigurationOptionGetCommand _configurationOptionGetCommand;
         private IConfigurationOptionInsertCommand _configurationOptionInsertCommand;
+        private IConfigurationOptionUpdateCommand _configurationOptionUpdateCommand;
+        private IConfigurationOptionDeleteCommand _configurationOptionDeleteCommand;
 
         public ConfigurationOptionController(IConfigurationOptionGetCommand configurationOptionGetCommand,
-            IConfigurationOptionInsertCommand configurationOptionInsertCommand)
+            IConfigurationOptionInsertCommand configurationOptionInsertCommand,
+            IConfigurationOptionUpdateCommand configurationOptionUpdateCommand, 
+            IConfigurationOptionDeleteCommand configurationOptionDeleteCommand)
         {
             _configurationOptionGetCommand = configurationOptionGetCommand;
             _configurationOptionInsertCommand = configurationOptionInsertCommand;
+            _configurationOptionUpdateCommand = configurationOptionUpdateCommand;
+            _configurationOptionDeleteCommand = configurationOptionDeleteCommand;
+
         }
         [HttpGet]
         public IActionResult GetConfigurationOptionList()
@@ -30,7 +37,7 @@ namespace RealEstate.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPost]
+        [HttpPost("InsertConfigurationOption")]
         public IActionResult AddConfigurationOption([FromBody] ConfigurationOptionEdit configurationOptionData)
         {
             try
@@ -38,6 +45,34 @@ namespace RealEstate.Controllers
                 var configurationOptionID = _configurationOptionInsertCommand.Add(configurationOptionData);
                 return Ok(configurationOptionID);
             }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost("UpdateConfigurationOption")]
+        public IActionResult Update([FromBody] ConfigurationOptionEdit configurationOptionData)
+        {
+            try
+            {
+                var configurationItemID = _configurationOptionUpdateCommand.Update(configurationOptionData);
+                return Ok(configurationItemID);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost("DeleteConfigurationOption/{configurationOptionID}")]
+        public IActionResult DeleteConfigurationOption([FromRoute] int configurationOptionID)
+        {
+            try
+            {
+                var resultID = _configurationOptionDeleteCommand.Delete(configurationOptionID);
+                return Ok(resultID);
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }

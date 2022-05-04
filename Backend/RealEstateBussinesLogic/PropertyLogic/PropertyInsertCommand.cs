@@ -27,7 +27,7 @@ namespace RealEstateBussinesLogic.PropertyLogic
             var propertyExisting = propertyRep
                 .GetWhere(d => d.IdentityNo == propertyEdit.IdentityNo)
                 .ToList();
-            property.ID = propertyEdit.ID;
+            
             property.Type = propertyEdit.Type;
             property.Price = propertyEdit.Price;
             property.RoomNo = propertyEdit.RoomNo;

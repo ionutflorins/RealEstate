@@ -51,6 +51,24 @@ builder.Services.AddScoped<IPropertyConfigurationInsertCommand, PropertyConfigur
 builder.Services.AddScoped<IConfigurationItemInsertCommand, ConfigurationItemInsertCommand>();
 builder.Services.AddScoped<IConfigurationOptionInsertCommand, ConfigurationOptionInsertCommand>();
 builder.Services.AddScoped<IPropertyConfigurationItemsInsertCommand, PropertyConfigurationItemsInsertCommand>();
+builder.Services.AddScoped<IDeveloperUpdateCommand, DeveloperUpdateCommand>();
+builder.Services.AddScoped<IDeveloperDeleteCommand, DeveloperDeleteCommand>();
+builder.Services.AddScoped<IClientUpdateCommand, ClientUpdateCommand>();
+builder.Services.AddScoped<IClientDeleteCommand, ClientDeleteCommand>();
+builder.Services.AddScoped<IConfigurationItemUpdateCommand, ConfigurationItemUpdateCommand>();
+builder.Services.AddScoped<IConfigurationItemDeleteCommand, ConfigurationItemDeleteCommand>();
+builder.Services.AddScoped<IConfigurationOptionUpdateCommand, ConfigurationOptionUpdateCommand>();
+builder.Services.AddScoped<IConfigurationOptionDeleteCommand, ConfigurationOptionDeleteCommand>();
+builder.Services.AddScoped<IContractUpdateCommand, ContractUpdateCommand>();
+builder.Services.AddScoped<IContractDeleteCommand, ContractDeleteCommand>();
+builder.Services.AddScoped<IProjectUpdateCommand, ProjectUpdateCommand>();
+builder.Services.AddScoped<IProjectDeleteCommand, ProjectDeleteCommand>();
+builder.Services.AddScoped<IPropertyConfigurationItemsUpdateCommand, PropertyConfigurationItemsUpdateCommand>();
+builder.Services.AddScoped<IPropertyConfigurationItemsDeleteCommand, PropertyConfigurationItemsDeleteCommand>();
+builder.Services.AddScoped<IPropertyConfigurationUpdateCommand, PropertyConfigurationUpdateCommand>();
+builder.Services.AddScoped<IPropertyConfigurationDeleteCommand, PropertyConfigurationDeleteCommand>();
+builder.Services.AddScoped<IPropertyUpdateCommand, PropertyUpdateCommand>();
+builder.Services.AddScoped<IPropertyDeleteCommand, PropertyDeleteCommand>();
 //Enable Cors
 builder.Services.AddCors(options =>
 {

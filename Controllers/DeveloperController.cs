@@ -12,12 +12,18 @@ namespace RealEstate.Controllers
     {
         private IDeveloperGetCommand _developerGetCommand;
         private IDeveloperInsertCommand _developerInsertCommand;
+        private IDeveloperUpdateCommand _developerUpdateCommand;
+        private IDeveloperDeleteCommand _developerDeleteCommand;
 
         public DeveloperController(IDeveloperGetCommand developerGetCommand,
-            IDeveloperInsertCommand developerInsertCommand)
+            IDeveloperInsertCommand developerInsertCommand,
+            IDeveloperUpdateCommand developerUpdateCommand,
+            IDeveloperDeleteCommand developerDeleteCommand)
         {
             _developerGetCommand = developerGetCommand;
             _developerInsertCommand = developerInsertCommand;
+            _developerUpdateCommand = developerUpdateCommand;
+            _developerDeleteCommand = developerDeleteCommand;
         }
 
         [HttpGet]
@@ -34,26 +40,47 @@ namespace RealEstate.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("InsertDeveloper")]
         public IActionResult AddDeveloper([FromBody] DeveloperEdit developerData)
         {
            try
-            {
-               var developerID = _developerInsertCommand.Add(developerData);
-                return Ok(developerID);
+            {   
+                  var developerID = _developerInsertCommand.Add(developerData);
+                  return Ok(developerID);
+                    
+               
             }catch(Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
-       
 
-        
+        [HttpPost("UpdateDeveloper")]
+        public IActionResult UpdateDeveloper([FromBody]DeveloperEdit developerData)
+        {
+          try
+            {
+                var developerID = _developerUpdateCommand.Edit(developerData);
+                return Ok(developerID);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
-
-
-
-
-
+        [HttpPost("DeleteDeveloper/{developerID}")]
+        public IActionResult DeleteDeveloper([FromRoute] int developerID)
+        {
+            try
+            {
+                var resultID = _developerDeleteCommand.Delete(developerID);
+                return Ok(resultID); ;
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

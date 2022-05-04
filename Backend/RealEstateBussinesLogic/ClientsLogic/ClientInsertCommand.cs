@@ -27,7 +27,6 @@ namespace RealEstateBussinesLogic.ClientsLogic
             var clientExisting = clientRep
                 .GetWhere(d => d.PersonalID == clientEdit.PersonalID)
                 .ToList();
-            client.ID = clientEdit.ID;
             client.FirstName = clientEdit.FirstName;
             client.LastName = clientEdit.LastName;
             client.PhoneNumber = clientEdit.PhoneNumber;

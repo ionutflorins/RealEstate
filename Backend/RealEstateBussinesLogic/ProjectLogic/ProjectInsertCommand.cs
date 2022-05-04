@@ -27,7 +27,6 @@ namespace RealEstateBussinesLogic.ProjectLogic
             var projectExisting = projectRep
                 .GetWhere(d => d.ProjectName == projectEdit.ProjectName)
                 .ToList();
-            project.ID = projectEdit.ID;
             project.ProjectName = projectEdit.ProjectName;
             project.City = projectEdit.City;
             project.Address = projectEdit.Address;
