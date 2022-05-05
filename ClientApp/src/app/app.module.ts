@@ -22,6 +22,15 @@ import { PropertyComponent } from './property/property.component';
 import { ShowPropertyComponent } from './property/show-property/show-property.component';
 import { ContractComponent } from './contract/contract.component';
 import { ShowContractComponent } from './contract/show-contract/show-contract.component';
+import { PropertyconfigurationComponent } from './propertyconfiguration/propertyconfiguration.component';
+import { ShowPropertyconfigurationComponent } from './propertyconfiguration/show-propertyconfiguration/show-propertyconfiguration.component';
+import { ConfigurationitemComponent } from './configurationitem/configurationitem.component';
+import { ShowConfigurationitemComponent } from './configurationitem/show-configurationitem/show-configurationitem.component';
+import { ConfigurationoptionComponent } from './configurationoption/configurationoption.component';
+import { ShowConfigurationoptionComponent } from './configurationoption/show-configurationoption/show-configurationoption.component';
+import { PropertyconfigurationitemsComponent } from './propertyconfigurationitems/propertyconfigurationitems.component';
+import { ShowPropertyconfigurationitemsComponent } from './propertyconfigurationitems/show-propertyconfigurationitems/show-propertyconfigurationitems.component';
+
 
 @NgModule({
   declarations: [
@@ -41,6 +50,15 @@ import { ShowContractComponent } from './contract/show-contract/show-contract.co
     ShowPropertyComponent,
     ContractComponent,
     ShowContractComponent,
+    PropertyconfigurationComponent,
+    ShowPropertyconfigurationComponent,
+    ConfigurationitemComponent,
+    ShowConfigurationitemComponent,
+    ConfigurationoptionComponent,
+    ShowConfigurationoptionComponent,
+    PropertyconfigurationitemsComponent,
+    ShowPropertyconfigurationitemsComponent,
+ 
     
   ],
   imports: [

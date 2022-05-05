@@ -1,0 +1,12 @@
+<table class="table table-striped">
+    <thead>
+        <th>ID</th>
+        <th>Description</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let configurationItem of configurationItemList$|async">
+            <td>{{configurationItem.id}}</td>
+            <td>{{configurationItem.description}}</td>
+        </tr>
+    </tbody>
+</table>

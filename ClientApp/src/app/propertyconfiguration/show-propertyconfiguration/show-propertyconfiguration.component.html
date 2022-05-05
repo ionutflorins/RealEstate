@@ -1,0 +1,14 @@
+<table class="table table-striped">
+    <thead>
+        <th>ID</th>
+        <th>FormNumber</th>
+        <th>ContractID</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let propertyConfiguration of propertyConfigurationList$|async">
+            <td>{{propertyConfiguration.id}}</td>
+            <td>{{propertyConfiguration.formNumber}}</td>
+            <td>{{propertyConfiguration.contractID}}</td>
+        </tr>
+    </tbody>
+</table>
