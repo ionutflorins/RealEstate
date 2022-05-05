@@ -1,0 +1,26 @@
+<table class="table table-striped">
+    <thead>
+        <th>ID</th>
+        <th>Project Name</th>
+        <th>City</th>
+        <th>Address</th>
+        <th>Buildings No</th>
+        <th>Apartment No</th>
+        <th>HouseNo</th>
+        <th>Description</th>
+        <th>Developer ID</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let project of projectList$|async">
+            <td>{{project.id}}</td>
+            <td>{{project.projectName}}</td>
+            <td>{{project.city}}</td>
+            <td>{{project.address}}</td>
+            <td>{{project.buildingsNo}}</td>
+            <td>{{project.apartmentNo}}</td>
+            <td>{{project.houseNo}}</td>
+            <td>{{project.description}}</td>
+            <td>{{project.developerID}}</td>
+        </tr>
+    </tbody>
+</table>

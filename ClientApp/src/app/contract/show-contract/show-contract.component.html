@@ -1,0 +1,20 @@
+<table class="table table-striped">
+    <thead>
+        <th>ID</th>
+        <th>Contract Number</th>
+        <th>Date</th>
+        <th>Client ID</th>
+        <th>Developer ID</th>
+        <th>Property ID</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let contract of contractList$|async">
+            <td>{{contract.id}}</td>
+            <td>{{contract.contractNumber}}</td>
+            <td>{{contract.date}}</td>
+            <td>{{contract.clientID}}</td>
+            <td>{{contract.developerID}}</td>
+            <td>{{contract.propertyID}}</td>
+        </tr>
+    </tbody>
+</table>

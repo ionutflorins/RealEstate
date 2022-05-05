@@ -1,0 +1,28 @@
+<table class="table table-striped">
+    <thead>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Price</th>
+        <th>Room No</th>
+        <th>Identity No</th>
+        <th>Building No</th>
+        <th>Property Sqm</th>
+        <th>Lot Sqm</th>
+        <th>Description</th>
+        <th>ProjectID</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let property of propertyList$|async">
+            <td>{{property.id}}</td>
+            <td>{{property.type}}</td>
+            <td>{{property.price}}</td>
+            <td>{{property.roomNo}}</td>
+            <td>{{property.identityNo}}</td>
+            <td>{{property.buildingNo}}</td>
+            <td>{{property.propertySqm}}</td>
+            <td>{{property.lotSqm}}</td>
+            <td>{{property.description}}</td>
+            <td>{{property.projectID}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,26 @@
+<table class="table table-striped">
+    <thead>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Phone Number</th>
+        <th>Personal ID</th>
+        <th>Series Number</th>
+        <th>Address</th>
+        <th>Issued By</th>
+        <th>Validity</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let client of clientList$|async">
+            <td>{{client.id}}</td>
+            <td>{{client.firstName}}</td>
+            <td>{{client.lastName}}</td>
+            <td>{{client.phoneNumber}}</td>
+            <td>{{client.personalID}}</td>
+            <td>{{client.serieNo}}</td>
+            <td>{{client.address}}</td>
+            <td>{{client.issuedBy}}</td>
+            <td>{{client.validity}}</td>
+        </tr>
+    </tbody>
+</table>

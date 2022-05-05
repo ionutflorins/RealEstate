@@ -1,0 +1,45 @@
+<!-- Add developer trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" 
+(click)="modalAdd()"
+>
+    Add Developer
+  </button>
+
+  <!-- Show developer list tabel -->
+<table class="table table-striped">
+    <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Zip Code</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let developer of developerList$|async">
+            <td>{{developer.id}}</td>
+            <td>{{developer.name}}</td>
+            <td>{{developer.address}}</td>
+            <td>{{developer.city}}</td>
+            <td>{{developer.phoneNumber}}</td>
+            <td>{{developer.email}}</td>
+            <td>{{developer.zipCode}}</td>
+        </tr>
+    </tbody>
+</table>
+
+  <!-- Add new Developer Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">{{addModalTitle}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <app-add-developer></app-add-developer>
+        </div>
+      </div>
+    </div>
+  </div>
