@@ -1,3 +1,10 @@
+<!-- Add client trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" 
+(click)="modalAdd()"
+>
+    Add Client
+  </button>
+
 <table class="table table-striped">
     <thead>
         <th>ID</th>
@@ -26,3 +33,31 @@
         </tr>
     </tbody>
 </table>
+
+<div class="alert alert-success" role="alert" id="add-succes-alert">
+    Client succesfully added!
+  </div>
+  <div class="alert alert-success" role="alert" id="update-succes-alert" >
+    Client succesfully updated!
+  </div>
+  <div class="alert alert-success" role="alert" id="delete-succes-alert" >
+    Client succesfully deleted!
+  </div>
+
+ <!-- Add/Edit new client Modal -->
+ <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">{{clientModalTitle}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="modalClose()" id="add-edit-modal-close"></button>
+        </div>
+        <div class="modal-body">
+          <app-add-edit-client [client]="client" *ngIf="activateAddEditClientComponent"></app-add-edit-client>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+

@@ -17,4 +17,31 @@ export class ShowClientComponent implements OnInit {
     this.clientList$ = this.clientService.getClientList();
   }
 
+  //Variables(properties)
+clientModalTitle:string ="";
+activateAddEditClientComponent:boolean = false;
+client:any;
+
+modalAdd(){
+  this.client= {
+  id:0,
+  firstName:null,
+  lastName:null,
+  phoneNumber:null,
+  personalID:null,
+  serieNo:null,
+  address:null,
+  issuedBy:null,
+  validity:null,
+  developerID:0
+  }
+  this.clientModalTitle="Add Client";
+  this.activateAddEditClientComponent = true;
+}
+
+modalClose(){
+  this.activateAddEditClientComponent = false;
+  this.clientList$ = this.clientService.getClientList();
+}
+
 }

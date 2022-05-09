@@ -1,1 +1,49 @@
-<p>add-edit-client works!</p>
+<form>
+
+    <div class="mb-2">
+        <label for="FirstName" class="form-label">First Name</label>
+        <input type="text" class="form-control" [(ngModel)]="clientFirstName" name="clientFirstName">
+    </div>
+    <div class="mb-2">
+        <label for="LastName" class="form-label">Last Name</label>
+        <input type="text" class="form-control" [(ngModel)]="clientLastName" name="clientLastName">
+    </div>
+    <div class="mb-2">
+        <label for="PhoneNumber" class="form-label">Phone Number</label>
+        <input type="text" class="form-control" [(ngModel)]="clientPhoneNumber" name="clientPhoneNumber"> 
+    </div>
+    <div class="mb-2">
+        <label for="PersonalID" class="form-label">Personal ID</label>
+        <input type="text" class="form-control" [(ngModel)]="clientPersonalID" name="clientPersonalID">
+    </div>
+    <div class="mb-2">
+        <label for="SerieNo" class="form-label">Serie NO</label>
+        <input type="text" class="form-control" [(ngModel)]="clientSerieNo" name="clientSerieNo">
+    </div>
+    <div class="mb-2">
+        <label for="Address" class="form-label">Address</label>
+        <input type="text" class="form-control" [(ngModel)]="clientAddress" name="clientAddress">
+    </div>
+    <div class="mb-2">
+        <label for="IssuedBy" class="form-label">Issued By</label>
+        <input type="text" class="form-control" [(ngModel)]="clientIssuedBy" name="clientIssuedBy">
+    </div>
+    <div class="mb-2">
+        <label for="Validity" class="form-label">Validity</label>
+        <input type="date" class="form-control" [(ngModel)]="clientValidity" name="clientValidity">
+    </div>
+    <div class="mb-2">
+        <label for="DeveloperID" class="form-label">DeveloperID</label>
+        <input type="text" class="form-control" [(ngModel)]="clientDeveloperID" name="clientDeveloperID">
+    </div>
+
+
+    <button (click)="addClient()" *ngIf="client.id==0"  class="btn btn-primary">
+        Add
+    </button>
+    <button (click)="updateClient()" *ngIf="client.id!=0"  class="btn btn-primary">
+        Update
+    </button>
+
+
+</form>
