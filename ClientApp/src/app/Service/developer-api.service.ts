@@ -20,7 +20,7 @@ export class DeveloperApiService {
   }
 
   updateDeveloper(data:any){
-    return this.http.post(this.developerApiUrl + '/UpdateDeveloper', data);
+    return this.http.post(this.developerApiUrl + `/UpdateDeveloper`, data);
   }
 
   deleteDeveloper(developerID:number|string){

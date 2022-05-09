@@ -9,18 +9,20 @@
         <th>Address</th>
         <th>Issued By</th>
         <th>Validity</th>
+        <th>DeveloperID</th>
     </thead>
     <tbody>
-        <tr *ngFor="let client of clientList$|async">
-            <td>{{client.id}}</td>
-            <td>{{client.firstName}}</td>
-            <td>{{client.lastName}}</td>
-            <td>{{client.phoneNumber}}</td>
-            <td>{{client.personalID}}</td>
-            <td>{{client.serieNo}}</td>
-            <td>{{client.address}}</td>
-            <td>{{client.issuedBy}}</td>
-            <td>{{client.validity}}</td>
+        <tr *ngFor="let clientItem of clientList$|async">
+            <td>{{clientItem.id}}</td>
+            <td>{{clientItem.firstName}}</td>
+            <td>{{clientItem.lastName}}</td>
+            <td>{{clientItem.phoneNumber}}</td>
+            <td>{{clientItem.personalID}}</td>
+            <td>{{clientItem.serieNo}}</td>
+            <td>{{clientItem.address}}</td>
+            <td>{{clientItem.issuedBy}}</td>
+            <td>{{clientItem.validity}}</td>
+            <td>{{clientItem.developerID}}</td>
         </tr>
     </tbody>
 </table>

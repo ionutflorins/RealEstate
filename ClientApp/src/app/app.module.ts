@@ -30,6 +30,7 @@ import { ConfigurationoptionComponent } from './configurationoption/configuratio
 import { ShowConfigurationoptionComponent } from './configurationoption/show-configurationoption/show-configurationoption.component';
 import { PropertyconfigurationitemsComponent } from './propertyconfigurationitems/propertyconfigurationitems.component';
 import { ShowPropertyconfigurationitemsComponent } from './propertyconfigurationitems/show-propertyconfigurationitems/show-propertyconfigurationitems.component';
+import { AddEditClientComponent } from './client/add-edit-client/add-edit-client.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { ShowPropertyconfigurationitemsComponent } from './propertyconfiguration
     ShowConfigurationoptionComponent,
     PropertyconfigurationitemsComponent,
     ShowPropertyconfigurationitemsComponent,
+    AddEditClientComponent,
  
     
   ],
@@ -67,9 +69,9 @@ import { ShowPropertyconfigurationitemsComponent } from './propertyconfiguration
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+      // { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'Developer-List', component: DeveloperComponent },
+      { path: 'Client-List', component: ClientComponent },
     ])
   ],
   providers: [DeveloperApiService],

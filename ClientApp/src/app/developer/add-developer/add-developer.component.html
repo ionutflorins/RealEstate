@@ -1,4 +1,4 @@
-<!-- <form>
+<form>
     <div class="mb-2">
         <label for="Name" class="form-label">Name</label>
         <input type="text" class="form-control" [(ngModel)]="developerName" name="developerName">
@@ -23,7 +23,11 @@
         <label for="ZipCode" class="form-label">Zip Code</label>
         <input type="text" class="form-control" [(ngModel)]="developerZipCode" name="developerZipCode">
     </div>
-    <button (click)="addDeveloper()"  class="btn btn-primary">
+    <button (click)="addDeveloper()" *ngIf="developer.id==0"  class="btn btn-primary">
         Add
     </button>
-</form> -->
+    <button (click)="updateDeveloper()" *ngIf="developer.id!=0"  class="btn btn-primary">
+        Update
+    </button>
+    
+</form>

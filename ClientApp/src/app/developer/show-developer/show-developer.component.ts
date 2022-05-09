@@ -36,4 +36,38 @@ this.developer = {
   this.activateAddDeveloperComponent = true;
 }
 
+modalEdit(developerItem:any){
+     this.developer = developerItem;
+     this.addModalTitle= "Edit Developer"
+     this.activateAddDeveloperComponent = true;
+ }
+
+deleteDeveloper(developerItem:any){
+  if(confirm(`Are you sure you want to delete developer${developerItem.name}`)){
+    this.developerService.deleteDeveloper(developerItem.id).subscribe(res => {
+      var closeModalBtn = document.getElementById('add-modal-close');
+      if (closeModalBtn) {
+        closeModalBtn.click();
+      }
+
+      var showDeleteSucces = document.getElementById('delete-succes-alert');
+      if (showDeleteSucces) {
+        showDeleteSucces.style.display = "block";
+      }
+
+      setTimeout(function () {
+        if (showDeleteSucces) {
+          showDeleteSucces.style.display = "none"
+        }
+      }, 4000);
+this.developerList$ = this.developerService.getDeveloperList();
+
+    } )
+  }
+}
+
+modalClose(){
+  this.activateAddDeveloperComponent = false;
+  this.developerList$ = this.developerService.getDeveloperList();
+}
 }

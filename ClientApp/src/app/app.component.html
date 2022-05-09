@@ -1,11 +1,25 @@
 <div class="container">
-  <app-developer></app-developer>
-  <app-client></app-client>
-  <app-project></app-project>
+<style>
+h1{
+  text-align: center;
+}
+</style>
+<nav>
+  <a class="button" routerLink="/Developer-List" routerLinkActive="activebutton">Developers</a> |
+  <a class="button" routerLink="/Client-List" routerLinkActive="activebutton">Clients</a>
+  
+</nav>
+
+<h1>Real Estate </h1>
+<h2>Home Menu</h2>
+  <router-outlet></router-outlet>
+  <!-- <app-developer></app-developer> -->
+  <!-- <app-client></app-client> -->
+  <!-- <app-project></app-project>
   <app-property></app-property>
   <app-contract></app-contract>
   <app-propertyconfiguration></app-propertyconfiguration>
   <app-configurationitem></app-configurationitem>
   <app-configurationoption></app-configurationoption>
-  <app-propertyconfigurationitems></app-propertyconfigurationitems>
+  <app-propertyconfigurationitems></app-propertyconfigurationitems> -->
 </div>
