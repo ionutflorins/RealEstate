@@ -70,8 +70,11 @@ import { AddEditClientComponent } from './client/add-edit-client/add-edit-client
     ReactiveFormsModule,
     RouterModule.forRoot([
       // { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'NavMenu-List', component:NavMenuComponent },
       { path: 'Developer-List', component: DeveloperComponent },
       { path: 'Client-List', component: ClientComponent },
+      { path: 'Project-List', component: ProjectComponent },
+      { path: 'Property-List', component: PropertyComponent },
     ])
   ],
   providers: [DeveloperApiService],

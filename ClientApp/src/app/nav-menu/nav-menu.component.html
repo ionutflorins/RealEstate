@@ -25,16 +25,21 @@
             [routerLinkActive]="['link-active']"
             [routerLinkActiveOptions]="{ exact: true }"
           >
-            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+            <a class="nav-link text-dark" [routerLink]="['/Developer-List']">Developers</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/counter']"
-              >Counter</a
+            <a class="nav-link text-dark" [routerLink]="['/Client-List']"
+              >Clients</a
             >
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/fetch-data']"
-              >Fetch data</a
+            <a class="nav-link text-dark" [routerLink]="['/Project-List']"
+              >Projects</a
+            >
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/Property-List']"
+              >Properties</a
             >
           </li>
         </ul>

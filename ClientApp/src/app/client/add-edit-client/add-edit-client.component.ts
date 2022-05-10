@@ -52,7 +52,7 @@ addClient(){
     developerID:this.clientDeveloperID
   }
   this.clientService.addClient(client).subscribe(res => {
-    var closeModalBtn = document.getElementById('add-modal-close');
+    var closeModalBtn = document.getElementById('add-edit-modal-close');
     if (closeModalBtn) {
       closeModalBtn.click();
     }
@@ -70,6 +70,34 @@ addClient(){
 }
 
 updateClient(){
-  
+  var client ={
+    id:this.clientID,
+    firstName:this.clientFirstName,
+    lastName:this.clientLastName,
+    phoneNumber:this.clientPhoneNumber,
+    personalID:this.clientPersonalID,
+    serieNo:this.clientSerieNo,
+    address:this.clientAddress,
+    issuedBy:this.clientIssuedBy,
+    validity:this.clientValidity,
+    developerID:this.clientDeveloperID
+  }
+  var id:number = this.clientID
+  this.clientService.updateClient(client).subscribe(res => {
+    var closeModalBtn = document.getElementById('add-edit-modal-close');
+    if (closeModalBtn) {
+      closeModalBtn.click();
+    }
+    var showUpdateSucces = document.getElementById('update-succes-alert');
+    if (showUpdateSucces) {
+      showUpdateSucces.style.display = "block";
+    }
+    setTimeout(function () {
+      if (showUpdateSucces) {
+        showUpdateSucces.style.display = "none"
+      }
+    }, 4000);
+  })
+
 }
 }

@@ -37,13 +37,10 @@
         <input type="text" class="form-control" [(ngModel)]="clientDeveloperID" name="clientDeveloperID">
     </div>
 
-
     <button (click)="addClient()" *ngIf="client.id==0"  class="btn btn-primary">
         Add
     </button>
     <button (click)="updateClient()" *ngIf="client.id!=0"  class="btn btn-primary">
         Update
     </button>
-
-
 </form>

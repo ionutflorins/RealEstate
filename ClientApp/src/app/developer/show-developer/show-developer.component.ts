@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable} from 'rxjs';
+import { ClientApiService } from 'src/app/Service/client-api.service';
 import { DeveloperApiService } from 'src/app/Service/developer-api.service';
 
 @Component({
@@ -10,11 +11,13 @@ import { DeveloperApiService } from 'src/app/Service/developer-api.service';
 export class ShowDeveloperComponent implements OnInit {
 
   developerList$!:Observable<any[]>;
-
-  constructor(private developerService : DeveloperApiService) { }
+  clientList$!:Observable<any[]>
+  constructor(private developerService : DeveloperApiService, 
+    private clientService : ClientApiService) { }
 
   ngOnInit(): void {
     this.developerList$ = this.developerService.getDeveloperList();
+    this.clientList$ = this.clientService.getClientList();
   }
 
 //Variables(proprietes)
