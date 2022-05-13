@@ -31,6 +31,9 @@ import { ShowConfigurationoptionComponent } from './configurationoption/show-con
 import { PropertyconfigurationitemsComponent } from './propertyconfigurationitems/propertyconfigurationitems.component';
 import { ShowPropertyconfigurationitemsComponent } from './propertyconfigurationitems/show-propertyconfigurationitems/show-propertyconfigurationitems.component';
 import { AddEditClientComponent } from './client/add-edit-client/add-edit-client.component';
+import { AddEditProjectComponent } from './project/add-edit-project/add-edit-project.component';
+import { AddEditContractComponent } from './contract/add-edit-contract/add-edit-contract.component';
+import { AddEditPropertyComponent } from './property/add-edit-property/add-edit-property.component';
 
 
 @NgModule({
@@ -60,6 +63,9 @@ import { AddEditClientComponent } from './client/add-edit-client/add-edit-client
     PropertyconfigurationitemsComponent,
     ShowPropertyconfigurationitemsComponent,
     AddEditClientComponent,
+    AddEditProjectComponent,
+    AddEditContractComponent,
+    AddEditPropertyComponent,
  
     
   ],
@@ -75,6 +81,12 @@ import { AddEditClientComponent } from './client/add-edit-client/add-edit-client
       { path: 'Client-List', component: ClientComponent },
       { path: 'Project-List', component: ProjectComponent },
       { path: 'Property-List', component: PropertyComponent },
+      { path: 'Contract-List', component: ContractComponent },
+      { path: 'PropertyConfiguration-List', component: PropertyconfigurationComponent },
+      { path: 'Configurationitem-List', component: ConfigurationitemComponent },
+      { path: 'Propertyconfigurationitems-List', component: PropertyconfigurationitemsComponent },
+      { path: 'ConfigurationOption-List', component: ConfigurationoptionComponent },
+
     ])
   ],
   providers: [DeveloperApiService],

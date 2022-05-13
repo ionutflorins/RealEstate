@@ -67,8 +67,8 @@ export class ShowClientComponent implements OnInit {
             showDeleteSucces.style.display = "none"
           }
         }, 4000);
+        
         this.clientList$= this.clientService.getClientList();
-
       })
     }
   }

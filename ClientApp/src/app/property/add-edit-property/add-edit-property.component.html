@@ -1,0 +1,45 @@
+<form>
+    <div class="mb-2">
+        <label for="Type" class="form-label">Type</label>
+        <input type="text" class="form-control" [(ngModel)]="propertyType" name="propertyType">
+    </div>
+    <div class="mb-2">
+        <label for="Price" class="form-label">Price</label>
+        <input type="number" class="form-control" [(ngModel)]="propertyPrice" name="propertyPrice">
+    </div>
+    <div class="mb-2">
+        <label for="RoomNo" class="form-label">RoomNo</label>
+        <input type="number" class="form-control" [(ngModel)]="propertyRoomNo" name="propertyRoomNo"> 
+    </div>
+    <div class="mb-2">
+        <label for="IdentityNo" class="form-label">IdentityNo</label>
+        <input type="text" class="form-control" [(ngModel)]="propertyIdentityNo" name="propertyIdentityNo">
+    </div>
+    <div class="mb-2">
+        <label for="BuildingNo" class="form-label">BuildingNo</label>
+        <input type="number" class="form-control" [(ngModel)]="propertyBuildingNo" name="propertyBuildingNo">
+    </div>
+    <div class="mb-2">
+        <label for="PropertySqm" class="form-label">Property Sqm</label>
+        <input type="text" class="form-control" [(ngModel)]="propertySquareM" name="propertySquareM">
+    </div>
+    <div class="mb-2">
+        <label for="LotSqm" class="form-label">LotSqm</label>
+        <input type="text" class="form-control" [(ngModel)]="propertyLotSquareM" name="propertyLotSquareM">
+    </div>
+    <div class="mb-2">
+        <label for="Description" class="form-label">Description</label>
+        <input type="text" class="form-control" [(ngModel)]="propertyDescription" name="propertyDescription">
+    </div>
+    <div class="mb-2">
+        <label for="ProjectID" class="form-label">ProjectID</label>
+        <input type="number" class="form-control" [(ngModel)]="propertyProjectID" name="propertyProjectID">
+    </div>
+
+    <button (click)="addProperty()" *ngIf="property.id==0"  class="btn btn-primary">
+        Add
+    </button>
+    <button (click)="updateProperty()" *ngIf="property.id!=0"  class="btn btn-primary">
+        Update
+    </button>
+</form>

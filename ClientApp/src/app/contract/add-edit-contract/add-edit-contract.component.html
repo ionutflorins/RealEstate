@@ -1,0 +1,28 @@
+<form>
+    <div class="mb-2">
+        <label for="ContractNumber" class="form-label">Contract Number</label>
+        <input type="text" class="form-control" [(ngModel)]="contractnumber" name="contractNumber">
+    </div>
+    <div class="mb-2">
+        <label for="ContractDate" class="form-label">Contract Date</label>
+        <input type="date" class="form-control" [(ngModel)]="contractDate" name="contractDate">
+    </div>
+    <div class="mb-2">
+        <label for="ClientID" class="form-label">ClientID</label>
+        <input type="text" class="form-control" [(ngModel)]="contractClientID" name="contractClientID"> 
+    </div>
+    <div class="mb-2">
+        <label for="DeveloperID" class="form-label">DeveloperID</label>
+        <input type="text" class="form-control" [(ngModel)]="contractDeveloperID" name="contractDeveloperID">
+    </div>
+    <div class="mb-2">
+        <label for="PropertyID" class="form-label">PropertyID</label>
+        <input type="text" class="form-control" [(ngModel)]="contractPropertyID" name="contractPropertyID">
+    </div>
+    <button (click)="addContract()" *ngIf="contract.id==0"  class="btn btn-primary">
+        Add
+    </button>
+    <button (click)="updateContract()" *ngIf="contract.id!=0"  class="btn btn-primary">
+        Update
+    </button>
+</form>

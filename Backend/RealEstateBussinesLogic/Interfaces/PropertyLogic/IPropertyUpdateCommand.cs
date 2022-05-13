@@ -9,6 +9,6 @@ namespace RealEstateBussinesLogic.Interfaces.PropertyLogic
 {
     public interface IPropertyUpdateCommand
     {
-        int Update(PropertyEdit propertyEdit);
+        int Edit(PropertyEdit propertyEdit);
     }
 }

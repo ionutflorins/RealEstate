@@ -20,13 +20,13 @@ namespace RealEstateBussinesLogic.PropertyLogic
             _dbContext = dbContext;
         }
 
-        public int Update(PropertyEdit propertyEdit)
+        public int Edit(PropertyEdit propertyEdit)
         {
             Property propertyExisting = null;
             using (var propertyRep = new PropertyRepository(_dbContext))
             {
                 propertyExisting = propertyRep
-                   .GetWhere(d => d.ID == propertyExisting.ID)
+                   .GetWhere(d => d.ID == propertyEdit.ID)
                    .FirstOrDefault();
 
                 if (propertyExisting == null)

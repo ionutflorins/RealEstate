@@ -1,0 +1,40 @@
+<form>
+    <div class="mb-2">
+        <label for="Name" class="form-label">Name</label>
+        <input type="text" class="form-control" [(ngModel)]="projectname" name="projectName">
+    </div>
+    <div class="mb-2">
+        <label for="City" class="form-label">City</label>
+        <input type="text" class="form-control" [(ngModel)]="projectCity" name="projectCity">
+    </div>
+    <div class="mb-2">
+        <label for="Address" class="form-label">Address</label>
+        <input type="text" class="form-control" [(ngModel)]="projectAddress" name="projectAddress">
+    </div>
+    <div class="mb-2">
+        <label for="BuildingsNo" class="form-label">Buildings No</label>
+        <input type="text" class="form-control" [(ngModel)]="projectBuildingsNo" name="projectBuildingsNo">
+    </div>
+    <div class="mb-2">
+        <label for="ProjectNo" class="form-label">Project No</label>
+        <input type="text" class="form-control" [(ngModel)]="projectApartmentNo" name="projectApartmentNo" >
+    </div>
+    <div class="mb-2">
+        <label for="HouseNo" class="form-label">House No</label>
+        <input type="text" class="form-control" [(ngModel)]="projectHouseNo" name="projectHouseNo">
+    </div>
+    <div class="mb-2">
+        <label for="Description" class="form-label">Description</label>
+        <input type="text" class="form-control" [(ngModel)]="projectdescription" name="projectdescription">
+    </div>
+    <div class="mb-2">
+        <label for="DeveloperID" class="form-label">Developer ID</label>
+        <input type="text" class="form-control" [(ngModel)]="projectDeveloperID" name="projectDeveloperID">
+    </div>
+    <button (click)="addProject()" *ngIf="project.id==0"  class="btn btn-primary">
+        Add
+    </button>
+    <button (click)="updateProject()" *ngIf="project.id!=0"  class="btn btn-primary">
+        Update
+    </button>
+</form>

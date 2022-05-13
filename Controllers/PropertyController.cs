@@ -55,7 +55,7 @@ namespace RealEstate.Controllers
         {
             try
             {
-                var propertyID = _propertyUpdateCommand.Update(propertyData);
+                var propertyID = _propertyUpdateCommand.Edit(propertyData);
                 return Ok(propertyID);
             }
             catch (Exception ex)
