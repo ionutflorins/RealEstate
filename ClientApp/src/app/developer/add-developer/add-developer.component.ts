@@ -69,7 +69,7 @@ export class AddDeveloperComponent implements OnInit {
       email: this.developerEmail,
       zipCode: this.developerZipCode
     }
-    var id:number = this.developerID
+    var id:number = this.developerID;
     this.developerService.updateDeveloper(developer).subscribe(res => {
       var closeModalBtn = document.getElementById('add-modal-close');
       if (closeModalBtn) {

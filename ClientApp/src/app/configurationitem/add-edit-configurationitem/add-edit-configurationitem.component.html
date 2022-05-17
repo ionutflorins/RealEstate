@@ -1,0 +1,12 @@
+<form>
+    <div class="mb-2">
+        <label for="Description" class="form-label">Description</label>
+        <input type="text" class="form-control" [(ngModel)]="configurationItemDescription" name="configurationItemDescription">
+    </div>
+    <button (click)="addConfigurationItem()" *ngIf="configurationItem.id==0"  class="btn btn-primary">
+        Add
+    </button>
+    <button (click)="updateConfigurationItem()" *ngIf="configurationItem.id!=0"  class="btn btn-primary">
+        Update
+    </button>
+</form>

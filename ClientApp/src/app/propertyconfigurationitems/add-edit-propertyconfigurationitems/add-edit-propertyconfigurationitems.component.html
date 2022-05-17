@@ -1,0 +1,24 @@
+<form>
+    <div class="mb-2">
+        <label for="PropertyConfigID" class="form-label">PropertyConfigID</label>
+        <input type="number" class="form-control" [(ngModel)]="propertyConfigItemPropertyConfigID"
+            name="propertyConfigItemPropertyConfigID">
+    </div>
+    <div class="mb-2">
+        <label for="ConfigItemID" class="form-label">ConfigItemID</label>
+        <input type="number" class="form-control" [(ngModel)]="propertyConfigItemConfigItemID"
+            name="propertyConfigItemConfigItemID">
+    </div>
+    <div class="mb-2">
+        <label for="propertyConfigOptionID" class="form-label"> propertyConfigOptionID</label>
+        <input type="number" class="form-control" [(ngModel)]="propertyConfigOptionID" name="propertyConfigOptionID">
+    </div>
+
+
+    <button (click)="addClientPropertyConfigItem()" *ngIf="propertyConfigItem.id==0" class="btn btn-primary">
+        Add
+    </button>
+    <button (click)="updateClientPropertyConfigItem()" *ngIf="propertyConfigItem.id!=0" class="btn btn-primary">
+        Update
+    </button>
+</form>

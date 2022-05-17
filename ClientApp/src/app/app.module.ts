@@ -34,6 +34,9 @@ import { AddEditClientComponent } from './client/add-edit-client/add-edit-client
 import { AddEditProjectComponent } from './project/add-edit-project/add-edit-project.component';
 import { AddEditContractComponent } from './contract/add-edit-contract/add-edit-contract.component';
 import { AddEditPropertyComponent } from './property/add-edit-property/add-edit-property.component';
+import { AddEditPropertyconfigurationComponent } from './propertyconfiguration/add-edit-propertyconfiguration/add-edit-propertyconfiguration.component';
+import { AddEditConfigurationitemComponent } from './configurationitem/add-edit-configurationitem/add-edit-configurationitem.component';
+import { AddEditPropertyconfigurationitemsComponent } from './propertyconfigurationitems/add-edit-propertyconfigurationitems/add-edit-propertyconfigurationitems.component';
 
 
 @NgModule({
@@ -66,6 +69,9 @@ import { AddEditPropertyComponent } from './property/add-edit-property/add-edit-
     AddEditProjectComponent,
     AddEditContractComponent,
     AddEditPropertyComponent,
+    AddEditPropertyconfigurationComponent,
+    AddEditConfigurationitemComponent,
+    AddEditPropertyconfigurationitemsComponent,
  
     
   ],

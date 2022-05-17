@@ -1,0 +1,18 @@
+<form>
+    <div class="mb-2">
+        <label for="FormNumber" class="form-label">FormNumber</label>
+        <input type="text" class="form-control" [(ngModel)]="propertyConfigurationFormNumber" name="propertyConfigurationFormNumber">
+    </div>
+
+    <div class="mb-2">
+        <label for="ContractID" class="form-label">ContractID</label>
+        <input type="text" class="form-control" [(ngModel)]="propertyConfigurationContractID" name="propertyConfigurationContractID">
+    </div>
+
+    <button (click)="addPropertyConfiguration()" *ngIf="propertyConfiguration.id==0"  class="btn btn-primary">
+        Add
+    </button>
+    <button (click)="updatePropertyConfiguration()" *ngIf="propertyConfiguration.id!=0"  class="btn btn-primary">
+        Update
+    </button>
+</form>

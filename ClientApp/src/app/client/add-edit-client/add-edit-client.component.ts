@@ -67,7 +67,6 @@ export class AddEditClientComponent implements OnInit {
         }
       }, 4000);
     })
-
   }
 
   updateClient() {
