@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using RealEstateDAL.Entities;
 using System;
@@ -9,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace RealEstateDAL.Context
 {
-    public class RealEstateContext : DbContext
+    public class RealEstateContext : IdentityDbContext<AppUser>
     {
         public RealEstateContext(DbContextOptions<RealEstateContext> options) 
             : base(options) { }
-           
+
         public DbSet<Client> Clients { get; set; }
         public DbSet<ConfigurationItem> ConfigurationsItems { get; set; }
         public DbSet<ConfigurationOption> ConfigurationsOptions { get; set; }
@@ -23,8 +24,12 @@ namespace RealEstateDAL.Context
         public DbSet<Property> Properties { get; set; }
         public DbSet<PropertyConfiguration> PropertiesConfigurations { get; set; }
         public DbSet<PropertyConfigurationItems> PropertiesConfigurationsItems { get; set; }
+        public DbSet<AppUser> AppUser { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Contract>()
             .HasOne(e => e.Developer)
             .WithMany(c => c.Contracts)
@@ -62,14 +67,14 @@ namespace RealEstateDAL.Context
                 .HasForeignKey<PropertyConfigurationItems>(b => b.ConfigurationOptionID)
                 .OnDelete(DeleteBehavior.Restrict);
         }
-        public class RealEstateContextFactory : IDesignTimeDbContextFactory<RealEstateContext>
-        {
-            public RealEstateContext CreateDbContext(string[] args)
-            {
-                var optionsBuilder = new DbContextOptionsBuilder<RealEstateContext>();
-                optionsBuilder.UseSqlServer("Server =.; Database = RealEstateDB; Trusted_Connection = True");
-                return new RealEstateContext(optionsBuilder.Options);
-            }
-        }
+        //public class RealEstateContextFactory : IDesignTimeDbContextFactory<RealEstateContext>
+        //{
+        //    public RealEstateContext CreateDbContext(string[] args)
+        //    {
+        //        var optionsBuilder = new DbContextOptionsBuilder<RealEstateContext>();
+        //        optionsBuilder.UseSqlServer("Server =.; Database = RealEstateDB; Trusted_Connection = True");
+        //        return new RealEstateContext(optionsBuilder.Options);
+        //    }
+        //}
     }
 }

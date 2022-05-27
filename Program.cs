@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RealEstateBussinesLogic.ClientsLogic;
 using RealEstateBussinesLogic.ConfigurationItemLogic;
@@ -19,7 +20,7 @@ using RealEstateBussinesLogic.PropertiesConfigurations;
 using RealEstateBussinesLogic.PropertiesConfigurationsItemsLogic;
 using RealEstateBussinesLogic.PropertyLogic;
 using RealEstateDAL.Context;
-
+using RealEstateDAL.Entities;
 
 var myAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
@@ -31,7 +32,20 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<RealEstateContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+
 });
+
+builder.Services.AddIdentity<AppUser, IdentityRole>()
+    .AddEntityFrameworkStores<RealEstateContext>();
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireUppercase = false;
+});
+
 
 builder.Services.AddScoped<IClientGetCommand, ClientGetCommand>();
 builder.Services.AddScoped<IDeveloperGetCommand, DeveloperGetCommand>();
@@ -89,12 +103,12 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
 app.UseHttpsRedirection();
 app.UseCors(myAllowSpecificOrigins);
 app.UseStaticFiles();
 app.UseRouting();
 
+app.UseAuthentication();
 
 app.MapControllerRoute(
     name: "default",

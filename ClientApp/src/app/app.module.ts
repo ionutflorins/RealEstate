@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -37,6 +39,9 @@ import { AddEditPropertyComponent } from './property/add-edit-property/add-edit-
 import { AddEditPropertyconfigurationComponent } from './propertyconfiguration/add-edit-propertyconfiguration/add-edit-propertyconfiguration.component';
 import { AddEditConfigurationitemComponent } from './configurationitem/add-edit-configurationitem/add-edit-configurationitem.component';
 import { AddEditPropertyconfigurationitemsComponent } from './propertyconfigurationitems/add-edit-propertyconfigurationitems/add-edit-propertyconfigurationitems.component';
+import { UserComponent } from './user/user.component';
+import { RegistrationComponent } from './user/registration/registration.component';
+import { UserService } from './Service/user.service';
 
 
 @NgModule({
@@ -72,6 +77,8 @@ import { AddEditPropertyconfigurationitemsComponent } from './propertyconfigurat
     AddEditPropertyconfigurationComponent,
     AddEditConfigurationitemComponent,
     AddEditPropertyconfigurationitemsComponent,
+    UserComponent,
+    RegistrationComponent,
  
     
   ],
@@ -80,8 +87,13 @@ import { AddEditPropertyconfigurationitemsComponent } from './propertyconfigurat
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      progressBar: true
+    }),
     RouterModule.forRoot([
       // { path: '', component: HomeComponent, pathMatch: 'full' },
+      {path: '', redirectTo:'/user/registration', pathMatch: 'full'},
       { path: 'NavMenu-List', component:NavMenuComponent },
       { path: 'Developer-List', component: DeveloperComponent },
       { path: 'Client-List', component: ClientComponent },
@@ -92,10 +104,11 @@ import { AddEditPropertyconfigurationitemsComponent } from './propertyconfigurat
       { path: 'Configurationitem-List', component: ConfigurationitemComponent },
       { path: 'Propertyconfigurationitems-List', component: PropertyconfigurationitemsComponent },
       { path: 'ConfigurationOption-List', component: ConfigurationoptionComponent },
+      {path : 'user', component : UserComponent, children: [{ path:'registration', component: RegistrationComponent}] }
 
     ])
   ],
-  providers: [DeveloperApiService],
+  providers: [DeveloperApiService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

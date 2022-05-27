@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Provide sufficient contrast against white background */
+h1{
+  text-align: center;
+}
+
 a {
   color: #0366d6;
 }
@@ -14,3 +18,29 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
+div.form-group label{
+    color: black;
+    font-weight: bold;
+}
+
+input:required {
+  border-color: #800000;
+  border-width: 5px;
+}
+
+div.form-group label{
+  color: black;
+  font-weight: bold;
+}
+
+div.form-group.required>label:first-child::after{
+  content: "*";
+  color: #800000;
+  padding-left: 5px;
+}
+
+#toast-container>div{
+  opacity: 1;
+}
+
