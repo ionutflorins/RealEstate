@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -44,6 +44,8 @@ import { UserComponent } from './user/user.component';
 import { RegistrationComponent } from './user/registration/registration.component';
 import { UserService } from './Service/user.service';
 import { LoginComponent } from './user/login/login.component';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 
 @NgModule({
@@ -82,8 +84,8 @@ import { LoginComponent } from './user/login/login.component';
     UserComponent,
     RegistrationComponent,
     LoginComponent,
- 
-    
+
+
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -96,8 +98,8 @@ import { LoginComponent } from './user/login/login.component';
     }),
     RouterModule.forRoot([
       // { path: '', component: HomeComponent, pathMatch: 'full' },
-      {path: '', redirectTo:'/user/registration', pathMatch: 'full'},
-      { path: 'NavMenu-List', component:NavMenuComponent },
+      { path: '', redirectTo: '/user/login', pathMatch: 'full' },
+      { path: 'NavMenu-List', component: NavMenuComponent },
       { path: 'Developer-List', component: DeveloperComponent },
       { path: 'Client-List', component: ClientComponent },
       { path: 'Project-List', component: ProjectComponent },
@@ -107,14 +109,20 @@ import { LoginComponent } from './user/login/login.component';
       { path: 'Configurationitem-List', component: ConfigurationitemComponent },
       { path: 'Propertyconfigurationitems-List', component: PropertyconfigurationitemsComponent },
       { path: 'ConfigurationOption-List', component: ConfigurationoptionComponent },
-      {path : 'user', component : UserComponent, children: [
-        { path:'registration', component: RegistrationComponent},
-        {path : 'login', component : LoginComponent}
-    ] }
-
+      {
+        path: 'user', component: UserComponent, children: [
+          { path: 'registration', component: RegistrationComponent },
+          { path: 'login', component: LoginComponent }
+        ]
+      },
+      {path: 'home', component : HomeComponent, canActivate:[AuthGuard]}
     ])
   ],
-  providers: [DeveloperApiService,UserService],
+  providers: [DeveloperApiService, UserService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using RealEstateBussinesLogic.ClientsLogic;
 using RealEstateBussinesLogic.ConfigurationItemLogic;
 using RealEstateBussinesLogic.ConfigurationOprionLogic;
@@ -21,6 +23,7 @@ using RealEstateBussinesLogic.PropertiesConfigurationsItemsLogic;
 using RealEstateBussinesLogic.PropertyLogic;
 using RealEstateDAL.Context;
 using RealEstateDAL.Entities;
+using System.Text;
 
 var myAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
@@ -94,6 +97,33 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader();
         });
 });
+//inject appSettings
+
+
+
+
+//JWT Authentification
+var key = Encoding.UTF8.GetBytes(builder.Configuration["ApplicationSetting:JWT_Secret"].ToString());
+
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(x =>
+{
+    x.RequireHttpsMetadata = false;
+    //after a succesfully login we don't need to save the token
+    x.SaveToken = false;
+    x.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ClockSkew = TimeSpan.Zero
+    };
+});
 
 var app = builder.Build();
 
@@ -109,11 +139,14 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthentication();
-
+app.UseAuthorization();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
-
 app.MapFallbackToFile("index.html"); ;
 
 app.Run();
