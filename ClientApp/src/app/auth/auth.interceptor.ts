@@ -22,14 +22,16 @@ export class AuthInterceptor implements HttpInterceptor {
                 tap(
                     succ => { },
                     err => {
-                        if (err.status == 401)
-                        localStorage.removeItem('token');
-                        this.router.navigateByUrl('/user/login');
+                        if (err.status == 401) {
+                            localStorage.removeItem('token');
+                            this.router.navigateByUrl('/user/login');
+                        } else if (err.status == 403)
+                            this.router.navigateByUrl('/forbidden');
                     }
                 )
             )
-        }else
-        return next.handle(req.clone())
+        } else
+            return next.handle(req.clone())
     }
 
 }

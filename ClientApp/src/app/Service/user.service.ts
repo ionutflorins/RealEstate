@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class UserService {
 
-  constructor(private fb: FormBuilder, private http:HttpClient) { }
+  constructor(private fb: FormBuilder, private http: HttpClient) { }
 
   readonly userRegistrationApiUrl = "https://localhost:7136/api"
 
@@ -15,12 +15,12 @@ export class UserService {
     UserName: ['', Validators.required],
     FirstName: [''],
     LastName: [''],
+    Role: [''],
     Email: ['', Validators.email],
     Passwords: this.fb.group({
       Password: ['', [Validators.required, Validators.minLength(6)]],
       ConfirmPassword: ['', Validators.required]
     }, { validator: this.comparePasswords }),
-
   })
 
   comparePasswords(fb: FormGroup) {
@@ -33,22 +33,37 @@ export class UserService {
     }
   }
 
-  register(){
+  register() {
     var body = {
-      UserName : this.formModel.value.UserName,
-      FirstName : this.formModel.value.FirstName,
-      LastName : this.formModel.value.LastName,
-      Email : this.formModel.value.Email,
-      Password:this.formModel.value.Passwords.Password,
+      UserName: this.formModel.value.UserName,
+      FirstName: this.formModel.value.FirstName,
+      LastName: this.formModel.value.LastName,
+      Email: this.formModel.value.Email,
+      Password: this.formModel.value.Passwords.Password,
+      Role:this.formModel.value.Role
     };
     return this.http.post(this.userRegistrationApiUrl + '/AppUser/Register', body)
   }
 
-  login(formData){
+  login(formData) {
     return this.http.post(this.userRegistrationApiUrl + '/AppUser/Login', formData)
   }
-  
-  getUserProfile(){
-    return this.http.get(this.userRegistrationApiUrl+ '/UserProfile');
+
+  getUserProfile() {
+    return this.http.get(this.userRegistrationApiUrl + '/UserProfile');
+  }
+
+  roleMatch(allowedRoles): boolean {
+    var isMatch = false;
+    var payLoad = JSON.parse(window.atob(localStorage.getItem('token')!.split('.')[1]));
+    var userRole = payLoad.role;
+    allowedRoles.forEach(element => {
+      if (userRole == element) {
+        isMatch = true;
+        
+      }
+      return false;
+    });
+    return isMatch;
   }
 }

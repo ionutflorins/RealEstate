@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { filter, map, tap } from 'rxjs/operators';
 import { ClientApiService } from 'src/app/Service/client-api.service';
 import { DeveloperApiService } from 'src/app/Service/developer-api.service';
+
+
+
+
 
 @Component({
   selector: 'app-show-client',
@@ -11,10 +16,10 @@ import { DeveloperApiService } from 'src/app/Service/developer-api.service';
 export class ShowClientComponent implements OnInit {
 
   clientList$!: Observable<any[]>;
-  developerList$! : Observable<any[]>;
+  developerList$!: Observable<any[]>;
 
   constructor(private clientService: ClientApiService,
-    private developerService : DeveloperApiService) { }
+    private developerService: DeveloperApiService) { }
 
   ngOnInit(): void {
     this.clientList$ = this.clientService.getClientList();
@@ -25,6 +30,10 @@ export class ShowClientComponent implements OnInit {
   clientModalTitle: string = "";
   activateAddEditClientComponent: boolean = false;
   client: any;
+
+  filterbyID(id: number | string) {
+    return this.clientService.getClientList().pipe(map(x => x.find(x=> x.developerID)))
+  }
 
   modalAdd() {
     this.client = {
@@ -67,8 +76,8 @@ export class ShowClientComponent implements OnInit {
             showDeleteSucces.style.display = "none"
           }
         }, 4000);
-        
-        this.clientList$= this.clientService.getClientList();
+
+        this.clientList$ = this.clientService.getClientList();
       })
     }
   }

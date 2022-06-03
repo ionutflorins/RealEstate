@@ -39,6 +39,7 @@ builder.Services.AddDbContext<RealEstateContext>(options =>
 });
 
 builder.Services.AddIdentity<AppUser, IdentityRole>()
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<RealEstateContext>();
 
 builder.Services.Configure<IdentityOptions>(options =>

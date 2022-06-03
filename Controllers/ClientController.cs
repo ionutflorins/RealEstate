@@ -25,6 +25,9 @@ namespace RealEstate.Controllers
 
         }
 
+
+
+
         [HttpGet]
         public IActionResult GetClientsList()
         {
@@ -39,6 +42,7 @@ namespace RealEstate.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
         [HttpPost("InsertClient")]
         public IActionResult AddClient([FromBody] ClientEdit clientData)
         {

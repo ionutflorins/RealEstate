@@ -46,6 +46,8 @@ import { UserService } from './Service/user.service';
 import { LoginComponent } from './user/login/login.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 
 @NgModule({
@@ -84,6 +86,8 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     UserComponent,
     RegistrationComponent,
     LoginComponent,
+    AdminPanelComponent,
+    ForbiddenComponent,
 
 
   ],
@@ -115,7 +119,9 @@ import { AuthInterceptor } from './auth/auth.interceptor';
           { path: 'login', component: LoginComponent }
         ]
       },
-      {path: 'home', component : HomeComponent, canActivate:[AuthGuard]}
+      {path: 'home', component : HomeComponent, canActivate:[AuthGuard]},
+      {path: 'forbidden', component : ForbiddenComponent},
+      {path: 'admin', component : AdminPanelComponent, canActivate:[AuthGuard], data :{permittedRoles: ['Admin']}}
     ])
   ],
   providers: [DeveloperApiService, UserService, {

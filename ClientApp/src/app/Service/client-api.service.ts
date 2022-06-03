@@ -11,6 +11,7 @@ readonly clientApiUrl = "https://localhost:7136/api/Client";
 
   constructor(private http:HttpClient) { }
 
+  
   getClientList():Observable<any[]>{
     return this.http.get<any>(this.clientApiUrl + '');
   }

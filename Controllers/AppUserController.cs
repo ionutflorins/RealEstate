@@ -27,6 +27,7 @@ namespace RealEstate.Controllers
         [Route("Register")]
         public async Task<Object> PostAppUser(AppUserEntity appUserEntity)
         {
+            appUserEntity.Role = "Developer";
             var appUser = new AppUser()
             {
                 UserName = appUserEntity.UserName,
@@ -37,7 +38,8 @@ namespace RealEstate.Controllers
 
             try
             {
-                var result =await _userManager.CreateAsync(appUser, appUserEntity.Password);
+                var result = await _userManager.CreateAsync(appUser, appUserEntity.Password);
+                await _userManager.AddToRoleAsync(appUser, appUserEntity.Role);
                 return Ok(result);
             }catch(Exception ex)
             {
@@ -52,11 +54,16 @@ namespace RealEstate.Controllers
             var user = await _userManager.FindByNameAsync(loginView.UserName);
             if (user != null && await _userManager.CheckPasswordAsync(user, loginView.Password))
             {
+                //get the role assign to the user
+                var role = await _userManager.GetRolesAsync(user);
+                IdentityOptions _options = new IdentityOptions();
+
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
                     Subject = new ClaimsIdentity(new Claim[]
                     {
-                        new Claim("UserID", user.Id.ToString())
+                        new Claim("UserID", user.Id.ToString()),
+                        new Claim(_options.ClaimsIdentity.RoleClaimType, role.FirstOrDefault())
                     }),
                     Expires = DateTime.UtcNow.AddDays(1),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("1234567890987654321")), SecurityAlgorithms.HmacSha256Signature)
