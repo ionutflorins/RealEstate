@@ -10,5 +10,6 @@ namespace RealEstateBussinesLogic.Interfaces.ConfigurationOptionLogic
     public interface IConfigurationOptionGetCommand
     {
         IList<ConfigurationOptionListView> GetAllConfigurationOption();
+        IList<ConfigurationOptionListView> GetConfigOptionAfterID(int configItemID);
     }
 }

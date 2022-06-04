@@ -9,7 +9,8 @@
         <tr *ngFor="let configurationOption of configurationOptionList$|async">
             <td>{{configurationOption.id}}</td>
             <td>{{configurationOption.description}}</td>
-            <td>{{configurationOption.configurationItemId}}</td>
+            <td>{{configurationTypesMap.get(configurationOption.configurationItemId)}}</td>
+            <!-- <td>{{configurationOption.configurationItemId}}</td> -->
         </tr>
     </tbody>
 </table>

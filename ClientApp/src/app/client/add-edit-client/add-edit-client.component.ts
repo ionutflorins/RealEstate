@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ClientApiService } from 'src/app/Service/client-api.service';
 
@@ -11,9 +12,13 @@ import { ClientApiService } from 'src/app/Service/client-api.service';
 export class AddEditClientComponent implements OnInit {
 
   clientList$!: Observable<any[]>;
+  clientId$! : number|string;
 
-
-  constructor(private clientService: ClientApiService) { }
+  constructor(private clientService: ClientApiService, 
+    private activatedRoute: ActivatedRoute) { 
+      this.activatedRoute.params.subscribe(params => {
+      this.clientId$ = params['id'];
+    });}
 
   @Input() client: any;
   clientID: number = 0;

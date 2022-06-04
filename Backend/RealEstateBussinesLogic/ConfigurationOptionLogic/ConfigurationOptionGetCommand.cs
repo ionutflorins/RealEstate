@@ -28,5 +28,17 @@ namespace RealEstateBussinesLogic.ConfigurationOprionLogic
                 .ToList();
             return configurationOptionListModel;
         }
+
+        public IList<ConfigurationOptionListView> GetConfigOptionAfterID(int configItemID)
+        {
+            var configurationOptionRep = new ConfigurationOptionRepository(_dbContext);
+            var configurationOptionList = configurationOptionRep.GetAll();
+            var configurationOptionListModel = configurationOptionList
+                .Select(x => new ConfigurationOptionListView { ID = x.ID, Description = x.Description, ConfigurationItemId = x.ConfigurationItemId })
+                .Where(x => x.ID == configItemID)
+                .ToList();
+            return configurationOptionListModel;
+        }
+
     }
 }

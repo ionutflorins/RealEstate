@@ -25,6 +25,20 @@ namespace RealEstate.Controllers
             _configurationOptionDeleteCommand = configurationOptionDeleteCommand;
 
         }
+        [HttpGet("Getoptionitemid/{configItemID}")]
+        public IActionResult GetConfigurationOptionList([FromRoute] int configItemID)
+        {
+            try
+            {
+                var configuratiOptionList = _configurationOptionGetCommand.GetConfigOptionAfterID(configItemID);
+                return Ok(configuratiOptionList);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpGet]
         public IActionResult GetConfigurationOptionList()
         {
@@ -37,6 +51,7 @@ namespace RealEstate.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
         [HttpPost("InsertConfigurationOption")]
         public IActionResult AddConfigurationOption([FromBody] ConfigurationOptionEdit configurationOptionData)
         {

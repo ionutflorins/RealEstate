@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 import { ClientApiService } from 'src/app/Service/client-api.service';
@@ -16,14 +17,22 @@ import { DeveloperApiService } from 'src/app/Service/developer-api.service';
 export class ShowClientComponent implements OnInit {
 
   clientList$!: Observable<any[]>;
-  developerList$!: Observable<any[]>;
+  clientId!: number | string;
 
   constructor(private clientService: ClientApiService,
-    private developerService: DeveloperApiService) { }
+    private developerService: DeveloperApiService,
+    private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.params.subscribe(params => {
+      this.clientId = params['id'];
+    });
+  }
 
   ngOnInit(): void {
-    this.clientList$ = this.clientService.getClientList();
-    this.developerList$ = this.developerService.getDeveloperList();
+    if (this.clientId) {
+      this.clientList$ = this.clientService.getClientDev(this.clientId);
+    } else
+      this.clientList$ = this.clientService.getClientList();
+
   }
 
   //Variables(properties)
@@ -31,9 +40,6 @@ export class ShowClientComponent implements OnInit {
   activateAddEditClientComponent: boolean = false;
   client: any;
 
-  filterbyID(id: number | string) {
-    return this.clientService.getClientList().pipe(map(x => x.find(x=> x.developerID)))
-  }
 
   modalAdd() {
     this.client = {

@@ -48,6 +48,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { ClientFormComponent } from './client-form/client-form.component';
 
 
 @NgModule({
@@ -88,6 +89,7 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
     LoginComponent,
     AdminPanelComponent,
     ForbiddenComponent,
+    ClientFormComponent,
 
 
   ],
@@ -105,7 +107,12 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
       { path: '', redirectTo: '/user/login', pathMatch: 'full' },
       { path: 'NavMenu-List', component: NavMenuComponent },
       { path: 'Developer-List', component: DeveloperComponent },
-      { path: 'Client-List', component: ClientComponent },
+      {
+        path: 'Client-List', children: [
+          { path: '', pathMatch: 'full', component: ClientComponent },
+          { path: ':id', pathMatch: 'full', component: ClientComponent }
+        ]
+      },
       { path: 'Project-List', component: ProjectComponent },
       { path: 'Property-List', component: PropertyComponent },
       { path: 'Contract-List', component: ContractComponent },
@@ -119,9 +126,10 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
           { path: 'login', component: LoginComponent }
         ]
       },
-      {path: 'home', component : HomeComponent, canActivate:[AuthGuard]},
-      {path: 'forbidden', component : ForbiddenComponent},
-      {path: 'admin', component : AdminPanelComponent, canActivate:[AuthGuard], data :{permittedRoles: ['Admin']}}
+      { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+      { path: 'forbidden', component: ForbiddenComponent },
+      { path: 'admin', component: AdminPanelComponent, canActivate: [AuthGuard], data: { permittedRoles: ['Admin'] } },
+      {path: 'client-form', component: ClientFormComponent}
     ])
   ],
   providers: [DeveloperApiService, UserService, {

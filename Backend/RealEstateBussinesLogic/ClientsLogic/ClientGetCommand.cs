@@ -30,5 +30,16 @@ namespace RealEstateBussinesLogic.ClientsLogic
             return clientListModel;
         }
 
+        public IList<ClientListView> GetClientsDev(int devID)
+        {
+            var clientRep = new ClientRepository(_dbContext);
+            var clientList = clientRep.GetAll();
+            var clientListModel = clientList
+                .Select(x => new ClientListView { ID = x.ID, FirstName = x.FirstName, LastName = x.LastName, PhoneNumber = x.PhoneNumber, PersonalID = x.PersonalID, SerieNo = x.SerieNo, Address = x.Address, IssuedBy = x.IssuedBy, Validity = x.Validity, DeveloperID = x.DeveloperID })
+                .Where(x=> x.DeveloperID == devID)
+                .ToList();
+            return clientListModel;
+        }
+
     }
 }

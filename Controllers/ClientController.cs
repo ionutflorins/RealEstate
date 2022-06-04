@@ -25,7 +25,21 @@ namespace RealEstate.Controllers
 
         }
 
+        [HttpGet("GetClientsDev/{devID}")]
+        public IActionResult GetClientsDev([FromRoute] int devID)
+        {
+            try
+            {
+                var clientList = _clientGetCommand.GetClientsDev(devID);
 
+                return Ok(clientList);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
 
         [HttpGet]

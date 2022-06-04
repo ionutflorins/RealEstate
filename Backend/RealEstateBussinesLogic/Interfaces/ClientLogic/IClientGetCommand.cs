@@ -10,7 +10,7 @@ namespace RealEstateBussinesLogic.Interfaces.ClientLogic
     public interface IClientGetCommand
     {
         IList<ClientListView> GetAllClients();
-
+        IList<ClientListView> GetClientsDev(int devID);
 
     }
 }
