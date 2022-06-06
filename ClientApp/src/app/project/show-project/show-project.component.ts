@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ProjectApiService } from 'src/app/Service/project-api.service';
 
@@ -10,11 +11,20 @@ import { ProjectApiService } from 'src/app/Service/project-api.service';
 export class ShowProjectComponent implements OnInit {
 
   projectList$!: Observable<any[]>;
+  projectId!: number | string;
 
-  constructor(private projectService: ProjectApiService) { }
+  constructor(private projectService: ProjectApiService,
+    private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.params.subscribe(params => {
+      this.projectId = params['projid'];
+    });
+  }
 
   ngOnInit(): void {
-    this.projectList$ = this.projectService.getProjectList();
+    if (this.projectId) {
+      this.projectList$ = this.projectService.getProjectByDevID(this.projectId);
+    } else
+      this.projectList$ = this.projectService.getProjectList();
   }
 
   //Variables(proprietes)

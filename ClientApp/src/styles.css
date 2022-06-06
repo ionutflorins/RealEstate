@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 body{
-    background-color: #04c582;;
+    background-color: #cfd4d200;;
 }
 
 input.form-control,input.form-control:focus{
@@ -16,7 +16,7 @@ input.form-control:focus{
 
 button[type=submit].btn{
     border-radius: 20px;
-    background-color: #04c582;
+    background-color: #270f94;
     color: #fff;
 }
 
@@ -84,6 +84,10 @@ div.form-group.required>label:first-child:after{
 
   form{
       margin: 0px 16px;
+  }
+
+  .space{
+    margin-right: 10px;
   }
 
  div.form-group input.invalid{

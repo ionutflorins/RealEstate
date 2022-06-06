@@ -13,6 +13,9 @@ export class ProjectApiService {
   getProjectList():Observable<any[]>{
     return this.http.get<any>(this.projectApiUrl + '');
   }
+  getProjectByDevID(id:string|number):Observable<any[]>{
+    return this.http.get<any>(this.projectApiUrl + `/ProjectByDev/${id}`);
+  }
 
   addProject(data:any){
     return this.http.post(this.projectApiUrl + '/InsertProject', data);

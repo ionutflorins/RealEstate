@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule  } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
+
 
 import { ConfigurationItemApiService } from '../Service/configuration-item-api.service';
 import { ConfigurationOptionApiService } from '../Service/configuration-option-api.service';
@@ -24,32 +26,17 @@ export class ClientFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.configurationItemsList$ = this.configItemService.getconfigurationItemList();
-    this.configurationOptionsList$ = this.configOptionService.getConfigurationOptionList();
+    //this.configurationOptionsList$ = this.configOptionService.getConfigurationOptionList();
   }
 
   //variables
-  descriptionConfigItems: any;
-  configurationItem: any;
-  descriptionConfigOptions: any;
-  configurationOption: any
-  currentChoiceList$!: string[];
-  showConfigItems() {
-    this.configurationItem = {
-      configItemID: this.configurationItem.id,
-      descriptionConfigItems: this.configurationItem.description,
-    };
-  }
-
-  showConfigOptions() {
-    this.configurationOption = {
-      configOptionsID: this.configurationOption.id,
-      descriptionConfigOptions: this.configurationOption.description,
-      configOptItemsID: this.configurationOption.configurationItemId
-    }
-  }
+   descriptionConfigItems: any;
+   descriptionConfigOptions: any;
 
   onDisplayCategory() {
-    console.log("change works");
-    console.log(this.descriptionConfigItems)
+    this.configurationOptionsList$ = this.configOptionService
+      .getConfigurationOptionList().pipe(map(r => r.filter(x => {
+        return x.configurationItemId === this.descriptionConfigItems
+      })))
   }
 }

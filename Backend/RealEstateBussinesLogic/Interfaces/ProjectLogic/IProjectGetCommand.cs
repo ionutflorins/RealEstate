@@ -10,5 +10,6 @@ namespace RealEstateBussinesLogic.Interfaces.ProjectLogic
     public interface IProjectGetCommand
     {
         IList<ProjectListView> GetAllProject();
+        IList<ProjectListView> GetProjectByDev(int devID);
     }
 }

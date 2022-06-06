@@ -1,14 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 import { ClientApiService } from 'src/app/Service/client-api.service';
 import { DeveloperApiService } from 'src/app/Service/developer-api.service';
-
-
-
-
-
+import { take } from 'rxjs/operators';
 @Component({
   selector: 'app-show-client',
   templateUrl: './show-client.component.html',
@@ -21,10 +17,13 @@ export class ShowClientComponent implements OnInit {
 
   constructor(private clientService: ClientApiService,
     private developerService: DeveloperApiService,
-    private activatedRoute: ActivatedRoute) {
-    this.activatedRoute.params.subscribe(params => {
-      this.clientId = params['id'];
-    });
+    private activatedRoute: ActivatedRoute,
+    private router: Router) {
+      console.log(this.router.getCurrentNavigation()!.extras.state);
+      this.clientId = this.router.getCurrentNavigation()?.extras.state?.id;
+    // this.activatedRoute.params.subscribe(params => {
+    //   this.clientId = params['id'];
+    // });
   }
 
   ngOnInit(): void {
@@ -32,7 +31,6 @@ export class ShowClientComponent implements OnInit {
       this.clientList$ = this.clientService.getClientDev(this.clientId);
     } else
       this.clientList$ = this.clientService.getClientList();
-
   }
 
   //Variables(properties)
@@ -52,7 +50,7 @@ export class ShowClientComponent implements OnInit {
       address: null,
       issuedBy: null,
       validity: null,
-      developerID: 0
+      developerID: this.clientId
     }
     this.clientModalTitle = "Add Client";
     this.activateAddEditClientComponent = true;
@@ -90,6 +88,6 @@ export class ShowClientComponent implements OnInit {
 
   clientModalClose() {
     this.activateAddEditClientComponent = false;
-    this.clientList$ = this.clientService.getClientList();
+    this.clientList$ = this.clientService.getClientDev(this.clientId);
   }
 }

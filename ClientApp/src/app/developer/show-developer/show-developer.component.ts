@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ClientApiService } from 'src/app/Service/client-api.service';
 import { DeveloperApiService } from 'src/app/Service/developer-api.service';
+import { ProjectApiService } from 'src/app/Service/project-api.service';
+
 
 @Component({
   selector: 'app-show-developer',
@@ -12,15 +14,20 @@ import { DeveloperApiService } from 'src/app/Service/developer-api.service';
 export class ShowDeveloperComponent implements OnInit {
 
   developerList$!: Observable<any[]>;
-  clientList$!: Observable<any[]>
+  clientList$!: Observable<any[]>;
+  projectList$!: Observable<any[]>;
+
   constructor(private developerService: DeveloperApiService,
     private clientService: ClientApiService,
-    private router: Router) {
+    private projectService: ProjectApiService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     this.developerList$ = this.developerService.getDeveloperList();
     this.clientList$ = this.clientService.getClientList();
+    this.projectList$ = this.projectService.getProjectList();
   }
 
   //Variables(proprietes)
@@ -78,7 +85,14 @@ export class ShowDeveloperComponent implements OnInit {
   }
 
   showClientID(id: number | string) {
-    this.router.navigate(['Client-List', id]);
+    this.router.navigateByUrl('Client-List', {
+      state: {
+        id
+    }});
   }
-
+  showProjectId(projid: number | string) {
+    // console.log(projid);
+    // this.router.navigate(['Project-List', projid]);
+ 
+  }
 }

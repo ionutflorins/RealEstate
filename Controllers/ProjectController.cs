@@ -25,6 +25,21 @@ namespace RealEstate.Controllers
             _projectDeleteCommand = projectDeleteCommand;
 
         }
+
+        [HttpGet("ProjectByDev/{devID}")]
+        public IActionResult GetProjectListByDev([FromRoute] int devID)
+        {
+            try
+            {
+                var projectList = _projectGetCommand.GetProjectByDev(devID);
+                return Ok(projectList);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpGet]
         public IActionResult GetProjectList()
         {
@@ -38,6 +53,7 @@ namespace RealEstate.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
         [HttpPost("InsertProject")]
         public IActionResult AddProject([FromBody] ProjectEdit projectData)
         {

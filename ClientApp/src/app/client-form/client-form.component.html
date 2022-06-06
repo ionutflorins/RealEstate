@@ -21,7 +21,6 @@
         <div class="mb-3">
             <select class="form-control" name="descriptionConfigOptions" id="descriptionConfigOptions"
                 [(ngModel)]="descriptionConfigOptions">
-                <option disabled value="null">Select</option>
                 <option *ngFor="let typeConfigOptions of configurationOptionsList$|async"
                     [ngValue]="typeConfigOptions.id">{{typeConfigOptions.description}}</option>
             </select>

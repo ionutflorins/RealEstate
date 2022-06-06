@@ -106,14 +106,16 @@ import { ClientFormComponent } from './client-form/client-form.component';
       // { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: '', redirectTo: '/user/login', pathMatch: 'full' },
       { path: 'NavMenu-List', component: NavMenuComponent },
-      { path: 'Developer-List', component: DeveloperComponent },
+      { path: 'Developer-List', component: DeveloperComponent, data: { myData: false }  },
       {
-        path: 'Client-List', children: [
-          { path: '', pathMatch: 'full', component: ClientComponent },
-          { path: ':id', pathMatch: 'full', component: ClientComponent }
+        path: 'Client-List', component:ClientComponent, children: [
+          { path: '', pathMatch: 'full', component: ShowClientComponent },
+          { path: ':id', pathMatch: 'full', component: ShowClientComponent }
         ]
       },
-      { path: 'Project-List', component: ProjectComponent },
+      {
+        path: 'Project-List', component: ProjectComponent, data: { myData: false}
+      },
       { path: 'Property-List', component: PropertyComponent },
       { path: 'Contract-List', component: ContractComponent },
       { path: 'PropertyConfiguration-List', component: PropertyconfigurationComponent },
@@ -129,7 +131,7 @@ import { ClientFormComponent } from './client-form/client-form.component';
       { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'forbidden', component: ForbiddenComponent },
       { path: 'admin', component: AdminPanelComponent, canActivate: [AuthGuard], data: { permittedRoles: ['Admin'] } },
-      {path: 'client-form', component: ClientFormComponent}
+      { path: 'client-form', component: ClientFormComponent }
     ])
   ],
   providers: [DeveloperApiService, UserService, {

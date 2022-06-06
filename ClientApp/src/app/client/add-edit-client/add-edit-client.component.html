@@ -33,7 +33,7 @@
     </div>
     <div class="mb-2">
         <label for="DeveloperID" class="form-label">DeveloperID</label>
-        <input type="text" class="form-control" [(ngModel)]="clientDeveloperID" name="clientDeveloperID">
+        <input disabled type="text" class="form-control" [(ngModel)]="clientDeveloperID" name="clientDeveloperID">
     </div>
 
     <button (click)="addClient()" *ngIf="client.id==0"  class="btn btn-primary">
