@@ -53,17 +53,20 @@ export class AddEditConfigurationoptionComponent implements OnInit {
 
   updateConfigOption() {
     var configOption = {
-      id:this.configItemId,
+      id:this.configOptId,
       description: this.configOptDescription,
       configurationItemId: this.configItemId
+      
     }
+    debugger
     var id:number = this.configItemId;
+    
     this.configurationOptionService.updateConfigurationOption(configOption).subscribe(res => {
       var closeModalBtn = document.getElementById('add-modal-close');
       if (closeModalBtn) {
         closeModalBtn.click();
       }
-      var showAddSucces = document.getElementById('add-succes-alert');
+      var showAddSucces = document.getElementById('update-succes-alert');
       if (showAddSucces) {
         showAddSucces.style.display = "block";
       }

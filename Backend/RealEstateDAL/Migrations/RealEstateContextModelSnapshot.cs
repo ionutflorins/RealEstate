@@ -318,8 +318,7 @@ namespace RealEstateDAL.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("ConfigurationItemId")
-                        .IsUnique();
+                    b.HasIndex("ConfigurationItemId");
 
                     b.ToTable("ConfigurationsOptions");
                 });
@@ -628,9 +627,9 @@ namespace RealEstateDAL.Migrations
             modelBuilder.Entity("RealEstateDAL.Entities.ConfigurationOption", b =>
                 {
                     b.HasOne("RealEstateDAL.Entities.ConfigurationItem", "ConfigurationItem")
-                        .WithOne("ConfigurationOption")
-                        .HasForeignKey("RealEstateDAL.Entities.ConfigurationOption", "ConfigurationItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .WithMany("ConfigurationOption")
+                        .HasForeignKey("ConfigurationItemId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("ConfigurationItem");
@@ -730,8 +729,7 @@ namespace RealEstateDAL.Migrations
 
             modelBuilder.Entity("RealEstateDAL.Entities.ConfigurationItem", b =>
                 {
-                    b.Navigation("ConfigurationOption")
-                        .IsRequired();
+                    b.Navigation("ConfigurationOption");
 
                     b.Navigation("PropertyConfigurationItems")
                         .IsRequired();

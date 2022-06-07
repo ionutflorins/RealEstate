@@ -46,10 +46,11 @@ namespace RealEstateDAL.Context
                 .WithOne(i => i.Contract)
                 .HasForeignKey<PropertyConfiguration>(b => b.ContractID);
 
-            modelBuilder.Entity<ConfigurationItem>()
-                .HasOne(b => b.ConfigurationOption)
-                .WithOne(i => i.ConfigurationItem)
-                .HasForeignKey<ConfigurationOption>(b => b.ConfigurationItemId);
+            modelBuilder.Entity<ConfigurationOption>()
+                .HasOne(b => b.ConfigurationItem)
+                .WithMany(i => i.ConfigurationOption)
+                .OnDelete(DeleteBehavior.Restrict); ;
+                //.HasForeignKey<ConfigurationOption>(b => b.ConfigurationItemId);
 
             modelBuilder.Entity<PropertyConfiguration>()
                 .HasOne(b => b.PropertyConfigurationItems)

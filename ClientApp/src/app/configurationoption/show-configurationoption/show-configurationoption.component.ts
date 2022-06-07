@@ -51,7 +51,7 @@ export class ShowConfigurationoptionComponent implements OnInit {
   }
 
   deleteConfigOpt(configurationOptionItem:any){
-    if (confirm(`Are you sure you want to delete developer${configurationOptionItem.description}`)) {
+    if (confirm(`Are you sure you want to delete ${configurationOptionItem.description}`)) {
       this.configurationOptionService.deleteConfigurationOption(configurationOptionItem.id).subscribe(res => {
         var closeModalBtn = document.getElementById('add-modal-close');
         if (closeModalBtn) {
