@@ -26,7 +26,7 @@
       <td>{{developerItem.email}}</td>
       <td>{{developerItem.zipCode}}</td>
       <td>
-        <button class="btn btn-outline-primary me-2 mb-1" [routerLink]="['Client-List']" [state]="{ hello: 'world' }">
+        <button class="btn btn-outline-primary me-2 mb-1"  (click)="showProjectId(developerItem.id)">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
             fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
             <path

@@ -81,7 +81,7 @@ export class ShowClientComponent implements OnInit {
           }
         }, 4000);
 
-        this.clientList$ = this.clientService.getClientList();
+        this.clientList$ = this.clientService.getClientDev(this.clientId);
       })
     }
   }
@@ -89,5 +89,14 @@ export class ShowClientComponent implements OnInit {
   clientModalClose() {
     this.activateAddEditClientComponent = false;
     this.clientList$ = this.clientService.getClientDev(this.clientId);
+  }
+
+  getContract(clientId:number|string){
+    this.router.navigateByUrl('Contract-List', {
+      state: {
+        clientId
+      }
+    });
+
   }
 }

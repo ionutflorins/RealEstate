@@ -27,5 +27,16 @@ namespace RealEstateBussinesLogic.ContractLogic
                 .ToList();
             return contractListModel;
         }
+
+        public IList<ContractListView> GetContractByPropId(int propId)
+        {
+            var contractRep = new ContractRepository(_dbContext);
+            var contractList = contractRep.GetAll();
+            var contractListModel = contractList
+                .Select(x => new ContractListView { ID = x.ID, ContractNumber = x.ContractNumber, Date = x.Date, ClientID = x.ClientID, DeveloperID = x.DeveloperID, PropertyID = x.PropertyID })
+                .Where(x => x.PropertyID == propId || x.ClientID == propId)
+                .ToList();
+            return contractListModel;
+        }
     }
 }

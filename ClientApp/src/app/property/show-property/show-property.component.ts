@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { PropertyApiService } from 'src/app/Service/property-api.service';
 
@@ -10,11 +11,19 @@ import { PropertyApiService } from 'src/app/Service/property-api.service';
 export class ShowPropertyComponent implements OnInit {
 
   propertyList$!: Observable<any[]>;
+  projectId!: number | string;
 
-  constructor(private propertyService: PropertyApiService) { }
+  constructor(private propertyService: PropertyApiService,
+    private router: Router) {
+    console.log(this.router.getCurrentNavigation()!.extras.state);
+    this.projectId = this.router.getCurrentNavigation()?.extras.state?.id;
+  }
 
   ngOnInit(): void {
-    this.propertyList$ = this.propertyService.getPropertyList();
+    if (this.projectId) {
+      this.propertyList$ = this.propertyService.getPropByProj(this.projectId)
+    } else
+      this.propertyList$ = this.propertyService.getPropertyList();
   }
 
   //Variables(properties)
@@ -33,7 +42,7 @@ export class ShowPropertyComponent implements OnInit {
       propertySqm: null,
       lotSqm: null,
       description: null,
-      projectID: 0
+      projectID: this.projectId
     }
     this.propertyModalTitle = "Add Property";
     this.activateAddEditPropertyComponent = true;
@@ -62,13 +71,21 @@ export class ShowPropertyComponent implements OnInit {
             showDeleteSucces.style.display = "none"
           }
         }, 4000);
-         this.propertyList$ = this.propertyService.getPropertyList();
+        this.propertyList$ = this.propertyService.getPropByProj(this.projectId)
       })
     }
   }
 
   propertyModalClose() {
     this.activateAddEditPropertyComponent = false;
-    this.propertyList$ = this.propertyService.getPropertyList();
+    this.propertyList$ = this.propertyService.getPropByProj(this.projectId)
+  }
+
+  getContractByProp(id: number | string) {
+    this.router.navigateByUrl('Contract-List', {
+      state: {
+        id
+      }
+    });
   }
 }

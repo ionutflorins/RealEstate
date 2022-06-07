@@ -29,7 +29,7 @@
     </div>
     <div class="mb-2">
         <label for="DeveloperID" class="form-label">Developer ID</label>
-        <input type="text" class="form-control" [(ngModel)]="projectDeveloperID" name="projectDeveloperID">
+        <input disabled type="text" class="form-control" [(ngModel)]="projectDeveloperID" name="projectDeveloperID">
     </div>
     <button (click)="addProject()" *ngIf="project.id==0"  class="btn btn-primary">
         Add

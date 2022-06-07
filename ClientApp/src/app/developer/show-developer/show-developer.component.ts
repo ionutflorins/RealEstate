@@ -88,11 +88,15 @@ export class ShowDeveloperComponent implements OnInit {
     this.router.navigateByUrl('Client-List', {
       state: {
         id
-    }});
+      }
+    });
   }
-  showProjectId(projid: number | string) {
-    // console.log(projid);
-    // this.router.navigate(['Project-List', projid]);
- 
+
+  showProjectId(id: number | string) {
+    this.router.navigateByUrl('Project-List', {
+      state: {
+        id
+      }
+    });
   }
 }

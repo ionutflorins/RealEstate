@@ -28,5 +28,17 @@ namespace RealEstateBussinesLogic.PropertyLogic
                 .ToList();
             return propertyListModel;
         }
+
+        public IList<PropertyListView> GetPropertyByProj(int projID)
+        {
+            var propertyRep = new PropertyRepository(_dbContext);
+            var propertyList = propertyRep.GetAll();
+            var propertyListModel = propertyList
+                .Select(x => new PropertyListView { ID = x.ID, Price = x.Price, Type = x.Type, IdentityNo = x.IdentityNo, BuildingNo = x.BuildingNo, LotSqm = x.LotSqm, PropertySqm = x.PropertySqm, RoomNo = x.RoomNo, Description = x.Description, ProjectID = x.ProjectID })
+                .Where(x => x.ProjectID == projID)
+                .ToList();
+            return propertyListModel;
+        }
+
     }
 }

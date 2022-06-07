@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ContractApiService } from 'src/app/Service/contract-api.service';
 @Component({
@@ -9,38 +10,55 @@ import { ContractApiService } from 'src/app/Service/contract-api.service';
 export class ShowContractComponent implements OnInit {
 
   contractList$!: Observable<any[]>
-  constructor(private contractService : ContractApiService) { }
+  propertyID!: number | string;
+  contractID!: number | string;
+
+  constructor(private contractService: ContractApiService,
+    private router: Router) {
+    console.log(this.router.getCurrentNavigation()!.extras.state);
+    this.propertyID = this.router.getCurrentNavigation()?.extras.state?.id;
+    this.contractID = this.router.getCurrentNavigation()?.extras.state?.clientId;
+  }
 
   ngOnInit(): void {
-    this.contractList$ = this.contractService.getContractList();
-  }
-
-    //Variables(properties)
-    contractModalTitle: string = "";
-    activateAddEditContractComponent: boolean = false;
-    contract: any;
-
-    clientModalAdd(){
-      this.contract = {
-        id:0,
-        contractNumber:null,
-        date:null,
-        clientID:0,
-        developerID:0,
-        propertyID:0
-      }
-      this.contractModalTitle = "Add Client";
-      this.activateAddEditContractComponent = true;
+    if (this.propertyID)
+      this.contractList$ = this.contractService.getContractByProp(this.propertyID);
+    else
+      this.contractList$ = this.contractService.getContractList();
+      
+    if (this.contractID)
+      this.contractList$ = this.contractService.getContractByProp(this.contractID);
+    else
+      this.contractList$ = this.contractService.getContractList();
 
   }
 
-  contractModalEdit(contractItem : any){
+  //Variables(properties)
+  contractModalTitle: string = "";
+  activateAddEditContractComponent: boolean = false;
+  contract: any;
+
+  clientModalAdd() {
+    this.contract = {
+      id: 0,
+      contractNumber: null,
+      date: null,
+      clientID: "",
+      developerID: "",
+      propertyID: this.propertyID
+    }
+    this.contractModalTitle = "Add Client";
+    this.activateAddEditContractComponent = true;
+
+  }
+
+  contractModalEdit(contractItem: any) {
     this.contract = contractItem;
     this.contractModalTitle = "Edit Client"
     this.activateAddEditContractComponent = true;
   }
 
-  deleteContract(contractItem : any){
+  deleteContract(contractItem: any) {
     if (confirm(`Are you sure you want to delete contract ${contractItem.contractNumber}?`)) {
       this.contractService.deleteContract(contractItem.id).subscribe(res => {
         var closeModalBtn = document.getElementById('add-edit-contract-modal-close');
@@ -58,16 +76,16 @@ export class ShowContractComponent implements OnInit {
             showDeleteSucces.style.display = "none"
           }
         }, 4000);
-        this.contractList$= this.contractService.getContractList();
+        this.contractList$ = this.contractService.getContractByProp(this.propertyID);
 
       })
     }
 
   }
 
-  contractModalClose(){
+  contractModalClose() {
     this.activateAddEditContractComponent = false;
-    this.contractList$ = this.contractService.getContractList();
+    this.contractList$ = this.contractService.getContractByProp(this.propertyID);
   }
 
 }

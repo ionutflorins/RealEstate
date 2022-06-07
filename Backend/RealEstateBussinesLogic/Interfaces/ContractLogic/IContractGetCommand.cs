@@ -10,5 +10,6 @@ namespace RealEstateBussinesLogic.Interfaces.ContractLogic
     public interface IContractGetCommand
     {
         IList<ContractListView> GetAllContract();
+        IList<ContractListView> GetContractByPropId(int propId);
     }
 }

@@ -34,7 +34,7 @@ namespace RealEstateBussinesLogic.ProjectLogic
             var projectList = projectRep.GetAll();
             var projectListModel = projectList
                 .Select(x => new ProjectListView { ID = x.ID, ProjectName = x.ProjectName, Address = x.Address, ApartmentNo = x.ApartmentNo, BuildingsNo = x.BuildingsNo, City = x.City, HouseNo = x.HouseNo, Description = x.Description, DeveloperID = x.DeveloperID })
-                .Where(x => x.DeveloperID    == devID)
+                .Where(x => x.DeveloperID == devID)
                 .ToList();
             return projectListModel;
         }

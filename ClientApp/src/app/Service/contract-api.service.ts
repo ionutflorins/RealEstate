@@ -15,6 +15,10 @@ export class ContractApiService {
     return this.http.get<any>(this.contractApiUrl + '');
   }
 
+  getContractByProp(id: number|string):Observable<any[]>{
+    return this.http.get<any>(this.contractApiUrl + `/GetContractByPropId/${id}`);
+  }
+
   addContract(data:any){
     return this.http.post(this.contractApiUrl + '/Insertcontract', data);
   }

@@ -17,7 +17,7 @@
     </div>
     <div class="mb-2">
         <label for="PropertyID" class="form-label">PropertyID</label>
-        <input type="text" class="form-control" [(ngModel)]="contractPropertyID" name="contractPropertyID">
+        <input disabled type="text" class="form-control" [(ngModel)]="contractPropertyID" name="contractPropertyID">
     </div>
     <button (click)="addContract()" *ngIf="contract.id==0"  class="btn btn-primary">
         Add

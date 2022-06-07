@@ -14,7 +14,10 @@ export class PropertyApiService {
   getPropertyList():Observable<any[]>{
     return this.http.get<any>(this.propertyApiUrl + '');
   }
-
+  
+  getPropByProj(id: number|string):Observable<any[]>{
+    return this.http.get<any>(this.propertyApiUrl + `/GetPropByProj/${id}`);
+  }
   addProperty(data:any){
     return this.http.post(this.propertyApiUrl + '/InsertProperty', data);
   }

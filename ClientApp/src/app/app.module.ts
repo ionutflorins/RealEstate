@@ -106,18 +106,29 @@ import { ClientFormComponent } from './client-form/client-form.component';
       // { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: '', redirectTo: '/user/login', pathMatch: 'full' },
       { path: 'NavMenu-List', component: NavMenuComponent },
-      { path: 'Developer-List', component: DeveloperComponent, data: { myData: false }  },
+      { path: 'Developer-List', component: DeveloperComponent, data: { myData: false } },
       {
-        path: 'Client-List', component:ClientComponent, children: [
+        path: 'Client-List', component: ClientComponent, children: [
           { path: '', pathMatch: 'full', component: ShowClientComponent },
           { path: ':id', pathMatch: 'full', component: ShowClientComponent }
         ]
       },
       {
-        path: 'Project-List', component: ProjectComponent, data: { myData: false}
+        path: 'Project-List', component: ProjectComponent, children: [
+          { path: '', pathMatch: 'full', component: ShowProjectComponent },
+          { path: ':id', pathMatch: 'full', component: ShowProjectComponent }
+        ]
       },
-      { path: 'Property-List', component: PropertyComponent },
-      { path: 'Contract-List', component: ContractComponent },
+      {
+        path: 'Property-List', component: PropertyComponent, children: [
+          { path: '', pathMatch: 'full', component: ShowPropertyComponent },
+          { path: ':id', pathMatch: 'full', component: ShowPropertyComponent }
+        ]
+      },
+      { path: 'Contract-List', component: ContractComponent,  children: [
+        { path: '', pathMatch: 'full', component: ShowContractComponent },
+        { path: ':id', pathMatch: 'full', component: ShowContractComponent }
+      ] },
       { path: 'PropertyConfiguration-List', component: PropertyconfigurationComponent },
       { path: 'Configurationitem-List', component: ConfigurationitemComponent },
       { path: 'Propertyconfigurationitems-List', component: PropertyconfigurationitemsComponent },

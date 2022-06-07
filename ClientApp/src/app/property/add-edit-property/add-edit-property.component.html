@@ -17,7 +17,7 @@
     </div>
     <div class="mb-2">
         <label for="BuildingNo" class="form-label">BuildingNo</label>
-        <input type="number" class="form-control" [(ngModel)]="propertyBuildingNo" name="propertyBuildingNo">
+        <input type="text" class="form-control" [(ngModel)]="propertyBuildingNo" name="propertyBuildingNo">
     </div>
     <div class="mb-2">
         <label for="PropertySqm" class="form-label">Property Sqm</label>
@@ -33,7 +33,7 @@
     </div>
     <div class="mb-2">
         <label for="ProjectID" class="form-label">ProjectID</label>
-        <input type="number" class="form-control" [(ngModel)]="propertyProjectID" name="propertyProjectID">
+        <input disabled type="number" class="form-control" [(ngModel)]="propertyProjectID" name="propertyProjectID">
     </div>
 
     <button (click)="addProperty()" *ngIf="property.id==0"  class="btn btn-primary">

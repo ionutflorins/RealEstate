@@ -10,5 +10,6 @@ namespace RealEstateBussinesLogic.Interfaces.PropertyLogic
     public interface IPropertyGetCommand
     {
         IList<PropertyListView> GetAllProperty();
+        IList<PropertyListView> GetPropertyByProj(int projID);
     }
 }

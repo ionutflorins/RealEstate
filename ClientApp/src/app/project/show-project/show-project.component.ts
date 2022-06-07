@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ProjectApiService } from 'src/app/Service/project-api.service';
 
@@ -14,10 +14,10 @@ export class ShowProjectComponent implements OnInit {
   projectId!: number | string;
 
   constructor(private projectService: ProjectApiService,
-    private activatedRoute: ActivatedRoute) {
-    this.activatedRoute.params.subscribe(params => {
-      this.projectId = params['projid'];
-    });
+    private activatedRoute: ActivatedRoute,
+    private router: Router) {
+    console.log(this.router.getCurrentNavigation()!.extras.state);
+    this.projectId = this.router.getCurrentNavigation()?.extras.state?.id;
   }
 
   ngOnInit(): void {
@@ -42,7 +42,7 @@ export class ShowProjectComponent implements OnInit {
       apartmentNo: 300,
       houseNo: 0,
       description: null,
-      developerID: 0
+      developerID: this.projectId
     }
     this.addEditProjectModalTitle = "Add Project";
     this.activateAddEditProjectComponent = true;
@@ -73,13 +73,21 @@ export class ShowProjectComponent implements OnInit {
           }
         }, 4000);
 
-        this.projectList$ = this.projectService.getProjectList();
+        this.projectList$ = this.projectService.getProjectByDevID(this.projectId);
       })
     }
   }
 
   projectModalClose() {
     this.activateAddEditProjectComponent = false;
-    this.projectList$ = this.projectService.getProjectList();
+    this.projectList$ = this.projectService.getProjectByDevID(this.projectId);
+  }
+
+  showProperties(id: number | string) {
+    this.router.navigateByUrl('Property-List', {
+      state: {
+        id
+      }
+    });
   }
 }

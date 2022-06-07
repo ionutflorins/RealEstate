@@ -25,6 +25,21 @@ namespace RealEstate.Controllers
             _propertyDeleteCommand = propertyDeleteCommand;
 
         }
+
+        [HttpGet("GetPropByProj/{projID}")]
+        public IActionResult GetPropertyByProj([FromRoute]int projID)
+        {
+            try
+            {
+                var propertyList = _propertyGetCommand.GetPropertyByProj(projID);
+                return Ok(propertyList);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpGet]
         public IActionResult GetPropertyList()
         {

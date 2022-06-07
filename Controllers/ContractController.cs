@@ -25,6 +25,21 @@ namespace RealEstate.Controllers
             _contractDeleteCommand = contractDeleteCommand;
 
         }
+
+        [HttpGet("GetContractByPropId/{propId}")]
+        public IActionResult GetContractByPropId([FromRoute]int propId)
+        {
+            try
+            {
+                var contractList = _contractGetCommand.GetContractByPropId(propId);
+                return Ok(contractList);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpGet]
         public IActionResult GetAllContractList()
         {
