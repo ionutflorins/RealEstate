@@ -49,6 +49,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { ClientFormComponent } from './client-form/client-form.component';
+import { AddEditConfigurationoptionComponent } from './configurationoption/add-edit-configurationoption/add-edit-configurationoption.component';
 
 
 @NgModule({
@@ -90,6 +91,7 @@ import { ClientFormComponent } from './client-form/client-form.component';
     AdminPanelComponent,
     ForbiddenComponent,
     ClientFormComponent,
+    AddEditConfigurationoptionComponent,
 
 
   ],
