@@ -52,10 +52,11 @@ namespace RealEstateDAL.Context
                 .OnDelete(DeleteBehavior.Restrict); ;
                 //.HasForeignKey<ConfigurationOption>(b => b.ConfigurationItemId);
 
-            modelBuilder.Entity<PropertyConfiguration>()
-                .HasOne(b => b.PropertyConfigurationItems)
-                .WithOne(i => i.PropertyConfiguration)
-                .HasForeignKey<PropertyConfigurationItems>(b => b.PropertyConfigurationID);
+            modelBuilder.Entity<PropertyConfigurationItems>()
+                .HasOne(b => b.PropertyConfiguration)
+                .WithMany(i => i.PropertyConfigurationItems)
+                .OnDelete(DeleteBehavior.Restrict); ;
+                //.HasForeignKey<PropertyConfigurationItems>(b => b.PropertyConfigurationID);
 
             modelBuilder.Entity<ConfigurationItem>()
                 .HasOne(b => b.PropertyConfigurationItems)

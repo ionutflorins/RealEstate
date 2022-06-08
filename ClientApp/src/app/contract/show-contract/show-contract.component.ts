@@ -11,26 +11,21 @@ export class ShowContractComponent implements OnInit {
 
   contractList$!: Observable<any[]>
   propertyID!: number | string;
-  contractID!: number | string;
+  clientID!: number | string;
 
   constructor(private contractService: ContractApiService,
     private router: Router) {
     console.log(this.router.getCurrentNavigation()!.extras.state);
     this.propertyID = this.router.getCurrentNavigation()?.extras.state?.id;
-    this.contractID = this.router.getCurrentNavigation()?.extras.state?.clientId;
+    this.clientID = this.router.getCurrentNavigation()?.extras.state?.clientId;
   }
 
   ngOnInit(): void {
-    if (this.propertyID)
+    if (this.propertyID) 
       this.contractList$ = this.contractService.getContractByProp(this.propertyID);
-    else
+     else 
       this.contractList$ = this.contractService.getContractList();
-      
-    if (this.contractID)
-      this.contractList$ = this.contractService.getContractByProp(this.contractID);
-    else
-      this.contractList$ = this.contractService.getContractList();
-
+    
   }
 
   //Variables(properties)
@@ -88,7 +83,7 @@ export class ShowContractComponent implements OnInit {
     this.contractList$ = this.contractService.getContractByProp(this.propertyID);
   }
 
-  getContract(clientId:number|string){
+  getContract(clientId: number | string) {
     this.router.navigateByUrl('client-form', {
       state: {
         clientId
@@ -96,7 +91,7 @@ export class ShowContractComponent implements OnInit {
     });
   }
 
-  showPropConfig(contractId:number|string){
+  showPropConfig(contractId: number | string) {
     this.router.navigateByUrl('PropertyConfiguration-List', {
       state: {
         contractId

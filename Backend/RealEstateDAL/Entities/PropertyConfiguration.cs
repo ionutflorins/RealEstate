@@ -16,6 +16,6 @@ namespace RealEstateDAL.Entities
         public string FormNumber { get; set; }
         public int ContractID { get; set; }
         public Contract Contract { get; set; }
-        public PropertyConfigurationItems PropertyConfigurationItems { get; set; }
+        public ICollection<PropertyConfigurationItems> PropertyConfigurationItems { get; set; }
     }
 }
