@@ -13,6 +13,10 @@ export class PropertyConfiguraionApiService {
   getPropertyConfigurationList():Observable<any[]>{
     return this.http.get<any>(this.propertyConfigurationApiUrl + '');
   }
+  
+  getPropConfigByContrId(id:number|string):Observable<any[]>{
+    return this.http.get<any>(this.propertyConfigurationApiUrl + `/GetPropConfigByContrId/${id}`);
+  }
 
   addPropertyConfiguration(data:any){
     return this.http.post(this.propertyConfigurationApiUrl + '/InsertPropertyConfiguration', data);

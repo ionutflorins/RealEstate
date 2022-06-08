@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { PropertyConfigurationItemsApiService } from 'src/app/Service/property-configuration-items-api.service';
 @Component({
@@ -9,9 +10,18 @@ import { PropertyConfigurationItemsApiService } from 'src/app/Service/property-c
 export class ShowPropertyconfigurationitemsComponent implements OnInit {
 
   propetyConfigurationItemsList$!: Observable<any[]>
-  constructor(private propertyConfigurationItemsService: PropertyConfigurationItemsApiService) { }
+  propConfigId!:number|string;
+  constructor(private propertyConfigurationItemsService: PropertyConfigurationItemsApiService,
+    private router: Router) {
+      console.log(this.router.getCurrentNavigation()?.extras.state);
+    this.propConfigId = this.router.getCurrentNavigation()?.extras.state?.propConfigId;
+   }
 
   ngOnInit(): void {
+    if(this.propConfigId)
+    {
+      this.propetyConfigurationItemsList$ = this.propertyConfigurationItemsService.getPropConfigItmByPropConfig(this.propConfigId);
+    }else
     this.propetyConfigurationItemsList$ = this.propertyConfigurationItemsService.getPropertyConfigurationItemsList();
   }
   //Variables(properties)
@@ -22,7 +32,7 @@ export class ShowPropertyconfigurationitemsComponent implements OnInit {
   modalAdd() {
     this.propertyConfigItem = {
       id: 0,
-      propertyConfigurationID: null,
+      propertyConfigurationID: this.propConfigId,
       configurationItemID: null,
       configurationOptionID: null,
     }
@@ -55,13 +65,13 @@ export class ShowPropertyconfigurationitemsComponent implements OnInit {
           }
         }, 4000);
 
-        this.propetyConfigurationItemsList$ = this.propertyConfigurationItemsService.getPropertyConfigurationItemsList();
+        this.propetyConfigurationItemsList$ = this.propertyConfigurationItemsService.getPropConfigItmByPropConfig(this.propConfigId);
       })
     }
   }
 
   clientModalClose() {
     this.activateAddEditpropConfigItemsComponent = false;
-    this.propetyConfigurationItemsList$ = this.propertyConfigurationItemsService.getPropertyConfigurationItemsList();
+    this.propetyConfigurationItemsList$ = this.propertyConfigurationItemsService.getPropConfigItmByPropConfig(this.propConfigId);
   }
 }

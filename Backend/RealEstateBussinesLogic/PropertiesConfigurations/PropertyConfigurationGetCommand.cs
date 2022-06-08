@@ -28,5 +28,17 @@ namespace RealEstateBussinesLogic.PropertiesConfigurations
                 .ToList();
             return propertyConfigurationListModel;
         }
+
+        public IList<PropertyConfigurationListView> GetPropConfigByContract(int contractId)
+        {
+            var propertyConfigurationRep = new PropertyConfigurationRepository(_dbContext);
+            var propertyConfigurationList = propertyConfigurationRep.GetAll();
+            var propertyConfigurationListModel = propertyConfigurationList
+                .Select(x => new PropertyConfigurationListView { ID = x.ID, FormNumber = x.FormNumber, ContractID = x.ContractID })
+                .Where(x => x.ContractID == contractId)
+                .ToList();
+            return propertyConfigurationListModel;
+        }
+
     }
 }

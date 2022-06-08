@@ -10,5 +10,6 @@ namespace RealEstateBussinesLogic.Interfaces.PropertyConfigurationItemsLogic
     public interface IPropertyConfigurationItemsGetCommand
     {
         IList<PropertyConfigurationItemsListView> GetAllPropertyConfigurationItems();
+        IList<PropertyConfigurationItemsListView> GetPropConfigItmByPropConfig(int propConfigId);
     }
 }

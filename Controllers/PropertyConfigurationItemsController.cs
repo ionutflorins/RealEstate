@@ -25,6 +25,19 @@ namespace RealEstate.Controllers
             _propertyConfigurationItemsDeleteCommand = propertyConfigurationItemsDeleteCommand;
 
         }
+        [HttpGet("GetPropConfigItmByPropConfig/{propConfigId}")]
+        public IActionResult GetPropConfigItmByPropConfig([FromRoute]int propConfigId)
+        {
+            try
+            {
+                var propertyConfigItemsList = _propertyConfigurationItemsGetCommand.GetPropConfigItmByPropConfig(propConfigId);
+                return Ok(propertyConfigItemsList);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
         [HttpGet]
         public IActionResult GetAllPropertyConfigurationItemsList()
@@ -38,6 +51,7 @@ namespace RealEstate.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
         [HttpPost("InsertPropertyConfigurationItems")]
         public IActionResult InsertPropertyConfigurationItems([FromBody] PropertyConfigurationItemsEdit propertyConfigurationItemsData)
         {

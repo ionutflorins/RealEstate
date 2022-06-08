@@ -29,5 +29,16 @@ namespace RealEstateBussinesLogic.PropertiesConfigurationsItemsLogic
             return propertyConfigitemModelList;
         }
 
+        public IList<PropertyConfigurationItemsListView> GetPropConfigItmByPropConfig(int propConfigId)
+        {
+            var propertyConfigItemRep = new PropertyConfigurationItemsRepository(_dbContext);
+            var propertyConfigItemlist = propertyConfigItemRep.GetAll();
+            var propertyConfigitemModelList = propertyConfigItemlist
+                .Select(x => new PropertyConfigurationItemsListView { ID = x.ID, ConfigurationItemID = x.ConfigurationItemID, ConfigurationOptionID = x.ConfigurationOptionID, PropertyConfigurationID = x.PropertyConfigurationID })
+                .Where(x => x.PropertyConfigurationID == propConfigId)
+                .ToList();
+            return propertyConfigitemModelList;
+        }
+
     }
 }

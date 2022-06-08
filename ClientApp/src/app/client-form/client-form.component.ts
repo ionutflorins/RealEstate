@@ -18,11 +18,14 @@ export class ClientFormComponent implements OnInit {
   configurationItemsList$!: Observable<any[]>;
   configurationOptionsList$!: Observable<any[]>;
   isValidFormSubmitted = false;
-
+  contractID!: number | string;
 
   constructor(private configItemService: ConfigurationItemApiService,
     private configOptionService: ConfigurationOptionApiService,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private router: Router) {
+    this.contractID = this.router.getCurrentNavigation()?.extras.state?.contractId;
+  }
 
   ngOnInit(): void {
     this.configurationItemsList$ = this.configItemService.getconfigurationItemList();
@@ -30,8 +33,8 @@ export class ClientFormComponent implements OnInit {
   }
 
   //variables
-   descriptionConfigItems: any;
-   descriptionConfigOptions: any;
+  descriptionConfigItems: any;
+  descriptionConfigOptions: any;
 
   onDisplayCategory() {
     this.configurationOptionsList$ = this.configOptionService
@@ -39,4 +42,5 @@ export class ClientFormComponent implements OnInit {
         return x.configurationItemId === this.descriptionConfigItems
       })))
   }
+
 }

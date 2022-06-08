@@ -88,4 +88,20 @@ export class ShowContractComponent implements OnInit {
     this.contractList$ = this.contractService.getContractByProp(this.propertyID);
   }
 
+  getContract(clientId:number|string){
+    this.router.navigateByUrl('client-form', {
+      state: {
+        clientId
+      }
+    });
+  }
+
+  showPropConfig(contractId:number|string){
+    this.router.navigateByUrl('PropertyConfiguration-List', {
+      state: {
+        contractId
+      }
+    });
+  }
+
 }

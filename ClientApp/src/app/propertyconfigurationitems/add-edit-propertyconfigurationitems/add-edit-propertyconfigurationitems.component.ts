@@ -1,6 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ConfigurationOptionApiService } from 'src/app/Service/configuration-option-api.service';
 import { PropertyConfigurationItemsApiService } from 'src/app/Service/property-configuration-items-api.service';
+import { filter, map } from 'rxjs/operators';
+import { ConfigurationItemApiService } from 'src/app/Service/configuration-item-api.service';
+
 
 @Component({
   selector: 'app-add-edit-propertyconfigurationitems',
@@ -10,8 +14,12 @@ import { PropertyConfigurationItemsApiService } from 'src/app/Service/property-c
 export class AddEditPropertyconfigurationitemsComponent implements OnInit {
 
   propertyConfigurationItemsList$!: Observable<any[]>;
+  configurationItemsList$!: Observable<any[]>;
+  configurationOptionsList$!: Observable<any[]>;
 
-  constructor(private propertyConfigurationItemsService: PropertyConfigurationItemsApiService) { }
+  constructor(private propertyConfigurationItemsService: PropertyConfigurationItemsApiService,
+    private configOptionService: ConfigurationOptionApiService,
+    private configItemService: ConfigurationItemApiService) { }
 
   @Input() propertyConfigItem: any;
   propertyConfigItemID: number = 0;
@@ -20,16 +28,29 @@ export class AddEditPropertyconfigurationitemsComponent implements OnInit {
   propertyConfigOptionID: number = 0;
 
   ngOnInit(): void {
+    this.configurationItemsList$ = this.configItemService.getconfigurationItemList();
     this.propertyConfigItemID = this.propertyConfigItem.id;
     this.propertyConfigItemPropertyConfigID = this.propertyConfigItem.propertyConfigurationID;
     this.propertyConfigItemConfigItemID = this.propertyConfigItem.configurationItemID;
     this.propertyConfigOptionID = this.propertyConfigItem.configurationOptionID;
   }
 
+    //variables
+    descriptionConfigItems: any;
+    descriptionConfigOptions: any;
+
+    onDisplayCategory() {
+      this.configurationOptionsList$ = this.configOptionService
+        .getConfigurationOptionList().pipe(map(r => r.filter(x => {
+          return x.configurationItemId === this.descriptionConfigItems
+        })))
+    }
+
+
   addClientPropertyConfigItem() {
     var propertyConfigItem = {
       propertyConfigurationID: this.propertyConfigItemPropertyConfigID,
-      configurationItemID: this.propertyConfigItemConfigItemID,
+      configurationItemID: this.descriptionConfigOptions,
       configurationOptionID: this.propertyConfigOptionID
     }
     this.propertyConfigurationItemsService.addPropertyConfigurationItems(propertyConfigItem).subscribe(res => {

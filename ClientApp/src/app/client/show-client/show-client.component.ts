@@ -91,12 +91,11 @@ export class ShowClientComponent implements OnInit {
     this.clientList$ = this.clientService.getClientDev(this.clientId);
   }
 
-  getContract(clientId:number|string){
+  getContract(contractId:number|string){
     this.router.navigateByUrl('Contract-List', {
       state: {
-        clientId
+        contractId
       }
     });
-
   }
 }

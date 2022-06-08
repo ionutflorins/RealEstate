@@ -10,5 +10,6 @@ namespace RealEstateBussinesLogic.Interfaces.PropertyConfigurationLogic
     public interface IPropertyConfigurationGetCommand
     {
         IList<PropertyConfigurationListView> GetAllPropertyConfiguration();
+        IList<PropertyConfigurationListView> GetPropConfigByContract(int contractId);
     }
 }

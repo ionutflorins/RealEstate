@@ -9,21 +9,25 @@ export class PropertyConfigurationItemsApiService {
 
   readonly propertyConfigurationItemsApiUrl = "https://localhost:7136/api/PropertyConfigurationItems";
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getPropertyConfigurationItemsList():Observable<any[]>{
+  getPropertyConfigurationItemsList(): Observable<any[]> {
     return this.http.get<any>(this.propertyConfigurationItemsApiUrl + '');
   }
 
-  addPropertyConfigurationItems(data:any){
+  getPropConfigItmByPropConfig(id: number | string): Observable<any[]> {
+    return this.http.get<any>(this.propertyConfigurationItemsApiUrl + `/GetPropConfigItmByPropConfig/${id}`);
+  }
+
+  addPropertyConfigurationItems(data: any) {
     return this.http.post(this.propertyConfigurationItemsApiUrl + '/InsertPropertyConfigurationItems', data);
   }
 
-  updatePropertyConfigurationItems(data:any){
+  updatePropertyConfigurationItems(data: any) {
     return this.http.post(this.propertyConfigurationItemsApiUrl + '/UpdatePropertyConfigurationItems', data);
   }
 
-  deletePropertyConfigurationItems(propertyConfigurationItemsID:number|string){
+  deletePropertyConfigurationItems(propertyConfigurationItemsID: number | string) {
     return this.http.post(this.propertyConfigurationItemsApiUrl + `/DeletePropertyConfigurationItems/${propertyConfigurationItemsID}`, propertyConfigurationItemsID);
   }
 

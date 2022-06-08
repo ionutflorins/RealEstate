@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { PropertyConfiguraionApiService } from 'src/app/Service/property-configuraion-api.service';
 
@@ -10,9 +11,20 @@ import { PropertyConfiguraionApiService } from 'src/app/Service/property-configu
 export class ShowPropertyconfigurationComponent implements OnInit {
 
   propertyConfigurationList$!: Observable<any[]>;
-  constructor(private propertyConfigurationService: PropertyConfiguraionApiService) { }
+  contractId!:number|string;
+
+
+  constructor(private propertyConfigurationService: PropertyConfiguraionApiService, 
+    private router: Router) {
+      console.log(this.router.getCurrentNavigation()!.extras.state);
+      this.contractId = this.router.getCurrentNavigation()?.extras.state?.contractId;
+     }
 
   ngOnInit(): void {
+    if(this.contractId)
+    {
+      this.propertyConfigurationList$ = this.propertyConfigurationService.getPropConfigByContrId(this.contractId);
+    }else
     this.propertyConfigurationList$ = this.propertyConfigurationService.getPropertyConfigurationList();
   }
 
@@ -64,6 +76,14 @@ export class ShowPropertyconfigurationComponent implements OnInit {
   clientModalClose() {
     this.activateAddEditpropertyConfigurationComponent = false;
     this.propertyConfigurationList$ = this.propertyConfigurationService.getPropertyConfigurationList();
+  }
+
+  toPropConfigItem(propConfigId:number|string){
+    this.router.navigateByUrl('Propertyconfigurationitems-List', {
+      state: {
+        propConfigId
+      }
+    });
   }
 
 
