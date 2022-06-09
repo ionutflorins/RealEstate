@@ -27,7 +27,7 @@ export class PropertyConfiguraionApiService {
   }
 
   deletePropertyConfiguration(propertyConfigurationID:number|string){
-    return this.http.post(this.propertyConfigurationApiUrl + `/DeletePropertyConfiguration'/${propertyConfigurationID}`, propertyConfigurationID);
+    return this.http.post(this.propertyConfigurationApiUrl + `/DeletePropertyConfiguration/${propertyConfigurationID}`, propertyConfigurationID);
   }
 
 }

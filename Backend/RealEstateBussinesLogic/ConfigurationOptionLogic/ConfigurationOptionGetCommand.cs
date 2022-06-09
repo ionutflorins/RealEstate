@@ -35,7 +35,7 @@ namespace RealEstateBussinesLogic.ConfigurationOprionLogic
             var configurationOptionList = configurationOptionRep.GetAll();
             var configurationOptionListModel = configurationOptionList
                 .Select(x => new ConfigurationOptionListView { ID = x.ID, Description = x.Description, ConfigurationItemId = x.ConfigurationItemId })
-                .Where(x => x.ID == configItemID)
+                .Where(x => x.ConfigurationItemId == configItemID)
                 .ToList();
             return configurationOptionListModel;
         }

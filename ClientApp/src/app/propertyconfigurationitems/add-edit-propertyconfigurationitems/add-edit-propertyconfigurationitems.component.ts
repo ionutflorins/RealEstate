@@ -50,8 +50,8 @@ export class AddEditPropertyconfigurationitemsComponent implements OnInit {
   addClientPropertyConfigItem() {
     var propertyConfigItem = {
       propertyConfigurationID: this.propertyConfigItemPropertyConfigID,
-      configurationItemID: this.descriptionConfigOptions,
-      configurationOptionID: this.propertyConfigOptionID
+      configurationItemID: this.descriptionConfigItems,
+      configurationOptionID: this.descriptionConfigOptions
     }
     this.propertyConfigurationItemsService.addPropertyConfigurationItems(propertyConfigItem).subscribe(res => {
       var closeModalBtn = document.getElementById('add-edit-modal-close');

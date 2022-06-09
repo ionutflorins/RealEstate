@@ -50,13 +50,14 @@ export class ShowPropertyconfigurationComponent implements OnInit {
   }
 
   deletePropertyConfiguration(propertyConfigurationtItem: any) {
+    debugger
     if (confirm(`Are you sure you want to delete the form with form number: ${propertyConfigurationtItem.formNumber}?`)) {
       this.propertyConfigurationService.deletePropertyConfiguration(propertyConfigurationtItem.id).subscribe(res => {
         var closeModalBtn = document.getElementById('add-edit-modal-close');
         if (closeModalBtn) {
           closeModalBtn.click();
         }
-
+        
         var showDeleteSucces = document.getElementById('delete-succes-alert');
         if (showDeleteSucces) {
           showDeleteSucces.style.display = "block";

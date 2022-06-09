@@ -69,14 +69,14 @@ namespace RealEstateDAL.Context
                 .HasForeignKey<PropertyConfigurationItems>(b => b.ConfigurationOptionID)
                 .OnDelete(DeleteBehavior.Restrict);
         }
-        //public class RealEstateContextFactory : IDesignTimeDbContextFactory<RealEstateContext>
-        //{
-        //    public RealEstateContext CreateDbContext(string[] args)
-        //    {
-        //        var optionsBuilder = new DbContextOptionsBuilder<RealEstateContext>();
-        //        optionsBuilder.UseSqlServer("Server =.; Database = RealEstateDB; Trusted_Connection = True");
-        //        return new RealEstateContext(optionsBuilder.Options);
-        //    }
-        //}
+        public class RealEstateContextFactory : IDesignTimeDbContextFactory<RealEstateContext>
+        {
+            public RealEstateContext CreateDbContext(string[] args)
+            {
+                var optionsBuilder = new DbContextOptionsBuilder<RealEstateContext>();
+                optionsBuilder.UseSqlServer("Server =.; Database = RealEstateDB; Trusted_Connection = True");
+                return new RealEstateContext(optionsBuilder.Options);
+            }
+        }
     }
 }
