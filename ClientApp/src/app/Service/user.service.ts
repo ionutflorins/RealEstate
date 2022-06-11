@@ -60,7 +60,6 @@ export class UserService {
     allowedRoles.forEach(element => {
       if (userRole == element) {
         isMatch = true;
-        
       }
       return false;
     });

@@ -1,12 +1,16 @@
 <!-- Add client trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-  (click)="modalAdd()">
-  Add Property Config item
-</button>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-  (click)="exportPdf()">
-  Capture
-</button>
+<div>
+  <div>
+    <button type="button" class="btn btn-primary mb-3 me-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+      (click)="modalAdd()">
+      Add Property Config item
+    </button>
+    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+      (click)="exportPdf()">
+      Export
+    </button>
+  </div>
+</div>
 
 <div class="alert alert-success" role="alert" id="add-succes-alert">
   Configuration succesfully added!

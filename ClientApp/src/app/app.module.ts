@@ -106,7 +106,7 @@ import { AddEditConfigurationoptionComponent } from './configurationoption/add-e
       // { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: '', redirectTo: '/user/login', pathMatch: 'full' },
       { path: 'NavMenu-List', component: NavMenuComponent },
-      { path: 'Developer-List', component: DeveloperComponent, data: { myData: false } },
+      { path: 'Developer-List', component: DeveloperComponent, canActivate: [AuthGuard], data: { permittedRoles: ['Admin', 'Developer'] }},
       {
         path: 'Client-List', component: ClientComponent, children: [
           { path: '', pathMatch: 'full', component: ShowClientComponent },
@@ -114,7 +114,7 @@ import { AddEditConfigurationoptionComponent } from './configurationoption/add-e
         ]
       },
       {
-        path: 'Project-List', component: ProjectComponent, children: [
+        path: 'Project-List', component: ProjectComponent,canActivate: [AuthGuard], data: { permittedRoles: ['Admin', 'Developer'] } ,  children: [
           { path: '', pathMatch: 'full', component: ShowProjectComponent },
           { path: ':id', pathMatch: 'full', component: ShowProjectComponent }
         ]
@@ -129,10 +129,10 @@ import { AddEditConfigurationoptionComponent } from './configurationoption/add-e
         { path: '', pathMatch: 'full', component: ShowContractComponent },
         { path: ':id', pathMatch: 'full', component: ShowContractComponent }
       ] },
-      { path: 'PropertyConfiguration-List', component: PropertyconfigurationComponent },
-      { path: 'Configurationitem-List', component: ConfigurationitemComponent },
-      { path: 'Propertyconfigurationitems-List', component: PropertyconfigurationitemsComponent },
-      { path: 'ConfigurationOption-List', component: ConfigurationoptionComponent },
+      { path: 'PropertyConfiguration-List', component: PropertyconfigurationComponent, canActivate: [AuthGuard], data: { permittedRoles: ['Admin', 'Developer'] }},
+      { path: 'Configurationitem-List', component: ConfigurationitemComponent, canActivate: [AuthGuard], data: { permittedRoles: ['Admin', 'Developer'] } },
+      { path: 'Propertyconfigurationitems-List', component: PropertyconfigurationitemsComponent, canActivate: [AuthGuard], data: { permittedRoles: ['Admin', 'Developer'] } },
+      { path: 'ConfigurationOption-List', component: ConfigurationoptionComponent, canActivate: [AuthGuard], data: { permittedRoles: ['Admin', 'Developer'] } },
       {
         path: 'user', component: UserComponent, children: [
           { path: 'registration', component: RegistrationComponent },
