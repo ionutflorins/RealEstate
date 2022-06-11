@@ -21,9 +21,6 @@ export class ShowClientComponent implements OnInit {
     private router: Router) {
       console.log(this.router.getCurrentNavigation()!.extras.state);
       this.clientId = this.router.getCurrentNavigation()?.extras.state?.id;
-    // this.activatedRoute.params.subscribe(params => {
-    //   this.clientId = params['id'];
-    // });
   }
 
   ngOnInit(): void {
@@ -91,10 +88,10 @@ export class ShowClientComponent implements OnInit {
     this.clientList$ = this.clientService.getClientDev(this.clientId);
   }
 
-  getContract(contractId:number|string){
+  getContract(clientID:number|string){
     this.router.navigateByUrl('Contract-List', {
       state: {
-        contractId
+        clientID
       }
     });
   }

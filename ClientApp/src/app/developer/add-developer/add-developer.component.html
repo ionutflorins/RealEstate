@@ -1,32 +1,41 @@
 <form>
-    <div class="mb-2">
-        <label for="Name" class="form-label">Name</label>
-        <input type="text" class="form-control" [(ngModel)]="developerName" name="developerName">
-    </div>
-    <div class="mb-2">
-        <label for="Address" class="form-label">Address</label>
-        <input type="text" class="form-control" [(ngModel)]="developerAddress" name="developerAddress">
-    </div>
-    <div class="mb-2">
-        <label for="City" class="form-label">City</label>
-        <input type="text" class="form-control" [(ngModel)]="developerCity" name="developerCity">
-    </div>
-    <div class="mb-2">
-        <label for="PhoneNumber" class="form-label">Phone Number</label>
-        <input type="text" class="form-control" [(ngModel)]="developerPhoneNumber" name="developerPhoneNumber">
-    </div>
-    <div class="mb-2">
-        <label for="Email" class="form-label">Email</label>
-        <input type="text" class="form-control" [(ngModel)]="developerEmail" name="developerEmail" >
-    </div>
-    <div class="mb-2">
-        <label for="ZipCode" class="form-label">Zip Code</label>
-        <input type="text" class="form-control" [(ngModel)]="developerZipCode" name="developerZipCode">
-    </div>
-    <button (click)="addDeveloper()" *ngIf="developer.id==0"  class="btn btn-primary">
-        Add
-    </button>
-    <button (click)="updateDeveloper()" *ngIf="developer.id!=0"  class="btn btn-primary">
-        Update
-    </button>
+            <div class="mb-2">
+                <label for="Name" class="form-label">Name</label>
+                <input type="text" class="form-control" [(ngModel)]="developerName" name="developerName">
+            </div>
+            <div class="mb-2">
+                <label for="Address" class="form-label">Address</label>
+                <input type="text" class="form-control" [(ngModel)]="developerAddress" name="developerAddress">
+            </div>
+            <div class="mb-2">
+                <label for="City" class="form-label">City</label>
+                <input type="text" class="form-control" [(ngModel)]="developerCity" name="developerCity">
+            </div>
+            <div class="mb-2">
+                <label for="PhoneNumber" class="form-label">Phone Number</label>
+                <input type="text" class="form-control" [(ngModel)]="developerPhoneNumber" name="developerPhoneNumber">
+            </div>
+            <div class="mb-2">
+                <label for="Email" class="form-label">Email</label>
+                <input type="text" class="form-control" [(ngModel)]="developerEmail" name="developerEmail">
+            </div>
+            <div class="mb-2">
+                <label for="ZipCode" class="form-label">Zip Code</label>
+                <input type="text" class="form-control" [(ngModel)]="developerZipCode" name="developerZipCode">
+            </div>
+            <button style="color: black; background-color: #ffffff; border-color:#ffffff;"
+                class="btn btn-primary shadow-none" (click)="addDeveloper()" *ngIf="developer.id==0"
+                class="btn btn-primary">
+                Add
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                    class="bi bi-plus-square" viewBox="0 0 16 16">
+                    <path
+                        d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                    <path
+                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                </svg>
+            </button>
+            <button (click)="updateDeveloper()" *ngIf="developer.id!=0" class="btn btn-primary">
+                Update
+            </button>
 </form>

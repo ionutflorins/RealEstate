@@ -92,8 +92,6 @@ import { AddEditConfigurationoptionComponent } from './configurationoption/add-e
     ForbiddenComponent,
     ClientFormComponent,
     AddEditConfigurationoptionComponent,
-
-
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

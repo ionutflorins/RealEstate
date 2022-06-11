@@ -1,8 +1,20 @@
 <!-- Add developer trigger modal -->
 <button type="button" class="btn btn-primary mb-3 " data-bs-toggle="modal" data-bs-target="#staticBackdrop"
   (click)="modalAdd()">
-  Add Developer
+  Add
 </button>
+
+<div class="alert alert-success" role="alert" id="add-succes-alert">
+  Developer succesfully added!
+</div>
+<div class="alert alert-success" role="alert" id="update-succes-alert">
+  Developer succesfully updated!
+</div>
+<div class="alert alert-success" role="alert" id="delete-succes-alert">
+  Developer succesfully deleted!
+</div>
+
+
 
 <!-- Show developer list tabel -->
 <table class="table table-striped">
@@ -71,15 +83,7 @@
   </tbody>
 </table>
 
-<div class="alert alert-success" role="alert" id="add-succes-alert">
-  Developer succesfully added!
-</div>
-<div class="alert alert-success" role="alert" id="update-succes-alert">
-  Developer succesfully updated!
-</div>
-<div class="alert alert-success" role="alert" id="delete-succes-alert">
-  Developer succesfully deleted!
-</div>
+
 
 <!-- Add/Edit new Developer Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"

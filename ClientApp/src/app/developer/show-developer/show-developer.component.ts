@@ -17,7 +17,8 @@ export class ShowDeveloperComponent implements OnInit {
   clientList$!: Observable<any[]>;
   projectList$!: Observable<any[]>;
 
-  constructor(private developerService: DeveloperApiService,
+  constructor(
+    private developerService: DeveloperApiService,
     private clientService: ClientApiService,
     private projectService: ProjectApiService,
     private router: Router,

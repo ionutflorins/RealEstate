@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+
 import { DeveloperApiService } from 'src/app/Service/developer-api.service';
 
 @Component({
@@ -11,7 +12,8 @@ export class AddDeveloperComponent implements OnInit {
 
   developerList$!: Observable<any[]>;
 
-  constructor(private developerService: DeveloperApiService) { }
+  constructor(private developerService: DeveloperApiService,
+  ) { }
 
   @Input() developer: any;
   developerID: number = 0;
@@ -45,7 +47,6 @@ export class AddDeveloperComponent implements OnInit {
       if (closeModalBtn) {
         closeModalBtn.click();
       }
-
       var showAddSucces = document.getElementById('add-succes-alert');
       if (showAddSucces) {
         showAddSucces.style.display = "block";
@@ -58,6 +59,7 @@ export class AddDeveloperComponent implements OnInit {
       }, 4000);
     })
   }
+
 
   updateDeveloper(){
     var developer = {

@@ -17,15 +17,17 @@ export class ShowContractComponent implements OnInit {
     private router: Router) {
     console.log(this.router.getCurrentNavigation()!.extras.state);
     this.propertyID = this.router.getCurrentNavigation()?.extras.state?.id;
-    this.clientID = this.router.getCurrentNavigation()?.extras.state?.clientId;
+    this.clientID = this.router.getCurrentNavigation()?.extras.state?.clientID;
   }
 
   ngOnInit(): void {
-    if (this.propertyID) 
+    if (this.propertyID) {
       this.contractList$ = this.contractService.getContractByProp(this.propertyID);
-     else 
+    } else if (this.clientID) {
+      this.contractList$ = this.contractService.getContractByProp(this.clientID);
+    }
+    else
       this.contractList$ = this.contractService.getContractList();
-    
   }
 
   //Variables(properties)
