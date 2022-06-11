@@ -35,6 +35,7 @@ namespace RealEstateBussinesLogic.DeveloperLogic
             developer.City = developerEdit.City;
             developer.Address = developerEdit.Address;
             developer.ZipCode = developerEdit.ZipCode;
+            developer.AppUserID = developerEdit.AppUserID;
 
             if (developerExisting == null || developerExisting.Count <= 0 )
             {

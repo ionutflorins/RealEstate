@@ -41,6 +41,7 @@ namespace RealEstateBussinesLogic.DeveloperLogic
                 developerExisting.City = developerEdit.City;
                 developerExisting.Address = developerEdit.Address;
                 developerExisting.ZipCode = developerEdit.ZipCode;
+                developerExisting.AppUserID = developerEdit.AppUserID;
 
                 developerRep.Update(developerExisting);
                 _dbContext.SaveChanges();

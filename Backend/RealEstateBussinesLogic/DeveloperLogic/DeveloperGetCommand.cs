@@ -24,7 +24,20 @@ namespace RealEstateBussinesLogic.DeveloperLogic
             var developerRep = new DeveloperRepository(_dbContext);
             var developerList = developerRep.GetAll();
             var clientListModel = developerList
-                .Select(x => new DeveloperListView { ID = x.ID, Name = x.Name, Address = x.Address, City = x.City, PhoneNumber = x.PhoneNumber, Email = x.Email, ZipCode = x.ZipCode })
+                .Select(x => new DeveloperListView { ID = x.ID, Name = x.Name, Address = x.Address, City = x.City, PhoneNumber = x.PhoneNumber, Email = x.Email, ZipCode = x.ZipCode, AppUserID = x.AppUserID })
+                .ToList();
+
+            return clientListModel;
+
+        }
+
+        public IList<DeveloperListView> GetDevByUserId(string userId)
+        {
+            var developerRep = new DeveloperRepository(_dbContext);
+            var developerList = developerRep.GetAll();
+            var clientListModel = developerList
+                .Select(x => new DeveloperListView { ID = x.ID, Name = x.Name, Address = x.Address, City = x.City, PhoneNumber = x.PhoneNumber, Email = x.Email, ZipCode = x.ZipCode, AppUserID = x.AppUserID })
+                .Where(x => x.AppUserID == userId)
                 .ToList();
 
             return clientListModel;

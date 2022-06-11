@@ -373,6 +373,10 @@ namespace RealEstateDAL.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
+                    b.Property<string>("AppUserID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("City")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -399,6 +403,9 @@ namespace RealEstateDAL.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("AppUserID")
+                        .IsUnique();
 
                     b.ToTable("Developers");
                 });
@@ -661,6 +668,17 @@ namespace RealEstateDAL.Migrations
                     b.Navigation("Property");
                 });
 
+            modelBuilder.Entity("RealEstateDAL.Entities.Developer", b =>
+                {
+                    b.HasOne("RealEstateDAL.Entities.AppUser", "AppUser")
+                        .WithOne("Developer")
+                        .HasForeignKey("RealEstateDAL.Entities.Developer", "AppUserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
             modelBuilder.Entity("RealEstateDAL.Entities.Project", b =>
                 {
                     b.HasOne("RealEstateDAL.Entities.Developer", "Developer")
@@ -719,6 +737,12 @@ namespace RealEstateDAL.Migrations
                     b.Navigation("ConfigurationOption");
 
                     b.Navigation("PropertyConfiguration");
+                });
+
+            modelBuilder.Entity("RealEstateDAL.Entities.AppUser", b =>
+                {
+                    b.Navigation("Developer")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("RealEstateDAL.Entities.Client", b =>

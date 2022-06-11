@@ -15,6 +15,10 @@ export class DeveloperApiService {
     return this.http.get<any>(this.developerApiUrl + '');
   }
 
+ getDevByUser(id: number|string):Observable<any[]>{
+    return this.http.get<any>(this.developerApiUrl + `/GetDevByUser/${id}`);
+  }
+
   addDeveloper(data:any){
     return this.http.post(this.developerApiUrl + '/InsertDeveloper', data);
   }

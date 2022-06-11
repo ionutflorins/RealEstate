@@ -26,6 +26,21 @@ namespace RealEstate.Controllers
             _developerDeleteCommand = developerDeleteCommand;
         }
 
+        [HttpGet("GetDevByUser/{userId}")]
+        public IActionResult GetDevByUserId([FromRoute] string userId)
+        {
+            try
+            {
+                var developerList = _developerGetCommand.GetDevByUserId(userId);
+
+                return Ok(developerList);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpGet]
         public IActionResult GetDeveloperList()
         {

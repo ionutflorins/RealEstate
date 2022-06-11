@@ -30,6 +30,11 @@ namespace RealEstateDAL.Context
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<AppUser>()
+                .HasOne(e => e.Developer)
+                .WithOne(c => c.AppUser)
+                .HasForeignKey<Developer>(i => i.AppUserID);
+
             modelBuilder.Entity<Contract>()
             .HasOne(e => e.Developer)
             .WithMany(c => c.Contracts)

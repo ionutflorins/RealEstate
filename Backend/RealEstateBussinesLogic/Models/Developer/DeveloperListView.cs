@@ -15,6 +15,7 @@ namespace RealEstateBussinesLogic.Models.Developer
         public string City { get; set; }
         public string Address { get; set; }
         public string ZipCode { get; set; }
+        public string AppUserID { get; set; }
 
     }
 }

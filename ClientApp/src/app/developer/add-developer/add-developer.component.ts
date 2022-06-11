@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-
+import jwt_decode from 'jwt-decode';
 import { DeveloperApiService } from 'src/app/Service/developer-api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-developer',
@@ -11,8 +12,9 @@ import { DeveloperApiService } from 'src/app/Service/developer-api.service';
 export class AddDeveloperComponent implements OnInit {
 
   developerList$!: Observable<any[]>;
-
+  decoded: any;
   constructor(private developerService: DeveloperApiService,
+    private router: Router
   ) { }
 
   @Input() developer: any;
@@ -23,8 +25,10 @@ export class AddDeveloperComponent implements OnInit {
   developerPhoneNumber: string = "";
   developerEmail: string = "";
   developerZipCode: string = "";
+  developerUserId: string = "";
 
   ngOnInit(): void {
+
     this.developerID = this.developer.id;
     this.developerName = this.developer.name;
     this.developerAddress = this.developer.address;
@@ -32,6 +36,10 @@ export class AddDeveloperComponent implements OnInit {
     this.developerPhoneNumber = this.developer.phoneNumber;
     this.developerEmail = this.developer.email;
     this.developerZipCode = this.developer.zipCode;
+    this.developerUserId = this.developer.appUserID;
+
+    var token = localStorage.getItem('token');
+    this.decoded = jwt_decode(`${token}`);
   }
   addDeveloper() {
     var developer = {
@@ -40,7 +48,8 @@ export class AddDeveloperComponent implements OnInit {
       city: this.developerCity,
       phoneNumber: this.developerPhoneNumber,
       email: this.developerEmail,
-      zipCode: this.developerZipCode
+      zipCode: this.developerZipCode,
+      appUserId: this.decoded.UserID
     }
     this.developerService.addDeveloper(developer).subscribe(res => {
       var closeModalBtn = document.getElementById('add-modal-close');
@@ -61,17 +70,18 @@ export class AddDeveloperComponent implements OnInit {
   }
 
 
-  updateDeveloper(){
+  updateDeveloper() {
     var developer = {
-      id:this.developerID,
+      id: this.developerID,
       name: this.developerName,
       address: this.developerAddress,
       city: this.developerCity,
       phoneNumber: this.developerPhoneNumber,
       email: this.developerEmail,
-      zipCode: this.developerZipCode
+      zipCode: this.developerZipCode,
+      appUserId: this.developerUserId
     }
-    var id:number = this.developerID;
+    var id: number = this.developerID;
     this.developerService.updateDeveloper(developer).subscribe(res => {
       var closeModalBtn = document.getElementById('add-modal-close');
       if (closeModalBtn) {

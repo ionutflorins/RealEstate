@@ -31,8 +31,7 @@ constructor(private router: Router, private userService : UserService) {
         }
       }
       return true;
-    }
-      
+   }
     else
     this.router.navigate(['/user/login']);
     return false;

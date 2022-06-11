@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { ClientApiService } from 'src/app/Service/client-api.service';
 import { DeveloperApiService } from 'src/app/Service/developer-api.service';
 import { ProjectApiService } from 'src/app/Service/project-api.service';
-
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-show-developer',
@@ -16,6 +16,7 @@ export class ShowDeveloperComponent implements OnInit {
   developerList$!: Observable<any[]>;
   clientList$!: Observable<any[]>;
   projectList$!: Observable<any[]>;
+  decoded: any;
 
   constructor(
     private developerService: DeveloperApiService,
@@ -26,7 +27,10 @@ export class ShowDeveloperComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.developerList$ = this.developerService.getDeveloperList();
+    var token = localStorage.getItem('token');
+    this.decoded = jwt_decode(`${token}`);
+
+    this.developerList$ = this.developerService.getDevByUser(this.decoded.UserID)
     this.clientList$ = this.clientService.getClientList();
     this.projectList$ = this.projectService.getProjectList();
   }
