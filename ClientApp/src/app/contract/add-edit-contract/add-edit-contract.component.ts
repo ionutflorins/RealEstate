@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, observable } from 'rxjs';
 import { ContractApiService } from 'src/app/Service/contract-api.service';
 
@@ -10,8 +11,9 @@ import { ContractApiService } from 'src/app/Service/contract-api.service';
 export class AddEditContractComponent implements OnInit {
 
   contract$!: Observable<any[]>;
-
-  constructor(private contractService: ContractApiService) { }
+  constructor(private contractService: ContractApiService,
+    private router: Router) {
+   }
 
   @Input() contract: any;
   contractID: number = 0;

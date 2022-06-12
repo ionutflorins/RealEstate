@@ -241,6 +241,10 @@ namespace RealEstateDAL.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
+                    b.Property<string>("AppUserID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("DeveloperID")
                         .HasColumnType("int");
 
@@ -278,6 +282,9 @@ namespace RealEstateDAL.Migrations
                         .HasColumnType("Date");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("AppUserID")
+                        .IsUnique();
 
                     b.HasIndex("DeveloperID");
 
@@ -621,11 +628,19 @@ namespace RealEstateDAL.Migrations
 
             modelBuilder.Entity("RealEstateDAL.Entities.Client", b =>
                 {
+                    b.HasOne("RealEstateDAL.Entities.AppUser", "AppUser")
+                        .WithOne("Client")
+                        .HasForeignKey("RealEstateDAL.Entities.Client", "AppUserID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("RealEstateDAL.Entities.Developer", "Developer")
                         .WithMany("Client")
                         .HasForeignKey("DeveloperID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("AppUser");
 
                     b.Navigation("Developer");
                 });
@@ -741,6 +756,9 @@ namespace RealEstateDAL.Migrations
 
             modelBuilder.Entity("RealEstateDAL.Entities.AppUser", b =>
                 {
+                    b.Navigation("Client")
+                        .IsRequired();
+
                     b.Navigation("Developer")
                         .IsRequired();
                 });

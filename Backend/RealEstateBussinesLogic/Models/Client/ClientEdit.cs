@@ -18,5 +18,6 @@ namespace RealEstateBussinesLogic.Models.Client
         public string IssuedBy { get; set; }
         public DateTime Validity { get; set; }
         public int DeveloperID { get; set; }
+        public string AppUserID { get; set; }
     }
 }

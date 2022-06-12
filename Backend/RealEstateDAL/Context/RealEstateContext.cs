@@ -35,6 +35,13 @@ namespace RealEstateDAL.Context
                 .WithOne(c => c.AppUser)
                 .HasForeignKey<Developer>(i => i.AppUserID);
 
+            modelBuilder.Entity<AppUser>()
+                .HasOne(e => e.Client)
+                .WithOne(c => c.AppUser)
+                .HasForeignKey<Client>(i => i.AppUserID)
+                .OnDelete(DeleteBehavior.Restrict); 
+
+
             modelBuilder.Entity<Contract>()
             .HasOne(e => e.Developer)
             .WithMany(c => c.Contracts)

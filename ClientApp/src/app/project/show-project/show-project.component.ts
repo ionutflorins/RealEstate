@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ProjectApiService } from 'src/app/Service/project-api.service';
@@ -27,7 +27,9 @@ export class ShowProjectComponent implements OnInit {
       this.projectList$ = this.projectService.getProjectList();
   }
 
+  @Input() devloperId: any
   //Variables(proprietes)
+  
   addEditProjectModalTitle: string = " ";
   activateAddEditProjectComponent: boolean = false;
   project: any;

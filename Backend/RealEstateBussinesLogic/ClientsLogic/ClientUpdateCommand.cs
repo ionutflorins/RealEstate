@@ -43,6 +43,7 @@ namespace RealEstateBussinesLogic.ClientsLogic
                 clientExisting.IssuedBy = clientEdit.IssuedBy;
                 clientExisting.Validity = clientEdit.Validity;
                 clientExisting.DeveloperID = clientEdit.DeveloperID;
+                clientExisting.AppUserID = clientEdit.AppUserID;
 
                 clientRep.Update(clientExisting);
                 _dbContext.SaveChanges();

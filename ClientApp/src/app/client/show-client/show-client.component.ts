@@ -5,6 +5,7 @@ import { filter, map, tap } from 'rxjs/operators';
 import { ClientApiService } from 'src/app/Service/client-api.service';
 import { DeveloperApiService } from 'src/app/Service/developer-api.service';
 import { take } from 'rxjs/operators';
+import jwt_decode from 'jwt-decode';
 @Component({
   selector: 'app-show-client',
   templateUrl: './show-client.component.html',
@@ -14,22 +15,28 @@ export class ShowClientComponent implements OnInit {
 
   clientList$!: Observable<any[]>;
   clientId!: number | string;
+  decoded: any;
 
   constructor(private clientService: ClientApiService,
     private developerService: DeveloperApiService,
     private activatedRoute: ActivatedRoute,
     private router: Router) {
-      console.log(this.router.getCurrentNavigation()!.extras.state);
-      this.clientId = this.router.getCurrentNavigation()?.extras.state?.id;
+    console.log(this.router.getCurrentNavigation()!.extras.state);
+    this.clientId = this.router.getCurrentNavigation()?.extras.state?.id;
   }
 
   ngOnInit(): void {
+    var token = localStorage.getItem('token');
+    this.decoded = jwt_decode(`${token}`);
+
     if (this.clientId) {
       this.clientList$ = this.clientService.getClientDev(this.clientId);
-    } else
+    } else if (this.decoded.UserID) {
+      this.clientList$ = this.clientService.getClientByUserID(this.decoded.UserID)
+    } else {
       this.clientList$ = this.clientService.getClientList();
+    }
   }
-
   //Variables(properties)
   clientModalTitle: string = "";
   activateAddEditClientComponent: boolean = false;
@@ -88,7 +95,7 @@ export class ShowClientComponent implements OnInit {
     this.clientList$ = this.clientService.getClientDev(this.clientId);
   }
 
-  getContract(clientID:number|string){
+  getContract(clientID: number | string) {
     this.router.navigateByUrl('Contract-List', {
       state: {
         clientID

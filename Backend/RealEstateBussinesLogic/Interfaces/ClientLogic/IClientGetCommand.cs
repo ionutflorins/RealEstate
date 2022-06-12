@@ -11,6 +11,7 @@ namespace RealEstateBussinesLogic.Interfaces.ClientLogic
     {
         IList<ClientListView> GetAllClients();
         IList<ClientListView> GetClientsDev(int devID);
+        IList<ClientListView> GetClientsbyUserId(string userID);
 
     }
 }

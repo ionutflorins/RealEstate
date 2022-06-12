@@ -18,6 +18,9 @@ readonly clientApiUrl = "https://localhost:7136/api/Client";
   getClientDev(id:string|number):Observable<any[]>{
     return this.http.get<any>(this.clientApiUrl + `/GetClientsDev/${id}`);
   }
+   getClientByUserID(id:string|number):Observable<any[]>{
+    return this.http.get<any>(this.clientApiUrl + `/GetClientsbyUserId/${id}`);
+  }
 
   addClient(data:any){
     return this.http.post(this.clientApiUrl + '/InsertClient', data);

@@ -29,7 +29,7 @@ export class ShowDeveloperComponent implements OnInit {
   ngOnInit(): void {
     var token = localStorage.getItem('token');
     this.decoded = jwt_decode(`${token}`);
-
+    
     this.developerList$ = this.developerService.getDevByUser(this.decoded.UserID)
     this.clientList$ = this.clientService.getClientList();
     this.projectList$ = this.projectService.getProjectList();
@@ -101,6 +101,13 @@ export class ShowDeveloperComponent implements OnInit {
     this.router.navigateByUrl('Project-List', {
       state: {
         id
+      }
+    });
+  }
+  toContract(devId: number |string){
+    this.router.navigateByUrl('Contract-List', {
+      state: {
+        devId
       }
     });
   }

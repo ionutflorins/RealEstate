@@ -23,10 +23,6 @@
                 <label for="ZipCode" class="form-label">Zip Code</label>
                 <input type="text" class="form-control" [(ngModel)]="developerZipCode" name="developerZipCode">
             </div>
-            <div class="mb-2">
-                <label for="AppUserId" class="form-label">AppUserIde</label>
-                <input type="text" class="form-control" [(ngModel)]="developerUserId" name="developerUserId">
-            </div>
             <button style="color: black; background-color: #ffffff; border-color:#ffffff;"
                 class="btn btn-primary shadow-none" (click)="addDeveloper()" *ngIf="developer.id==0"
                 class="btn btn-primary">
