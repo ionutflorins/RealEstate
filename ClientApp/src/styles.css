@@ -20,7 +20,7 @@ button[type=submit].btn{
 }
 
 div.form-group label:not(.text-danger){
-    color: #545d6a;
+    color: #ffffff;
     font-weight: 700;
 }
 
@@ -73,7 +73,7 @@ div.form-group.required>label:first-child:after{
     display:inline-block;
     padding: 30px 40px 10px 40px;
     cursor: pointer;
-    color: #545d6a;
+    color: #fafafa;
     border-bottom: 2px solid #545d6a;
   }
 
@@ -101,3 +101,10 @@ div.form-group.required>label:first-child:after{
   max-width:100%;
   max-height:100%;
  }
+
+ .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}

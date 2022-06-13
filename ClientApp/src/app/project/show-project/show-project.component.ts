@@ -12,6 +12,7 @@ export class ShowProjectComponent implements OnInit {
 
   projectList$!: Observable<any[]>;
   projectId!: number | string;
+  
 
   constructor(private projectService: ProjectApiService,
     private activatedRoute: ActivatedRoute,
@@ -40,9 +41,9 @@ export class ShowProjectComponent implements OnInit {
       projectName: null,
       city: null,
       address: null,
-      buildingsNo: 3,
-      apartmentNo: 300,
-      houseNo: 0,
+      buildingsNo: null,
+      apartmentNo: null,
+      houseNo: null,
       description: null,
       developerID: this.projectId
     }

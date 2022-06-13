@@ -37,7 +37,7 @@ export class ShowPropertyconfigurationComponent implements OnInit {
     this.propertyConfiguration = {
       id: 0,
       formNumber: null,
-      developerID: 0
+      contractID: this.contractId
     }
     this.propertyConfigurationModalTitle = "Add Property Configuration";
     this.activateAddEditpropertyConfigurationComponent = true;

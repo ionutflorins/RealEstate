@@ -6,6 +6,7 @@ import { ClientApiService } from 'src/app/Service/client-api.service';
 import { DeveloperApiService } from 'src/app/Service/developer-api.service';
 import { take } from 'rxjs/operators';
 import jwt_decode from 'jwt-decode';
+import { UserService } from 'src/app/Service/user.service';
 @Component({
   selector: 'app-show-client',
   templateUrl: './show-client.component.html',
@@ -14,23 +15,24 @@ import jwt_decode from 'jwt-decode';
 export class ShowClientComponent implements OnInit {
 
   clientList$!: Observable<any[]>;
-  clientId!: number | string;
+  devID!: number | string;
   decoded: any;
 
   constructor(private clientService: ClientApiService,
     private developerService: DeveloperApiService,
+    private userServ:UserService,
     private activatedRoute: ActivatedRoute,
     private router: Router) {
     console.log(this.router.getCurrentNavigation()!.extras.state);
-    this.clientId = this.router.getCurrentNavigation()?.extras.state?.id;
+    this.devID = this.router.getCurrentNavigation()?.extras.state?.devID;
   }
 
   ngOnInit(): void {
     var token = localStorage.getItem('token');
     this.decoded = jwt_decode(`${token}`);
 
-    if (this.clientId) {
-      this.clientList$ = this.clientService.getClientDev(this.clientId);
+    if (this.devID) {
+      this.clientList$ = this.clientService.getClientDev(this.devID);
     } else if (this.decoded.UserID) {
       this.clientList$ = this.clientService.getClientByUserID(this.decoded.UserID)
     } else {
@@ -42,6 +44,9 @@ export class ShowClientComponent implements OnInit {
   activateAddEditClientComponent: boolean = false;
   client: any;
 
+  regClient(){
+    this.userServ.register();
+  }
 
   modalAdd() {
     this.client = {
@@ -54,7 +59,7 @@ export class ShowClientComponent implements OnInit {
       address: null,
       issuedBy: null,
       validity: null,
-      developerID: this.clientId
+      developerID: this.devID
     }
     this.clientModalTitle = "Add Client";
     this.activateAddEditClientComponent = true;
@@ -85,14 +90,26 @@ export class ShowClientComponent implements OnInit {
           }
         }, 4000);
 
-        this.clientList$ = this.clientService.getClientDev(this.clientId);
+        if (this.devID) {
+          this.clientList$ = this.clientService.getClientDev(this.devID);
+        } else if (this.decoded.UserID) {
+          this.clientList$ = this.clientService.getClientByUserID(this.decoded.UserID)
+        } else {
+          this.clientList$ = this.clientService.getClientList();
+        }
       })
     }
   }
 
   clientModalClose() {
     this.activateAddEditClientComponent = false;
-    this.clientList$ = this.clientService.getClientDev(this.clientId);
+    if (this.devID) {
+      this.clientList$ = this.clientService.getClientDev(this.devID);
+    } else if (this.decoded.UserID) {
+      this.clientList$ = this.clientService.getClientByUserID(this.decoded.UserID)
+    } else {
+      this.clientList$ = this.clientService.getClientList();
+    }
   }
 
   getContract(clientID: number | string) {

@@ -120,18 +120,18 @@ import { AddEditConfigurationoptionComponent } from './configurationoption/add-e
         ]
       },
       {
-        path: 'Property-List', component: PropertyComponent, children: [
+        path: 'Property-List', component: PropertyComponent, canActivate: [AuthGuard], data: { permittedRoles: ['Admin', 'Developer'] }  , children: [
           { path: '', pathMatch: 'full', component: ShowPropertyComponent },
           { path: ':id', pathMatch: 'full', component: ShowPropertyComponent }
         ]
       },
-      { path: 'Contract-List', component: ContractComponent,  children: [
+      { path: 'Contract-List', component: ContractComponent, canActivate: [AuthGuard], data: { permittedRoles: ['Admin', 'Developer', 'Client'] }  , children: [
         { path: '', pathMatch: 'full', component: ShowContractComponent },
         { path: ':id', pathMatch: 'full', component: ShowContractComponent }
       ] },
-      { path: 'PropertyConfiguration-List', component: PropertyconfigurationComponent, canActivate: [AuthGuard], data: { permittedRoles: ['Admin', 'Developer'] }},
+      { path: 'PropertyConfiguration-List', component: PropertyconfigurationComponent, canActivate: [AuthGuard], data: { permittedRoles: ['Admin', 'Developer', 'Client'] }},
       { path: 'Configurationitem-List', component: ConfigurationitemComponent, canActivate: [AuthGuard], data: { permittedRoles: ['Admin', 'Developer'] } },
-      { path: 'Propertyconfigurationitems-List', component: PropertyconfigurationitemsComponent, canActivate: [AuthGuard], data: { permittedRoles: ['Admin', 'Developer'] } },
+      { path: 'Propertyconfigurationitems-List', component: PropertyconfigurationitemsComponent, canActivate: [AuthGuard], data: { permittedRoles: ['Admin', 'Developer', 'Client'] } },
       { path: 'ConfigurationOption-List', component: ConfigurationoptionComponent, canActivate: [AuthGuard], data: { permittedRoles: ['Admin', 'Developer'] } },
       {
         path: 'user', component: UserComponent, children: [
@@ -141,7 +141,7 @@ import { AddEditConfigurationoptionComponent } from './configurationoption/add-e
       },
       { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'forbidden', component: ForbiddenComponent },
-      { path: 'admin', component: AdminPanelComponent, canActivate: [AuthGuard], data: { permittedRoles: ['Admin'] } },
+      { path: 'admin', component: AdminPanelComponent, canActivate: [AuthGuard], data: { permittedRoles: ['Admin', 'Developer'] } },
       { path: 'client-form', component: ClientFormComponent }
     ])
   ],

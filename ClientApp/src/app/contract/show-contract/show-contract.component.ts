@@ -12,7 +12,6 @@ export class ShowContractComponent implements OnInit {
   contractList$!: Observable<any[]>
   propertyID!: number | string;
   clientID!: number | string;
-
   constructor(private contractService: ContractApiService,
     private router: Router) {
     console.log(this.router.getCurrentNavigation()!.extras.state);

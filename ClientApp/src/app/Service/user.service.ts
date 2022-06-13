@@ -40,7 +40,7 @@ export class UserService {
       LastName: this.formModel.value.LastName,
       Email: this.formModel.value.Email,
       Password: this.formModel.value.Passwords.Password,
-      Role:this.formModel.value.Role
+      Role:"Client"
     };
     return this.http.post(this.userRegistrationApiUrl + '/AppUser/Register', body)
   }

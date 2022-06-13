@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/Service/user.service';
 
@@ -11,9 +12,10 @@ export class RegistrationComponent implements OnInit {
 
   constructor(public userService: UserService, private toastr:ToastrService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {  
     this.userService.formModel.reset();
   }
+
 
   //variables
   selectedRole:any;

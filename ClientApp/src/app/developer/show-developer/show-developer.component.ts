@@ -89,10 +89,10 @@ export class ShowDeveloperComponent implements OnInit {
     this.developerList$ = this.developerService.getDeveloperList();
   }
 
-  showClientID(id: number | string) {
+  showClientID(devID: number | string) {
     this.router.navigateByUrl('Client-List', {
       state: {
-        id
+        devID
       }
     });
   }
@@ -101,13 +101,6 @@ export class ShowDeveloperComponent implements OnInit {
     this.router.navigateByUrl('Project-List', {
       state: {
         id
-      }
-    });
-  }
-  toContract(devId: number |string){
-    this.router.navigateByUrl('Contract-List', {
-      state: {
-        devId
       }
     });
   }

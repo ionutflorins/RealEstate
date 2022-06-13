@@ -34,8 +34,10 @@
     <tr *ngFor="let propertyConfigurationItemsItem of propetyConfigurationItemsList$|async">
       <td>{{propertyConfigurationItemsItem.id}}</td>
       <td>{{propertyConfigurationItemsItem.propertyConfigurationID}}</td>
-      <td>{{propertyConfigurationItemsItem.configurationItemID}}</td>
-      <td>{{propertyConfigurationItemsItem.configurationOptionID}}</td>
+      <td>{{configurationItemsTypesMap.get(propertyConfigurationItemsItem.configurationItemID)}}</td>
+      <!-- <td>{{propertyConfigurationItemsItem.configurationItemID}}</td> -->
+      <td>{{configOptionMap.get(propertyConfigurationItemsItem.configurationOptionID)}}</td>
+      <!-- <td>{{propertyConfigurationItemsItem.configurationOptionID}}</td> -->
       <td><button class="btn btn-outline-primary me-2 mb-1" (click)="modalEdit(propertyConfigurationItemsItem)"
           data-bs-toggle="modal" data-bs-target="#staticBackdrop">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square"

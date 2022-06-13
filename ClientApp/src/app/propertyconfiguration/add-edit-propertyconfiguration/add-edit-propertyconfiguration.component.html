@@ -6,7 +6,7 @@
 
     <div class="mb-2">
         <label for="ContractID" class="form-label">ContractID</label>
-        <input type="text" class="form-control" [(ngModel)]="propertyConfigurationContractID" name="propertyConfigurationContractID">
+        <input disabled type="text" class="form-control" [(ngModel)]="propertyConfigurationContractID" name="propertyConfigurationContractID">
     </div>
 
     <button (click)="addPropertyConfiguration()" *ngIf="propertyConfiguration.id==0"  class="btn btn-primary">

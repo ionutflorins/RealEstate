@@ -6,7 +6,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end" [ngClass]="{ show: isExpanded }">
+      <div class="navbar-collapse collapse d-sm-inline-flex " [ngClass]="{ show: isExpanded }">
         <ul class="navbar-nav flex-grow">
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/home']"><svg xmlns="http://www.w3.org/2000/svg" width="16"
@@ -17,41 +17,41 @@
                   d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
               </svg></a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/Developer-List']">Developers</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
+          <!-- <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/Developer-List']">Developer</a>
+          </li> -->
+          <!-- <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/Client-List']">Clients</a>
-          </li>
+          </li> -->
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/Project-List']">Projects</a>
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/Property-List']">Properties</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/Contract-List']">Contract</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
+          <!-- <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/PropertyConfiguration-List']">Property Config</a>
-          </li>
+          </li> -->
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/Configurationitem-List']">Configuration Item</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
+          <!-- <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/Propertyconfigurationitems-List']">Property Configuration
               Items</a>
-          </li>
+          </li> -->
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/ConfigurationOption-List']">Configuration Option</a>
           </li>
+        </ul>
+        <ul class="navbar-nav position-absolute end-0 mx-3">
           <li>
-            <button class="btn btn-secondary my-2 my-sm-0 nav-item space" routerLink="/admin">Admin</button>
+            <button class="btn btn-secondary my-2 my-sm-0 nav-item space  " routerLink="/admin">Admin</button>
           </li>
-          <li>
+          <li >
             <button class="btn btn-danger my-2 my-sm-0 nav-item" (click)="onLogout()">Logout</button>
           </li>
         </ul>
+         
       </div>
     </div>
   </nav>

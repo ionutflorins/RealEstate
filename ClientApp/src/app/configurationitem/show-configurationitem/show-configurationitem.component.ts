@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ConfigurationItemApiService } from 'src/app/Service/configuration-item-api.service';
 
@@ -10,7 +11,8 @@ import { ConfigurationItemApiService } from 'src/app/Service/configuration-item-
 export class ShowConfigurationitemComponent implements OnInit {
 
   configurationItemList$!: Observable<any[]>
-  constructor(private configurationItemService: ConfigurationItemApiService) { }
+  constructor(private configurationItemService: ConfigurationItemApiService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.configurationItemList$ = this.configurationItemService.getconfigurationItemList();
@@ -63,6 +65,15 @@ export class ShowConfigurationitemComponent implements OnInit {
   modalClose() {
     this.activateAddConfigurationItemComponent = false;
     this.configurationItemList$ = this.configurationItemService.getconfigurationItemList();
+  }
+
+  toConfigOpt(configItemId:number|string)
+  {
+    this.router.navigateByUrl('ConfigurationOption-List', {
+      state: {
+        configItemId
+      }
+    });
   }
 
 

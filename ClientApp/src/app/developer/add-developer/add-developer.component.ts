@@ -56,11 +56,11 @@ export class AddDeveloperComponent implements OnInit {
       if (closeModalBtn) {
         closeModalBtn.click();
       }
+      var showAddError = document.getElementById('add-error-alert');
       var showAddSucces = document.getElementById('add-succes-alert');
       if (showAddSucces) {
         showAddSucces.style.display = "block";
       }
-
       setTimeout(function () {
         if (showAddSucces) {
           showAddSucces.style.display = "none"

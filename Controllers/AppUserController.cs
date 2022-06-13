@@ -16,7 +16,8 @@ namespace RealEstate.Controllers
     {
         private UserManager<AppUser> _userManager;
         private SignInManager<AppUser> _signInManager;
-
+        private readonly RoleManager<IdentityRole> _roleManager;
+        
         public AppUserController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {
             _userManager = userManager;
@@ -27,7 +28,8 @@ namespace RealEstate.Controllers
         [Route("Register")]
         public async Task<Object> PostAppUser(AppUserEntity appUserEntity)
         {
-            appUserEntity.Role = "Developer";
+
+            appUserEntity.Role = "Client";
             var appUser = new AppUser()
             {
                 UserName = appUserEntity.UserName,
@@ -35,7 +37,7 @@ namespace RealEstate.Controllers
                 FirstName = appUserEntity.FirstName,
                 LastName = appUserEntity.LastName,
             };
-
+           
             try
             {
                 var result = await _userManager.CreateAsync(appUser, appUserEntity.Password);
