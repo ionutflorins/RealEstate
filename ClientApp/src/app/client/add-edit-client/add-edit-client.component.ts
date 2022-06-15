@@ -44,7 +44,7 @@ export class AddEditClientComponent implements OnInit {
     this.clientIssuedBy = this.client.issuedBy;
     this.clientValidity = this.client.validity;
     this.clientDeveloperID = this.client.developerID;
-    this.clientAppUserID = this.client.appUserId
+    this.clientAppUserID = this.client.appUserID
   }
 
   addClient() {

@@ -43,14 +43,14 @@ export class ShowContractComponent implements OnInit {
       developerID: "",
       propertyID: this.propertyID
     }
-    this.contractModalTitle = "Add Client";
+    this.contractModalTitle = "Add contract";
     this.activateAddEditContractComponent = true;
 
   }
 
   contractModalEdit(contractItem: any) {
     this.contract = contractItem;
-    this.contractModalTitle = "Edit Client"
+    this.contractModalTitle = "Edit contract"
     this.activateAddEditContractComponent = true;
   }
 
@@ -72,7 +72,13 @@ export class ShowContractComponent implements OnInit {
             showDeleteSucces.style.display = "none"
           }
         }, 4000);
-        this.contractList$ = this.contractService.getContractByProp(this.propertyID);
+        if (this.propertyID) {
+          this.contractList$ = this.contractService.getContractByProp(this.propertyID);
+        } else if (this.clientID) {
+          this.contractList$ = this.contractService.getContractByProp(this.clientID);
+        }
+        else
+          this.contractList$ = this.contractService.getContractList();
 
       })
     }
@@ -81,7 +87,13 @@ export class ShowContractComponent implements OnInit {
 
   contractModalClose() {
     this.activateAddEditContractComponent = false;
-    this.contractList$ = this.contractService.getContractByProp(this.propertyID);
+    if (this.propertyID) {
+      this.contractList$ = this.contractService.getContractByProp(this.propertyID);
+    } else if (this.clientID) {
+      this.contractList$ = this.contractService.getContractByProp(this.clientID);
+    }
+    else
+      this.contractList$ = this.contractService.getContractList();
   }
 
   getContract(clientId: number | string) {

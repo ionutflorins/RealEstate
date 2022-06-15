@@ -25,7 +25,7 @@ namespace RealEstateBussinesLogic.ClientsLogic
             
             var clientList = clientRep.GetAll();
             var clientListModel = clientList
-                .Select( x => new ClientListView { ID = x.ID, FirstName= x.FirstName, LastName = x.LastName, PhoneNumber = x.PhoneNumber, PersonalID = x.PersonalID, SerieNo = x.SerieNo, Address = x.Address, IssuedBy = x.IssuedBy, Validity = x.Validity, DeveloperID = x.DeveloperID})
+                .Select( x => new ClientListView { ID = x.ID, FirstName= x.FirstName, LastName = x.LastName, PhoneNumber = x.PhoneNumber, PersonalID = x.PersonalID, SerieNo = x.SerieNo, Address = x.Address, IssuedBy = x.IssuedBy, Validity = x.Validity, DeveloperID = x.DeveloperID, AppUserID = x.AppUserID })
                 .ToList();
             return clientListModel;
         }

@@ -69,14 +69,14 @@ export class ShowPropertyconfigurationComponent implements OnInit {
           }
         }, 4000);
 
-        this.propertyConfigurationList$ = this.propertyConfigurationService.getPropertyConfigurationList();
+        this.propertyConfigurationList$ = this.propertyConfigurationService.getPropConfigByContrId(this.contractId);
       })
     }
   }
 
   clientModalClose() {
     this.activateAddEditpropertyConfigurationComponent = false;
-    this.propertyConfigurationList$ = this.propertyConfigurationService.getPropertyConfigurationList();
+    this.propertyConfigurationList$ = this.propertyConfigurationService.getPropConfigByContrId(this.contractId);
   }
 
   toPropConfigItem(propConfigId:number|string){

@@ -31,10 +31,6 @@
         <label for="Description" class="form-label">Description</label>
         <input type="text" class="form-control" [(ngModel)]="propertyDescription" name="propertyDescription">
     </div>
-    <div class="mb-2">
-        <label for="ProjectID" class="form-label">ProjectID</label>
-        <input disabled type="number" class="form-control" [(ngModel)]="propertyProjectID" name="propertyProjectID">
-    </div>
 
     <button (click)="addProperty()" *ngIf="property.id==0"  class="btn btn-primary">
         Add

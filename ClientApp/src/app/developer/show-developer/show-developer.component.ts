@@ -78,7 +78,7 @@ export class ShowDeveloperComponent implements OnInit {
             showDeleteSucces.style.display = "none"
           }
         }, 4000);
-        this.developerList$ = this.developerService.getDeveloperList();
+        this.developerList$ = this.developerService.getDevByUser(this.decoded.UserID)
 
       })
     }
@@ -86,7 +86,7 @@ export class ShowDeveloperComponent implements OnInit {
 
   modalClose() {
     this.activateAddDeveloperComponent = false;
-    this.developerList$ = this.developerService.getDeveloperList();
+    this.developerList$ = this.developerService.getDevByUser(this.decoded.UserID)
   }
 
   showClientID(devID: number | string) {

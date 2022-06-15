@@ -14,6 +14,10 @@ export class ConfigurationOptionApiService {
     return this.http.get<any>(this.configurationOptionApiUrl + '');
   }
 
+  getConfigOptByPropIdList(id:number|string):Observable<any[]>{
+    return this.http.get<any>(this.configurationOptionApiUrl + `/Getoptionitemid/${id}`);
+  }
+
   addConfigurationOption(data:any){
     return this.http.post(this.configurationOptionApiUrl + '/InsertConfigurationOption', data);
   }

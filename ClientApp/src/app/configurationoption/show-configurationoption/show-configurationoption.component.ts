@@ -25,6 +25,9 @@ export class ShowConfigurationoptionComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.configItemID)
+    this.configurationOptionList$ = this.configurationOptionService.getConfigOptByPropIdList(this.configItemID)
+    else
     this.configurationOptionList$ = this.configurationOptionService.getConfigurationOptionList();
     this.configurationItemList$ = this.configItemListService.getconfigurationItemList();
     this.refreshConfigurationItemMap();
@@ -52,7 +55,7 @@ export class ShowConfigurationoptionComponent implements OnInit {
 
   modalClose() {
     this.activateAddConfigOptComponent = false;
-    this.configurationOptionList$ = this.configurationOptionService.getConfigurationOptionList();
+    this.configurationOptionList$ = this.configurationOptionService.getConfigOptByPropIdList(this.configItemID)
   }
 
   deleteConfigOpt(configurationOptionItem: any) {
@@ -73,7 +76,7 @@ export class ShowConfigurationoptionComponent implements OnInit {
             showDeleteSucces.style.display = "none"
           }
         }, 4000);
-        this.configurationOptionList$ = this.configurationOptionService.getConfigurationOptionList();
+        this.configurationOptionList$ = this.configurationOptionService.getConfigOptByPropIdList(this.configItemID)
       })
     }
   }
