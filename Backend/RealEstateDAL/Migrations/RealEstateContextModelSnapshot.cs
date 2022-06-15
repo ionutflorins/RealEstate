@@ -564,11 +564,9 @@ namespace RealEstateDAL.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("ConfigurationItemID")
-                        .IsUnique();
+                    b.HasIndex("ConfigurationItemID");
 
-                    b.HasIndex("ConfigurationOptionID")
-                        .IsUnique();
+                    b.HasIndex("ConfigurationOptionID");
 
                     b.HasIndex("PropertyConfigurationID");
 
@@ -730,14 +728,14 @@ namespace RealEstateDAL.Migrations
             modelBuilder.Entity("RealEstateDAL.Entities.PropertyConfigurationItems", b =>
                 {
                     b.HasOne("RealEstateDAL.Entities.ConfigurationItem", "ConfigurationItem")
-                        .WithOne("PropertyConfigurationItems")
-                        .HasForeignKey("RealEstateDAL.Entities.PropertyConfigurationItems", "ConfigurationItemID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .WithMany("PropertyConfigurationItems")
+                        .HasForeignKey("ConfigurationItemID")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("RealEstateDAL.Entities.ConfigurationOption", "ConfigurationOption")
-                        .WithOne("PropertyConfigurationItems")
-                        .HasForeignKey("RealEstateDAL.Entities.PropertyConfigurationItems", "ConfigurationOptionID")
+                        .WithMany("PropertyConfigurationItems")
+                        .HasForeignKey("ConfigurationOptionID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -772,14 +770,12 @@ namespace RealEstateDAL.Migrations
                 {
                     b.Navigation("ConfigurationOption");
 
-                    b.Navigation("PropertyConfigurationItems")
-                        .IsRequired();
+                    b.Navigation("PropertyConfigurationItems");
                 });
 
             modelBuilder.Entity("RealEstateDAL.Entities.ConfigurationOption", b =>
                 {
-                    b.Navigation("PropertyConfigurationItems")
-                        .IsRequired();
+                    b.Navigation("PropertyConfigurationItems");
                 });
 
             modelBuilder.Entity("RealEstateDAL.Entities.Contract", b =>

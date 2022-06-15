@@ -13,7 +13,7 @@ namespace RealEstateDAL.Entities
         public string Description { get; set; }
         public int ConfigurationItemId { get; set; }
         public ConfigurationItem ConfigurationItem { get; set; }
-        public PropertyConfigurationItems PropertyConfigurationItems { get; set; }
+        public ICollection<PropertyConfigurationItems> PropertyConfigurationItems { get; set; }
 
     }
 }

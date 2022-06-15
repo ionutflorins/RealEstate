@@ -61,25 +61,36 @@ namespace RealEstateDAL.Context
             modelBuilder.Entity<ConfigurationOption>()
                 .HasOne(b => b.ConfigurationItem)
                 .WithMany(i => i.ConfigurationOption)
-                .OnDelete(DeleteBehavior.Restrict); ;
+                .OnDelete(DeleteBehavior.Restrict);
                 //.HasForeignKey<ConfigurationOption>(b => b.ConfigurationItemId);
 
             modelBuilder.Entity<PropertyConfigurationItems>()
                 .HasOne(b => b.PropertyConfiguration)
                 .WithMany(i => i.PropertyConfigurationItems)
-                .OnDelete(DeleteBehavior.Restrict); ;
-                //.HasForeignKey<PropertyConfigurationItems>(b => b.PropertyConfigurationID);
-
-            modelBuilder.Entity<ConfigurationItem>()
-                .HasOne(b => b.PropertyConfigurationItems)
-                .WithOne(i => i.ConfigurationItem)
-                .HasForeignKey<PropertyConfigurationItems>(b => b.ConfigurationItemID);
-
-            modelBuilder.Entity<ConfigurationOption>()
-                .HasOne(b => b.PropertyConfigurationItems)
-                .WithOne(i => i.ConfigurationOption)
-                .HasForeignKey<PropertyConfigurationItems>(b => b.ConfigurationOptionID)
                 .OnDelete(DeleteBehavior.Restrict);
+            //.HasForeignKey<PropertyConfigurationItems>(b => b.PropertyConfigurationID);
+
+
+            modelBuilder.Entity<PropertyConfigurationItems>()
+            .HasOne(b => b.ConfigurationItem)
+            .WithMany(i => i.PropertyConfigurationItems)
+            .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<PropertyConfigurationItems>()
+                .HasOne(b => b.ConfigurationOption)
+                .WithMany(i => i.PropertyConfigurationItems)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            //modelBuilder.Entity<ConfigurationItem>()
+            //    .HasOne(b => b.PropertyConfigurationItems)
+            //    .WithOne(i => i.ConfigurationItem)
+            //    .HasForeignKey<PropertyConfigurationItems>(b => b.ConfigurationItemID);
+
+            //modelBuilder.Entity<ConfigurationOption>()
+            //    .HasOne(b => b.PropertyConfigurationItems)
+            //    .WithOne(i => i.ConfigurationOption)
+            //    .HasForeignKey<PropertyConfigurationItems>(b => b.ConfigurationOptionID)
+            //    .OnDelete(DeleteBehavior.Restrict);
         }
         public class RealEstateContextFactory : IDesignTimeDbContextFactory<RealEstateContext>
         {

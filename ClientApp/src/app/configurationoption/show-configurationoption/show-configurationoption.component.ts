@@ -55,7 +55,10 @@ export class ShowConfigurationoptionComponent implements OnInit {
 
   modalClose() {
     this.activateAddConfigOptComponent = false;
+    if(this.configItemID)
     this.configurationOptionList$ = this.configurationOptionService.getConfigOptByPropIdList(this.configItemID)
+    else
+    this.configurationOptionList$ = this.configurationOptionService.getConfigurationOptionList();
   }
 
   deleteConfigOpt(configurationOptionItem: any) {
@@ -76,7 +79,10 @@ export class ShowConfigurationoptionComponent implements OnInit {
             showDeleteSucces.style.display = "none"
           }
         }, 4000);
-        this.configurationOptionList$ = this.configurationOptionService.getConfigOptByPropIdList(this.configItemID)
+        if(this.configItemID)
+    this.configurationOptionList$ = this.configurationOptionService.getConfigOptByPropIdList(this.configItemID)
+    else
+    this.configurationOptionList$ = this.configurationOptionService.getConfigurationOptionList();
       })
     }
   }
