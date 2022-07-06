@@ -1,10 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
-body{
-    background-color: #cfd4d200;;
+
+.btnDsg{
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  border-color: transparent;
 }
+
+/* body{
+    background-color: #cfd4d200;;
+} */
 input.form-control,input.form-control:focus{
     background-color: #636b7b;
-    color: #fff;
+    color: rgb(255, 255, 255);
     border: 1px solid #636b7b;
 
 }
@@ -108,3 +115,72 @@ div.form-group.required>label:first-child:after{
   margin-right: auto;
   width: 50%;
 }
+
+#outer
+{
+    width:100%;
+    text-align: center;
+}
+#outer2
+{
+    width:100%;
+    text-align: left;
+}
+
+.inner
+{
+    margin: 50px;
+    display: inline-block;
+}
+.inner2
+{
+  margin-top: 20px;
+  margin-left: 50px;
+  display: inline-block;
+}
+
+/* Background animation */
+body {
+  background: linear-gradient(-45deg, #6fede7, #83b8ed, #67b2cd, #60dcbf);
+  background-size: 400% 400%;
+  height: 100vh;
+}
+
+/* background-size: 400% 400%;
+  animation: gradient 45s ease infinite;
+  height: 100vh;
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.table-bordered{
+
+  border-collapse: collapse;
+}
+
+.table-bordered tbody tr {
+  border-bottom: 1px solid #ffffff;
+}
+
+.table-bordered tbody tr:nth-of-type(even) {
+  background-color: #ddf1f5;
+} */
+
+

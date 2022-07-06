@@ -51,7 +51,6 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { ClientFormComponent } from './client-form/client-form.component';
 import { AddEditConfigurationoptionComponent } from './configurationoption/add-edit-configurationoption/add-edit-configurationoption.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

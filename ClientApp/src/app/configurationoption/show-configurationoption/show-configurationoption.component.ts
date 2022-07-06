@@ -29,6 +29,7 @@ export class ShowConfigurationoptionComponent implements OnInit {
     this.configurationOptionList$ = this.configurationOptionService.getConfigOptByPropIdList(this.configItemID)
     else
     this.configurationOptionList$ = this.configurationOptionService.getConfigurationOptionList();
+    
     this.configurationItemList$ = this.configItemListService.getconfigurationItemList();
     this.refreshConfigurationItemMap();
   }

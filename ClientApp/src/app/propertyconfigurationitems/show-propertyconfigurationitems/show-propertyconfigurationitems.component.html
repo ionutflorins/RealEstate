@@ -22,14 +22,13 @@
   Configuration succesfully deleted!
 </div>
 
-<table class="table table-striped" id="contentToConvert">
+<table class="table table-bordered" id="contentToConvert">
   <thead>
     <th>ID</th>
-    <th>PropertyConfigurationID</th>
-    <th>ConfigurationItemID</th>
-    <th>ConfigurationOptionID</th>
-    <th>Options</th>
-    <th></th>
+    <th>Property Config Form No</th>
+    <th>Configuration Item</th>
+    <th>Configuration Option</th>
+    <th>Option</th>
     <th>Signature</th>
   </thead>
   <tbody>
@@ -37,10 +36,8 @@
       <td>{{propertyConfigurationItemsItem.id}}</td>
       <td>{{propertyConfigurationItemsItem.propertyConfigurationID}}</td>
       <td>{{configurationItemsTypesMap.get(propertyConfigurationItemsItem.configurationItemID)}}</td>
-      <!-- <td>{{propertyConfigurationItemsItem.configurationItemID}}</td> -->
       <td>{{configOptionMap.get(propertyConfigurationItemsItem.configurationOptionID)}}</td>
-      <!-- <td>{{propertyConfigurationItemsItem.configurationOptionID}}</td> -->
-      <td><button class="btn btn-outline-primary me-2 mb-1" (click)="modalEdit(propertyConfigurationItemsItem)"
+      <!-- <td><button class="btn btn-outline-primary me-2 mb-1" (click)="modalEdit(propertyConfigurationItemsItem)"
           data-bs-toggle="modal" data-bs-target="#staticBackdrop">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square"
             viewBox="0 0 16 16">
@@ -49,8 +46,8 @@
             <path fill-rule="evenodd"
               d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
           </svg>
-        </button></td>
-      <td><button class="btn btn-outline-danger me-2 mb-1"
+        </button></td> -->
+      <td><button style="border-color: transparent;" class="btn btn-outline-danger me-2 mb-1"
           (click)="deletePropConfigItem(propertyConfigurationItemsItem)">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
             viewBox="0 0 16 16">

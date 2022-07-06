@@ -1,80 +1,44 @@
 <header>
-
-  <img class="city" src="\assets\Images\city2.png" alt="">
+  <img class="city" src="\assets\Images\city4.png" alt="">
   <app-nav-menu></app-nav-menu>
 </header>
-<div class="card m-0 mb-4" style="width: 18rem" *ngIf="userDetails">
+
+<div class="card m-0 mb-4" style="float:right; width: 18rem" *ngIf="userDetails">
   <ul class="list-group">
     <li class="list-group-item"><strong>UserName: </strong>{{userDetails.userName}}</li>
+    <li class="list-group-item"><strong>FirstName: </strong>{{userDetails.firstName}}</li>
+    <li class="list-group-item"><strong>LastName: </strong>{{userDetails.lastName}}</li>
+    <li class="list-group-item"><strong>Email: </strong>{{userDetails.email}}</li>
+    <img src="assets\Images\typesofrealestate.png" alt="">
   </ul>
-
 </div>
-<h3 style="text-align:left;" class="mb-3">Welcome to Real Estate Management</h3>
-<div><button style="color: black; background-color: #ffffff; border-color:#ffffff;" class="btn btn-primary me-4 shadow-none"
-    routerLink="/Client-List">
-    <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-file-earmark-person"
-      viewBox="0 0 16 16">
-      <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-      <path
-        d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5v2z" />
-    </svg>
-  </button>
-  <button style="color: black; background-color: #ffffff; border-color:#ffffff;" class="btn btn-primary shadow-none"
-  routerLink="/Developer-List"> 
-    <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-bricks" viewBox="0 0 16 16">
-      <path d="M0 .5A.5.5 0 0 1 .5 0h15a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5H14v2h1.5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5H14v2h1.5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5H2v-2H.5a.5.5 0 0 1-.5-.5v-3A.5.5 0 0 1 .5 6H2V4H.5a.5.5 0 0 1-.5-.5v-3zM3 4v2h4.5V4H3zm5.5 0v2H13V4H8.5zM3 10v2h4.5v-2H3zm5.5 0v2H13v-2H8.5zM1 1v2h3.5V1H1zm4.5 0v2h5V1h-5zm6 0v2H15V1h-3.5zM1 7v2h3.5V7H1zm4.5 0v2h5V7h-5zm6 0v2H15V7h-3.5zM1 13v2h3.5v-2H1zm4.5 0v2h5v-2h-5zm6 0v2H15v-2h-3.5z"/>
-    </svg>
-  </button>
-  <div><label style="margin-left: 8px;">Client Zone </label>
-  <label style="margin-left: 32px;">Developer Zone</label></div>
-
-</div>
-
-<div>
-  <!-- <table class="table table-striped">
-    <thead>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>Phone Number</th>
-      <th>Email</th>
-      <th>Zip Code</th>
-      <th>Options</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let developerItem of developerList$|async">
-        <td>{{developerItem.id}}</td>
-        <td>{{developerItem.name}}</td>
-        <td>{{developerItem.address}}</td>
-        <td>{{developerItem.city}}</td>
-        <td>{{developerItem.phoneNumber}}</td>
-        <td>{{developerItem.email}}</td>
-        <td>{{developerItem.zipCode}}</td>
-        <td>
-          <button class="btn btn-outline-primary me-2 mb-1"  (click)="showProjectId(developerItem.id)">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-              fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
-              <path
-                d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
-              <path
-                d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z" />
-            </svg></button>
-        </td>
-        <td>
-          <div>
-            <button class="btn btn-outline-primary me-2 mb-1" (click)="showClientID(developerItem.id)">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill"
-                viewBox="0 0 16 16">
-                <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                <path fill-rule="evenodd"
-                  d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
-                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
-              </svg>
-            </button>
-          </div>
-        </td>
-        </tr>
-    </tbody>
-  </table>
-</div> -->
+<h3 style="text-align:left;">Welcome to Real Estate Management</h3>
+  <div id="outer2">
+    <div class="inner2">
+      <div>
+        <button style="color: rgb(0, 0, 0); background-color: transparent; border-color:transparent;"
+          class="inner2 btn btn-primary me-4 shadow-none" routerLink="/Client-List">
+          <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor"
+            class="bi bi-file-earmark-person" viewBox="0 0 16 16">
+            <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+            <path
+              d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5v2z" />
+          </svg>
+        </button>
+      </div>
+      <label style="margin-left: 60px;">Client Zone </label>
+    </div>
+    <div class="inner2">
+      <div>
+        <button style="color: rgb(0, 0, 0); background-color: transparent; border-color:transparent;"
+          class="btn btn-primary shadow-none" routerLink="/Developer-List">
+          <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-bricks"
+            viewBox="0 0 16 16">
+            <path
+              d="M0 .5A.5.5 0 0 1 .5 0h15a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5H14v2h1.5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5H14v2h1.5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5H2v-2H.5a.5.5 0 0 1-.5-.5v-3A.5.5 0 0 1 .5 6H2V4H.5a.5.5 0 0 1-.5-.5v-3zM3 4v2h4.5V4H3zm5.5 0v2H13V4H8.5zM3 10v2h4.5v-2H3zm5.5 0v2H13v-2H8.5zM1 1v2h3.5V1H1zm4.5 0v2h5V1h-5zm6 0v2H15V1h-3.5zM1 7v2h3.5V7H1zm4.5 0v2h5V7h-5zm6 0v2H15V7h-3.5zM1 13v2h3.5v-2H1zm4.5 0v2h5v-2h-5zm6 0v2H15v-2h-3.5z" />
+          </svg>
+        </button>
+      </div>
+      <label style="margin-left: 1px;">Developer Zone</label>
+    </div>
+  </div>

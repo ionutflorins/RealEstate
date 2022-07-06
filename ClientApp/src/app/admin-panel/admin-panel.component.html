@@ -1,4 +1,6 @@
 <header>
+    <img class="city" src="\assets\Images\city4.png" alt="">
+    <app-nav-menu></app-nav-menu>
     <div class="alert alert-success" role="alert" id="add-succes-alert">
         Developer succesfully added!
     </div>
@@ -8,23 +10,12 @@
     <div class="alert alert-success" role="alert" id="delete-succes-alert">
         Developer succesfully deleted!
     </div>
-
+    <h3>Admin Panel</h3>
 </header>
-<div>
-    <div>
-        <h1>Admin Panel</h1>
-    </div>
-    <div><button style="color: black; background-color: #ffffff; border-color:#ffffff;"
-            class="btn btn-primary shadow-none" routerLink="/home">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left"
-                viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                    d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-            </svg>
-        </button></div>
-    <div class="mb-3 center">
+<div id="outer">
+    <div class="mb-3 inner">
         <div>
-            <button style="color: black; background-color: #ffffff; border-color:#ffffff;"
+            <button style="color: black; background-color: transparent; border-color:transparent;"
                 class="btn btn-primary shadow-none" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                 [routerLink]="['/Developer-List']">
                 <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" fill="currentColor" class="bi bi-bricks"
@@ -36,28 +27,33 @@
         </div>
         <label style="margin-left: 5px;">Developer</label>
     </div>
-    <div class="mb-3 center">
+    <div class="mb-3 inner">
         <div>
-            <button style="color: black; background-color: #ffffff; border-color:#ffffff;"
+            <button style="color: black; background-color: transparent; border-color:transparent;"
                 class="btn btn-primary shadow-none" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                 [routerLink]="['/Contract-List']">
-                <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" fill="currentColor" class="bi bi-file-earmark-text" viewBox="0 0 16 16">
-                    <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
-                    <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L9.5 0zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
-                  </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" fill="currentColor"
+                    class="bi bi-file-earmark-text" viewBox="0 0 16 16">
+                    <path
+                        d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z" />
+                    <path
+                        d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L9.5 0zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z" />
+                </svg>
             </button>
         </div>
         <label style="margin-left: 5px;">Contracts</label>
     </div>
-    <div class="mb-3 center">
+    <div class="mb-3 inner">
         <div>
-            <button style="color: black; background-color: #ffffff; border-color:#ffffff;"
+            <button style="color: black; background-color: transparent; border-color:transparent;"
                 class="btn btn-primary shadow-none" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                 [routerLink]="['/Propertyconfigurationitems-List']">
-                <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" fill="currentColor" class="bi bi-house-heart" viewBox="0 0 16 16">
-                    <path d="M8 6.982C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.309 8 6.982Z"/>
-                    <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.707L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.646a.5.5 0 0 0 .708-.707L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
-                  </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" fill="currentColor"
+                    class="bi bi-house-heart" viewBox="0 0 16 16">
+                    <path d="M8 6.982C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.309 8 6.982Z" />
+                    <path
+                        d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.707L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.646a.5.5 0 0 0 .708-.707L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+                </svg>
             </button>
         </div>
         <label style="margin-left: 5px;">Prop Config List</label>

@@ -87,14 +87,20 @@ export class ShowPropertyconfigurationitemsComponent implements OnInit {
           }
         }, 4000);
 
-        this.propetyConfigurationItemsList$ = this.propertyConfigurationItemsService.getPropConfigItmByPropConfig(this.propConfigId);
+        if (this.propConfigId) {
+          this.propetyConfigurationItemsList$ = this.propertyConfigurationItemsService.getPropConfigItmByPropConfig(this.propConfigId);
+        } else
+          this.propetyConfigurationItemsList$ = this.propertyConfigurationItemsService.getPropertyConfigurationItemsList();
       })
     }
   }
 
   clientModalClose() {
     this.activateAddEditpropConfigItemsComponent = false;
-    this.propetyConfigurationItemsList$ = this.propertyConfigurationItemsService.getPropConfigItmByPropConfig(this.propConfigId);
+    if (this.propConfigId) {
+      this.propetyConfigurationItemsList$ = this.propertyConfigurationItemsService.getPropConfigItmByPropConfig(this.propConfigId);
+    } else
+      this.propetyConfigurationItemsList$ = this.propertyConfigurationItemsService.getPropertyConfigurationItemsList();
   }
 
 

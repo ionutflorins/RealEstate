@@ -21,3 +21,23 @@
     50%{opacity: 1;}
     100%{opacity: 0;}
 }
+/* .styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.table-bordered{
+
+    border-collapse: collapse;
+}
+
+.table-bordered tbody tr {
+    border-bottom: 1px solid #ffffff;
+}
+
+.table-bordered tbody tr:nth-of-type(even) {
+    background-color: #ddf1f5;
+} */

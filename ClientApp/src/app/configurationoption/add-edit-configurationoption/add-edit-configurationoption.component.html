@@ -7,10 +7,17 @@
         <label for="ConfigurationItem" class="form-label">Configuration Item</label>
         <input disabled type="text" class="form-control" [(ngModel)]="configItemId" name="configItemId">
     </div>
-    <button (click)="addConfigOption()" *ngIf="configOption.id==0"  class="btn btn-primary">
-        Add
-    </button>
-    <button (click)="updateConfigOption()" *ngIf="configOption.id!=0"  class="btn btn-primary">
-        Update
-    </button>
+    <div>
+        <div class="mb-2">
+            <button (click)="addConfigOption()" class="btn btn-primary" style="margin-bottom: 5px;">
+                Upload Photo
+            </button>
+        </div>
+        <button (click)="addConfigOption()" *ngIf="configOption.id==0"  class="btn btn-primary">
+            Add
+        </button>
+        <button (click)="updateConfigOption()" *ngIf="configOption.id!=0"  class="btn btn-primary">
+            Update
+        </button>
+    </div>
 </form>
